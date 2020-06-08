@@ -40,32 +40,32 @@ public class BigDecimalUtil {
     /* Code Demo Exp */
     public static void main(String[] args){
         try {
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36.23,23.369, BigDecimalOprations.add,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD("36.23","23.369", BigDecimalOprations.add,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36,23, BigDecimalOprations.add,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36l,69l, BigDecimalOprations.add,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(new BigDecimal(0.2635),new BigDecimal(2.3568), BigDecimalOprations.add,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36.23,23.369, BigDecimalOprations.add,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD("36.23","23.369", BigDecimalOprations.add,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36,23, BigDecimalOprations.add,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36l,69l, BigDecimalOprations.add,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(new BigDecimal(0.2635),new BigDecimal(2.3568), BigDecimalOprations.add,2,BigDecimal.ROUND_DOWN));
 
 
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36.23,23.369, BigDecimalOprations.subtract,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD("36.23","23.369", BigDecimalOprations.subtract,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36,23, BigDecimalOprations.subtract,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36l,69l, BigDecimalOprations.subtract,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(new BigDecimal(0.2635),new BigDecimal(2.3568), BigDecimalOprations.subtract,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36.23,23.369, BigDecimalOprations.subtract,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD("36.23","23.369", BigDecimalOprations.subtract,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36,23, BigDecimalOprations.subtract,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36l,69l, BigDecimalOprations.subtract,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(new BigDecimal(0.2635),new BigDecimal(2.3568), BigDecimalOprations.subtract,2,BigDecimal.ROUND_DOWN));
 
 
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36.23,23.369, BigDecimalOprations.multiply,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD("36.23","23.369", BigDecimalOprations.multiply,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36,23, BigDecimalOprations.multiply,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36l,69l, BigDecimalOprations.multiply,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(new BigDecimal(0.2635),new BigDecimal(2.3568), BigDecimalOprations.multiply,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36.23,23.369, BigDecimalOprations.multiply,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD("36.23","23.369", BigDecimalOprations.multiply,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36,23, BigDecimalOprations.multiply,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36l,69l, BigDecimalOprations.multiply,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(new BigDecimal(0.2635),new BigDecimal(2.3568), BigDecimalOprations.multiply,2,BigDecimal.ROUND_DOWN));
 
 
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36.23,23.369, BigDecimalOprations.divide,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD("36.23","23.369", BigDecimalOprations.divide,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36,23, BigDecimalOprations.divide,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(36l,69l, BigDecimalOprations.divide,2,BigDecimal.ROUND_DOWN));
-            System.out.println(cn.smbms.tools.BigDecimalUtil.OperationASMD(new BigDecimal(0.235),new BigDecimal(0.5689), BigDecimalOprations.divide,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36.23,23.369, BigDecimalOprations.divide,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD("36.23","23.369", BigDecimalOprations.divide,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36,23, BigDecimalOprations.divide,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(36l,69l, BigDecimalOprations.divide,2,BigDecimal.ROUND_DOWN));
+            System.out.println(com.HotelManagement.tools.BigDecimalUtil.OperationASMD(new BigDecimal(0.235),new BigDecimal(0.5689), BigDecimalOprations.divide,2,BigDecimal.ROUND_DOWN));
         } catch (Exception e) {
             e.printStackTrace();
         }
