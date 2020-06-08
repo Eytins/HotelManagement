@@ -12,6 +12,11 @@ public class Bill {
     private java.sql.Date checkInDate;
     private java.sql.Date  checkOutDate;
     private int isCheckIn;
+    private int countDays;
+    private int  isPayment;
+    private java.sql.Timestamp creationDate;
+    private java.sql.Timestamp modifyDate;
+    private  long providerId;
 
     public long getId() {
         return id;
@@ -117,11 +122,7 @@ public class Bill {
         this.providerId = providerId;
     }
 
-    private int countDays;
-    private int  isPayment;
-    private java.sql.Timestamp creationDate;
-    private java.sql.Timestamp modifyDate;
-    private  long providerId;
+
 
 
 }
