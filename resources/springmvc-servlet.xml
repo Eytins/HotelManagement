@@ -77,7 +77,7 @@
             <!--规定：拦截url是什么 所有以/sys/开头的路径-->
             <!--todo:配置拦截器-->
             <!--<mvc:mapping path="/sys/**"/>
-            <bean class="cn.smbms.interceptor.SysInterceptor"/>-->
+            <bean class="com.HotelManager.interceptor.SysInterceptor"/>-->
         </mvc:interceptor>
     </mvc:interceptors>
 
