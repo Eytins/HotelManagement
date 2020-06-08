@@ -1,7 +1,7 @@
 package com.HotelManagement.interceptor;
 
-import cn.smbms.pojo.User;
-import cn.smbms.tools.Constants;
+import com.HotelManagement.pojo.User;
+import com.HotelManagement.tools.Constants;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.ServletException;
