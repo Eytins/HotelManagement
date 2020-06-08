@@ -29,7 +29,7 @@ public class LoginController {
 
         if(loginUser!=null){
             session.setAttribute(Constants.USER_SESSION, loginUser);
-            return "success";
+            return "index";
         }else{
             request.setAttribute("error", "用户名或者密码错误");
             return "login";
