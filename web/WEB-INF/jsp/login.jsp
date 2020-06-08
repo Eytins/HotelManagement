@@ -25,6 +25,7 @@
     <div id="darkbannerwrap"></div>
 
     <form method="post" class="layui-form" action="${pageContext.request.contextPath }/dologin.html">
+        <div class="info">${error }</div>
         <input name="username" placeholder="用户名" type="text" lay-verify="required" class="layui-input">
         <hr class="hr15">
         <input name="password" lay-verify="required" placeholder="密码" type="password" class="layui-input">

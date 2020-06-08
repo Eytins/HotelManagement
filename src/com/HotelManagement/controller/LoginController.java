@@ -35,4 +35,11 @@ public class LoginController {
             return "login";
         }
     }
+
+    @RequestMapping(value = {"/sys/logout.html","/sys/user/logout.html"})
+    public String logout(HttpSession session){
+
+        session.invalidate();
+        return "login";
+    }
 }

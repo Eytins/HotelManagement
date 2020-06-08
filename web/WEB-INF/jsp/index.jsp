@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html class="x-admin-sm">
     <head>
@@ -26,7 +27,7 @@
         <!-- 顶部开始 -->
         <div class="container">
             <div class="logo">
-                <a href="./index.html">X-admin v2.2</a></div>
+                <a href="./index.jsp">X-admin v2.2</a></div>
             <div class="left_open">
                 <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
             </div>
@@ -63,7 +64,7 @@
                         <dd>
                             <a onclick="xadmin.open('切换帐号','http://www.baidu.com')">切换帐号</a></dd>
                         <dd>
-                            <a href="../../index.jsp">退出</a></dd>
+                            <a href="${pageContext.request.contextPath }/sys/logout.html">退出</a></dd>
                     </dl>
                 </li>
                 <li class="layui-nav-item to-index">
