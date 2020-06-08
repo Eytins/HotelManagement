@@ -1,4 +1,4 @@
-package com.sample;
+package com.HotelManagement.pojo;
 
 
 public class HotelUserInfo {
