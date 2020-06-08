@@ -1,7 +1,7 @@
 package com.HotelManagement.pojo;
 
 
-public class HotelUserInfo {
+public class User {
 
   private long id;
   private String userCode;
