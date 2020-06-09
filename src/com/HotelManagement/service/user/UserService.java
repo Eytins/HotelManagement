@@ -4,5 +4,7 @@ import com.HotelManagement.pojo.User;
 
 public interface UserService {
 
-    public User login(String userCode, String password);
+    User login(String userCode, String password);
+
+    int addUser(User user);
 }

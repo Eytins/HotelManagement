@@ -10,6 +10,7 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private UserMapper userMapper;
+
     @Override
     public User login(String userCode, String password) {
 
@@ -20,5 +21,10 @@ public class UserServiceImpl implements UserService {
         }
 
         return user;
+    }
+
+    @Override
+    public int addUser(User user) {
+        return userMapper.addUser(user);
     }
 }
