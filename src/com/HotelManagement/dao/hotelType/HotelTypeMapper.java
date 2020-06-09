@@ -17,9 +17,4 @@ public interface HotelTypeMapper {
                            @Param("hotelId") Integer hotelId,
                            @Param("roomType") Integer roomType,
                            @Param("billHotelId") Integer billHotelId);
-    //顾客退房
-    public int modify1(HotelType hotelType);
-
-    //顾客选择房间
-    public int modify2(HotelType hotelType);
 }

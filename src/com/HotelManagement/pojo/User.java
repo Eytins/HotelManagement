@@ -1,6 +1,8 @@
 package com.HotelManagement.pojo;
 
 
+import java.util.Date;
+
 public class User {
 
   private long id;
@@ -8,10 +10,10 @@ public class User {
   private String userName;
   private String userPassword;
   private long gender;
-  private java.sql.Date birthday;
+  private Date birthday;
   private String phone;
   private long userRole;
-  private java.sql.Timestamp creationDate;
+  private Date creationDate;
   private java.sql.Timestamp modifyDate;
 
 
@@ -60,11 +62,11 @@ public class User {
   }
 
 
-  public java.sql.Date getBirthday() {
+  public Date getBirthday() {
     return birthday;
   }
 
-  public void setBirthday(java.sql.Date birthday) {
+  public void setBirthday(Date birthday) {
     this.birthday = birthday;
   }
 
@@ -87,11 +89,11 @@ public class User {
   }
 
 
-  public java.sql.Timestamp getCreationDate() {
+  public Date getCreationDate() {
     return creationDate;
   }
 
-  public void setCreationDate(java.sql.Timestamp creationDate) {
+  public void setCreationDate(Date creationDate) {
     this.creationDate = creationDate;
   }
 

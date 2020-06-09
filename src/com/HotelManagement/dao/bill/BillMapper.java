@@ -3,7 +3,6 @@ package com.HotelManagement.dao.bill;
 import com.HotelManagement.pojo.Bill;
 import org.apache.ibatis.annotations.Param;
 
-import java.util.Date;
 import java.util.List;
 
 public interface BillMapper {
@@ -11,22 +10,11 @@ public interface BillMapper {
     //根据订单编号和房间类型获得订单列表
     public List<Bill> getBillByBillCode(@Param("billCode") String billCode, @Param("roomType") String roomType);
 
-    //添加用户
-    public int addBill(@Param("billCode")String billCode,
-                       @Param("orderId") int orderId,
-                       @Param("hotelId") int hotelId,
-                       @Param("roomType") String roomType,
-                       @Param("checkInDate") Date checkInDate,
-                       @Param("checkOutDate") Date checkOutDate,
-                       @Param("isCheckIn") int isCheckIn,
-                       @Param("countDays") int countDays,
-                       @Param("totalPrice") int totalPrice,
-                       @Param("isPayment") int isPayment,
-                       @Param("providerId") int providerId
-       );
+    //新建订单
+    public int addBill(Bill bill);
 
     //根据id删除订单信息
-    public int deleteBillbyId(@Param("billId")Integer id);
+    public int deleteBillbyId(@Param("billId") Integer id);
 
     //获取订单价格最高值
     public int HPrice();
@@ -35,7 +23,8 @@ public interface BillMapper {
     public int LPrice();
 
     //根据订单编号和房间类型获得包含房间类型和房间规格的订单列表
-    public List<Bill> getBillList(@Param("billCode") String billCode,@Param("roomType") Integer roomType);
+    public List<Bill> getBillListWithType(@Param("billCode") String billCode, @Param("roomType") Integer roomType);
 
-
+    //是否已经入住
+    public int isCheckIn(@Param("id") Integer id,@Param("flag") int flag);
 }

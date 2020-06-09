@@ -10,7 +10,7 @@ values (#{hotelId},#{hotelRoomType},#{hotelRoomNumber},#{hotelPrice},#{hotelPeop
     </insert>
 
     <delete id="deleteHotelType" parameterType="int">
-        delete * from hotelType where id = #{id}
+        delete  from hotelType where id = #{id}
     </delete>
 
     <select id="selectHotelTypeByIdType" resultType="com.HotelManagement.pojo.HotelType">
@@ -24,34 +24,4 @@ select * from hotelType
         select h.hotelRoomNumber- (select count(*) from bill b where b.hotelId = #{billHotelId} and b.roomType = #{roomType}) from hotelType h,bill b
         where h.hotelId = #{hotelId} and h.id = #{hotelTypeId} LIMIT 1;
     </select>
-
-    <!--顾客退房-->
-    <update id="modify1" parameterType="hotelType">
-        update  hotelType
-        <set>
-            <if test="hotelId!=null and hotelId!=''">hotelId=#{hotelId},</if>
-            <if test="hoteRoomType!=null and hoteRoomType!=''">hoteRoomType=#{hoteRoomType},</if>
-            <if test="hotelRoomNumber!=null and hotelRoomNumber!=''">hotelRoomNumber=#{hotelRoomNumber+1},</if>
-            <if test="hotelPrice!=null and hotelPrice!=''">gender=#{hotelPrice},</if>
-            <if test=" hotelPeople!=null and  hotelPeople!=''">hotelPeople=#{ hotelPeople},</if>
-            <if test="modifyDate!=null and modifyDate!=''">phone=#{modifyDate},</if>
-
-        </set>
-        where id=#{id}
-    </update>
-
-    <!--顾客订房-->
-    <update id="modify2" parameterType="hotelType">
-        update  hotelType
-        <set>
-            <if test="hotelId!=null and hotelId!=''">hotelId=#{hotelId},</if>
-            <if test="hoteRoomType!=null and hoteRoomType!=''">hoteRoomType=#{hoteRoomType},</if>
-            <if test="hotelRoomNumber!=null and hotelRoomNumber!=''">hotelRoomNumber=#{hotelRoomNumber-1},</if>
-            <if test="hotelPrice!=null and hotelPrice!=''">gender=#{hotelPrice},</if>
-            <if test=" hotelPeople!=null and  hotelPeople!=''">hotelPeople=#{ hotelPeople},</if>
-            <if test="modifyDate!=null and modifyDate!=''">phone=#{modifyDate},</if>
-
-        </set>
-        where id=#{id}
-    </update>
 </mapper>

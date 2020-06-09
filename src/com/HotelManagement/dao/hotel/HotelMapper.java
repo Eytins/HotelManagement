@@ -10,4 +10,6 @@ public interface HotelMapper {
     List<Hotel> selectHotel(@Param("hotelName") String hotelName, @Param("hotelAddress") String hotelAddress);
     //添加新的酒店
     int addNewHotel(Hotel hotel);
+    //删除酒店
+    int deleteHotelbyId(Integer id);
 }
