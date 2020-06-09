@@ -4,7 +4,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.HotelManagement.dao.hotelType.HotelTypeMapper">
-    <insert id="addNewHotelType">
-
+    <insert id="addNewHotelType" parameterType="HotelType">
+insert into hotelType(hotelId,hotelRoomType,hotelRoomNumber,hotelPrice,hotelPeople,creationDate,modifyDate)
+values (#{hotelId},#{hotelRoomType},#{hotelRoomNumber},#{hotelPrice},#{hotelPeople},#{creationDate},#{modifyDate})
     </insert>
+
+    <delete id="deleteHotelType" parameterType="int">
+        delete * from hotelType where id = #{id}
+    </delete>
+
+
 </mapper>
