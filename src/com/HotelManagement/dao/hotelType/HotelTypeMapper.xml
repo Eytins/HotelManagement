@@ -12,6 +12,9 @@ values (#{hotelId},#{hotelRoomType},#{hotelRoomNumber},#{hotelPrice},#{hotelPeop
     <delete id="deleteHotelType" parameterType="int">
         delete * from hotelType where id = #{id}
     </delete>
+    <select id="selectHotelTypeByIdType" resultType="list">
+
+    </select>
 
 
 </mapper>

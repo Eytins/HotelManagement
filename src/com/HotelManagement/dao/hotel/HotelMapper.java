@@ -6,6 +6,8 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 public interface HotelMapper {
-    Hotel selectHotel(@Param("hotelName") String hotelName,@Param("hotelAddress") String hotelAddress);
+    //搜索所有酒店名
+    List<Hotel> selectHotel(@Param("hotelName") String hotelName, @Param("hotelAddress") String hotelAddress);
+    //添加新的酒店
     int addNewHotel(Hotel hotel);
 }

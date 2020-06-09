@@ -19,6 +19,7 @@ public class test {
         user1.add(0,user);
         user1.add(1,user);
         User user2 = new User();
+
         String gson = new Gson().toJson(user2);
         System.out.println(gson);
     }
