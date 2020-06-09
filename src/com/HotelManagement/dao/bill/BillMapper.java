@@ -35,7 +35,7 @@ public interface BillMapper {
     public int LPrice();
 
     //根据订单编号和房间类型获得订单列表
-    public List<Bill> getBillList(@Param("billCode") String billCode,@Param("roomType") Integer roomType);
+    public List<Bill> getBillListWithType(@Param("billCode") String billCode,@Param("roomType") Integer roomType);
 
 
 }

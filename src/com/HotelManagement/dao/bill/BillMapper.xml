@@ -30,33 +30,29 @@
     </delete>
 
     <!--获取订单最高价格-->
-    <select id="HPrice" parameterType="Integer">
+    <select id="HPrice" parameterType="Integer" resultType="java.lang.Integer">
         select MAX(totalPrice) FROM bill;
     </select>
 
     <!--获取订单最低价格-->
-    <select id="LPrice" parameterType="Integer">
+    <select id="LPrice" parameterType="Integer" resultType="java.lang.Integer">
         select Min(totalPrice) FROM bill;
     </select>
 
     <!--获得包含房间类型和房间规格的订单列表-->
 
-    <select id="getBillList" resultMap="includeRoomTypeAndPeople">
+    <select id="getBillListWithType" resultType="com.HotelManagement.pojo.Bill" resultMap="mid">
         select b.*,h.hotelRoomType,h.hotelPeople
         from bill u,hotelType h
-        where b.roomType=h.hotelRoomType
+        where b.roomType=h.id
         <if test="billCode!=null and billCode!=''">
                 billCode = #{billCode}
          </if>
         <if test="roomType!=null and roomType!=''">
             roomType = #{roomType}
         </if>
-
-
-
     </select>
-
-    <resultMap id="includeRoomTypeAndPeople" type="Bill">
+    <resultMap id="mid" type="HotelType">
         <result property="hotelRoomType" column="hotelRoomType"/>
         <result property="hotelPeople" column="hotelPeople"/>
     </resultMap>

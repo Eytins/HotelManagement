@@ -17,6 +17,8 @@ public class Bill {
     private java.sql.Timestamp creationDate;
     private java.sql.Timestamp modifyDate;
     private  long providerId;
+    private String hoteRoomType;
+    private long hotelPeople;
 
     public long getId() {
         return id;
@@ -122,7 +124,19 @@ public class Bill {
         this.providerId = providerId;
     }
 
+    public String getHoteRoomType() {
+        return hoteRoomType;
+    }
 
+    public void setHoteRoomType(String hoteRoomType) {
+        this.hoteRoomType = hoteRoomType;
+    }
 
+    public long getHotelPeople() {
+        return hotelPeople;
+    }
 
+    public void setHotelPeople(long hotelPeople) {
+        this.hotelPeople = hotelPeople;
+    }
 }

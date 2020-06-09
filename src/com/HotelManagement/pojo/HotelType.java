@@ -5,7 +5,7 @@ public class HotelType {
 
   private long id;
   private long hotelId;
-  private String hoteRoomType;
+  private String hotelRoomType;
   private long hotelRoomNumber;
   private double hotelPrice;
   private long hotelPeople;
@@ -31,12 +31,12 @@ public class HotelType {
   }
 
 
-  public String getHoteRoomType() {
-    return hoteRoomType;
+  public String getHotelRoomType() {
+    return hotelRoomType;
   }
 
   public void setHoteRoomType(String hoteRoomType) {
-    this.hoteRoomType = hoteRoomType;
+    this.hotelRoomType = hoteRoomType;
   }
 
 

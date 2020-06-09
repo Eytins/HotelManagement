@@ -11,5 +11,4 @@ public interface HotelMapper {
     //添加新的酒店
     int addNewHotel(Hotel hotel);
     //查询当前酒店的所有订单
-    
 }
