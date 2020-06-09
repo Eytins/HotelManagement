@@ -27,7 +27,7 @@
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
-        <a href="./indexhotel.html">酒店预订-用户端</a></div>
+        <a href="./indexhotel.html">酒店预订-酒店端</a></div>
     <div class="left_open">
         <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
     </div>
@@ -60,10 +60,24 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <!--todo:这里是doOrder然后跳转到hostlist-->
+                        <!--todo:这里是doSearch然后跳转到hotellist-->
                         <a onclick="xadmin.add_tab('酒店列表','hotellist.html')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>酒店列表</cite></a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="iconfont left-nav-li" lay-tips="订单管理">&#xe723;</i>
+                    <cite>订单管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i></a>
+                <ul class="sub-menu">
+                    <li>
+                        <!--todo:这里是doSearch然后跳转到hotelbilllist-->
+                        <a onclick="xadmin.add_tab('订单列表','hotelbilllist.html')">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>订单列表</cite></a>
                     </li>
                 </ul>
             </li>
@@ -89,7 +103,7 @@
         </div>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe src='../../html/welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe src='welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
         <div id="tab_show"></div>
