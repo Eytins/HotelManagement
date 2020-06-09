@@ -32,7 +32,14 @@
         <hr class="hr15">
         <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
         <hr class="hr20">
+
+        <a href="${pageContext.request.contextPath}/register.html">
+<%--            <input type="button" value="注册">--%>
+            <input value="注册" lay-submit style="width:100%;" type="button">
+        </a>
+        <hr class="hr20">
     </form>
+
 </div>
 
 <%--这里是原框架中用来进行json前后端分离的jsp语句，现在改为上面的表单提交，具体json方法有待查询--%>
