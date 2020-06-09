@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.HotelManagement.dao.bill">
+
+    <!--根据订单编号和房间类型获得订单列表-->
+    <select id="getBillList" resultType="Bill">
+        select  b.*
+        from  bill b
+        <where>
+            <if test="billCode!=null and billCode!=''">
+                and b.billCode like CONCAT('%',#{billCode},'%')
+            </if>
+            <if test="roomType!=null and roomType!=''">
+                and b.roomType  like CONCAT('%',#{roomType},'%')
+            </if>
+        </where>
+    </select>
+
+    <!--添加订单-->
+    <insert id="addBill" parameterType="Bill" >
+        insert into bill(billCode,orderId,hotelId,roomType,checkInDate,checkOutDate,isCheckIn,countDays,totalPrice,isPayment，providerId)
+         values(#{userCode}#{orderId}#{hotelId}#{roomType}#{checkInDate}#{checkOutDate}#{isCheckIn}#{countDays}#{totalPrice}#{providerId})
+    </insert>
+
+    <!--根据id删除订单信息-->
+    <delete id="deleteBillbyId" parameterType="Integer">
+        delete from bill where id=#{billId}
+    </delete>
+
+    <!--获取订单最高价格-->
+    <select id="HPrice" parameterType="Integer">
+        select MAX(totalPrice) FROM bill;
+    </select>
+
+    <!--获取订单最低价格-->
+    <select id="LPrice" parameterType="Integer">
+        select Min(totalPrice) FROM bill;
+    </select>
+
+    <!--获得包含房间类型和房间规格的订单列表-->
+
+    <select id="getBillList" resultMap="includeRoomTypeAndPeople">
+        select b.*,h.hotelRoomType,h.hotelPeople
+        from bill u,hotelType h
+        where b.roomType=h.hotelRoomType
+        <if test="billCode!=null and billCode!=''">
+                billCode = #{billCode}
+         </if>
+        <if test="roomType!=null and roomType!=''">
+            roomType = #{roomType}
+        </if>
+
+
+
+    </select>
+
+    <resultMap id="includeRoomTypeAndPeople" type="Bill">
+        <result property="hotelRoomType" column="hotelRoomType"/>
+        <result property="hotelPeople" column="hotelPeople"/>
+    </resultMap>
+</mapper>
