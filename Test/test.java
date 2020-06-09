@@ -1,4 +1,9 @@
+import com.HotelManagement.pojo.HotelType;
 import com.HotelManagement.pojo.User;
+import com.HotelManagement.service.hotelType.HotelTypeService;
+import com.HotelManagement.service.hotelType.HotelTypeServiceImpl;
+import com.HotelManagement.service.user.UserService;
+import com.HotelManagement.service.user.UserServiceImpl;
 import com.google.gson.Gson;
 import org.junit.Test;
 
@@ -8,15 +13,12 @@ import java.util.List;
 public class test {
     @Test
     public void test1(){
-        User user = new User();
-        user.setId(1);
-        User user3 = new User();
-        user3.setId(2);
-        User user2 = new User();
-        List<User> user1 = new ArrayList<>();
-        user1.add(0,user);
-        user1.add(1,user3);
-        String gson = new Gson().toJson(user1);
-        System.out.println(gson);
+
+        UserService userService = new UserServiceImpl();
+        System.out.println(userService.login("xiaoming","0000000"));
+
+        HotelTypeService hotelTypeService = new HotelTypeServiceImpl();
+        List<HotelType> hotelType = hotelTypeService.selectByUser(500,2000,"","");
+        System.out.println(hotelType);
     }
 }

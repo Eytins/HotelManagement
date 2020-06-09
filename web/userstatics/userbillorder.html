@@ -9,6 +9,7 @@
     <meta name="viewport"
           content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
     <link rel="stylesheet" href="../statics/css/font.css">
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <link rel="stylesheet" href="../statics/css/xadmin.css">
     <script src="../statics/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="../statics/js/xadmin.js"></script>
@@ -31,7 +32,7 @@
                             <h2 class="layui-colla-title">条件筛选<i class="layui-icon layui-colla-icon"></i></h2>
                             <div class="layui-colla-content">
                                 <!--todo:这里的action为controller里的路径,doSearch-->
-                                <form class="layui-form" method="get" action="">
+                                <form class="layui-form"  id="formf" method="get" >
                                     <div class="layui-form-item">
                                         <div class="layui-inline">
                                             <label class="layui-form-label">价格区间</label>
@@ -72,39 +73,42 @@
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="layui-form-item">
+                                    <!--todo:这个实在太难了BY仟-->
+                                    <!--todo:逃避虽然可耻但有用BY仟-->
+                                    <!--<div class="layui-form-item">
                                         <div class="layui-inline">
                                             <label class="layui-form-label">选择房型</label>
                                             <div class="layui-input-inline">
                                                 <select name="roomType">
                                                     <option value="">请选择房型</option>
-                                                    <!--todo:这里显示所有房型-->
+                                                    &lt;!&ndash;todo:这里显示所有房型&ndash;&gt;
                                                 </select>
                                             </div>
                                         </div>
-                                    </div>
-
-                                    <div class="layui-form-item">
+                                    </div>-->
+                                    <!--todo:再逃一个就一个 这个我会写太晚了8想写BY仟-->
+                                    <!--<div class="layui-form-item">
                                         <div class="layui-inline">
                                             <label class="layui-form-label">日期区间</label>
                                             <div class="layui-input-inline" style="width: 100px;">
-                                                <!--开始日-->
+                                                &lt;!&ndash;开始日&ndash;&gt;
                                                 <input type="date" name="startDay" autocomplete="off"
                                                        class="layui-input">
                                             </div>
                                             <div class="layui-form-mid">-</div>
                                             <div class="layui-input-inline" style="width: 100px;">
-                                                <!--结束日-->
+                                                &lt;!&ndash;结束日&ndash;&gt;
                                                 <input type="date" name="endDay" autocomplete="off"
                                                        class="layui-input">
                                             </div>
                                         </div>
-                                    </div>
+                                    </div>-->
 
                                     <div class="layui-form-item">
                                         <div class="layui-input-block">
-                                            <button class="layui-btn" lay-submit="" lay-filter="demo1">立即查询</button>
+                                            <button class="layui-btn" lay-submit="" lay-filter="demo1" id="select">
+                                                立即查询
+                                            </button>
                                             <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                                         </div>
                                     </div>
@@ -125,8 +129,7 @@
                             <th>操作</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <!--todo:这里循环显示所查询到的酒店信息-->
+                        <tbody id="data">
                         <tr>
                             <td>未支付</td>
                             <td>未发货</td>
@@ -134,14 +137,12 @@
                             <td>申通物流</td>
                             <td>2017-08-17 18:22</td>
                             <td class="td-manage">
-                                <!--todo:这里要带着数据跳转到userorderview-->
                                 <button class="layui-btn layui-btn-warm layui-btn-xs"
                                         onclick="xadmin.open('预定','userorderview.html',600,500)"><i
                                         class="layui-icon">&#xe642;</i>预定
                                 </button>
                             </td>
                         </tr>
-
                         </tbody>
                     </table>
                 </div>
@@ -234,6 +235,39 @@ function delAll(argument) {
         });
 }
 
+$("#select").click(function () {
+    var formData = $("#formf").serialize();
+    console.log(formData);
+    alert(formData);
+    $.ajax({
+        url: "/hotel/doUserHotelSearch.html",
+        dataType: "json",
+        type: "post",
+        data: formData,
+        success: function (result) {  //这里就是我出错的地方
+            var str = ""
+            for (i in result) {
+                str = "<tr>" +
+                    "<td>" + result[i].hotelName + "</td>" +
+                    "<td>" + result[i].hotelAddress + "</td>" +
+                    "<td>" + result[i].hotelRoomType + "</td>" +
+                    "<td>" + result[i].hotelPeople + "</td>" +
+                    "<td>" + result[i].hotelPrice + "</td>" +
+                    "<td class='td-manage'>" +
+                    "<button class='layui-btn layui-btn-warm layui-btn-xs'onclick='xadmin.open('预定','userorderview.html',600,500)'>" +
+                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
+                    "</button>" +
+                    "</td>" +
+                    "</tr>"
+                document.getElementById("data").innerHTML=str;
+            }
+        },
+        error: function (data) {
+            alert("请求出错");
+            alert(data);
+        }
+    });
+});
 </script>
 
 </html>

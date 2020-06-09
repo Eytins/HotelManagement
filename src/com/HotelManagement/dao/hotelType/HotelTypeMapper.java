@@ -2,7 +2,10 @@ package com.HotelManagement.dao.hotelType;
 
         import com.HotelManagement.pojo.HotelType;
         import org.apache.ibatis.annotations.Param;
+        import org.springframework.web.bind.annotation.RequestParam;
 
+        import javax.servlet.http.HttpServletRequest;
+        import javax.servlet.http.HttpSession;
         import java.util.List;
 
 public interface HotelTypeMapper {
@@ -17,4 +20,12 @@ public interface HotelTypeMapper {
                            @Param("hotelId") Integer hotelId,
                            @Param("roomType") Integer roomType,
                            @Param("billHotelId") Integer billHotelId);
+    //用户查询
+    List<HotelType> selectByUser(
+            @Param(value = "priceMin") Integer priceMin,
+            @Param(value = "priceMax") Integer priceMax,
+            @Param(value = "hotelName") String hotelName,
+            @Param(value = "hotelAddress") String hotelAddress
+    );
+    //按时间查询已预定房间数量
 }
