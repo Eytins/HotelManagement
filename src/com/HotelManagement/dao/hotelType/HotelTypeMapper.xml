@@ -4,21 +4,24 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.HotelManagement.dao.hotelType.HotelTypeMapper">
+    <!--添加新的房间类型-->
     <insert id="addNewHotelType" parameterType="HotelType">
 insert into hotelType(hotelId,hotelRoomType,hotelRoomNumber,hotelPrice,hotelPeople,creationDate,modifyDate)
 values (#{hotelId},#{hotelRoomType},#{hotelRoomNumber},#{hotelPrice},#{hotelPeople},#{creationDate},#{modifyDate})
     </insert>
-
+    <!--删除房间类型-->
     <delete id="deleteHotelType" parameterType="int">
         delete * from hotelType where id = #{id}
     </delete>
+    <!--查询房型-->
     <select id="selectHotelTypeByIdType" resultType="com.HotelManagement.pojo.HotelType">
-select * from hotelType
-    <where>
-        and hotelRoomType LIKE CONCAT('%',#{hotelRoomType},'%')
-    </where>
+        select * from hotelType
+        <where>
+            and hotelRoomType LIKE CONCAT('%',#{hotelRoomType},'%')
+        </where>
         and hotelId = #{hotelId}
     </select>
+    <!--查询剩余房型量-->
     <select id="selectRemainNumber" resultType="java.lang.Integer">
         select h.hotelRoomNumber- (select count(*) from bill b where b.hotelId = #{billHotelId} and b.roomType = #{roomType}) from hotelType h,bill b
         where h.hotelId = #{hotelId} and h.id = #{hotelTypeId} LIMIT 1;
