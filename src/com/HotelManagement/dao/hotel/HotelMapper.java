@@ -10,5 +10,4 @@ public interface HotelMapper {
     List<Hotel> selectHotel(@Param("hotelName") String hotelName, @Param("hotelAddress") String hotelAddress);
     //添加新的酒店
     int addNewHotel(Hotel hotel);
-    //查询当前酒店的所有订单
 }

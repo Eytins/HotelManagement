@@ -9,7 +9,7 @@ import java.util.List;
 public interface BillMapper {
 
     //根据订单编号和房间类型获得订单列表
-    public List<Bill> getBillList(@Param("billCode") String billCode, @Param("roomType") String roomType);
+    public List<Bill> getBillByBillCode(@Param("billCode") String billCode, @Param("roomType") String roomType);
 
     //添加用户
     public int addBill(@Param("billCode")String billCode,
@@ -34,8 +34,8 @@ public interface BillMapper {
     //获取订单价格最低值
     public int LPrice();
 
-    //根据订单编号和房间类型获得订单列表
-    public List<Bill> getBillListWithType(@Param("billCode") String billCode,@Param("roomType") Integer roomType);
+    //根据订单编号和房间类型获得包含房间类型和房间规格的订单列表
+    public List<Bill> getBillList(@Param("billCode") String billCode,@Param("roomType") Integer roomType);
 
 
 }
