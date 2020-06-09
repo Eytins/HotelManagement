@@ -20,8 +20,7 @@ select * from hotelType
         and hotelId = #{hotelId}
     </select>
     <select id="selectRemainNumber" resultType="java.lang.Integer">
-        select h.hotelRoomNumber-b.count(1) from hotelType h,bill b
-        where h.hotelId = #{hotelId} and b.billHotelId = {billHotelId} and h.hotelId=b.billHotelId
-        and h.hotelTypeId = #{hotelTypeId} and
+        select h.hotelRoomNumber- (select count(*) from bill b where b.hotelId = #{billHotelId} and b.roomType = #{roomType}) from hotelType h,bill b
+        where h.hotelId = #{hotelId} and h.id = #{hotelTypeId} LIMIT 1;
     </select>
 </mapper>

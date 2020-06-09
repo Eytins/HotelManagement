@@ -10,7 +10,7 @@
         values (#{hotelName},#{hotelAddress},#{postCode},#{tel},#{creationDate},#{userId})
     </insert>
     <!--搜索所有酒店名-->
-    <select id="selectHotel" resultType="list">
+    <select id="selectHotel" resultType="com.HotelManagement.pojo.Hotel">
         select * from hotel
         <where>
         <if test="hotelName!=null and hotelAddress!=''">
