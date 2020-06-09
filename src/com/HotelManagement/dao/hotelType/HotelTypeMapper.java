@@ -12,4 +12,9 @@ public interface HotelTypeMapper {
     int deleteHotelType(int id);
     //查询房型
     List<HotelType> selectHotelTypeByIdType(@Param("hotelRoomType") String hotelRoomType, @Param("hotelId") Integer hotelId);
+    //查询剩余房型量
+    int selectRemainNumber(@Param("hotelTypeId") String hotelTypeId,
+                           @Param("hotelId") Integer hotelId,
+                           @Param("roomType") Integer roomType,
+                           @Param("billHotelId") Integer billHotelId);
 }

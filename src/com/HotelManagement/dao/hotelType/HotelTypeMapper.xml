@@ -12,9 +12,16 @@ values (#{hotelId},#{hotelRoomType},#{hotelRoomNumber},#{hotelPrice},#{hotelPeop
     <delete id="deleteHotelType" parameterType="int">
         delete * from hotelType where id = #{id}
     </delete>
-    <select id="selectHotelTypeByIdType" resultType="list">
-
+    <select id="selectHotelTypeByIdType" resultType="com.HotelManagement.pojo.HotelType">
+select * from hotelType
+    <where>
+        and hotelRoomType LIKE CONCAT('%',#{hotelRoomType},'%')
+    </where>
+        and hotelId = #{hotelId}
     </select>
-
-
+    <select id="selectRemainNumber" resultType="java.lang.Integer">
+        select h.hotelRoomNumber-b.count(1) from hotelType h,bill b
+        where h.hotelId = #{hotelId} and b.billHotelId = {billHotelId} and h.hotelId=b.billHotelId
+        and h.hotelTypeId = #{hotelTypeId} and
+    </select>
 </mapper>
