@@ -55,7 +55,7 @@
 <%--            form.on('submit(login)', function (data) {--%>
 <%--                // alert(888)--%>
 <%--                layer.msg(JSON.stringify(data.field), function () {--%>
-<%--                    location.href = 'indexhotel.html'--%>
+<%--                    location.href = 'indexhotel.jsp'--%>
 <%--                });--%>
 <%--                return false;--%>
 <%--            });--%>

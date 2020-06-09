@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!doctype html>
 <html class="x-admin-sm">
 <head>
@@ -8,11 +9,11 @@
     <meta name="viewport"
           content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="stylesheet" href="../../../statics/css/font.css">
-    <link rel="stylesheet" href="../../../statics/css/xadmin.css">
+    <link rel="stylesheet" href="statics/css/font.css">
+    <link rel="stylesheet" href="statics/css/xadmin.css">
     <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
-    <script src="../../../statics/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../statics/js/xadmin.js"></script>
+    <script src="statics/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="statics/js/xadmin.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -27,7 +28,7 @@
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
-        <a href="./indexhotel.html">酒店预订-酒店端</a></div>
+        <a href="./indexhotel.jsp">酒店预订-用户端</a></div>
     <div class="left_open">
         <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
     </div>
@@ -60,24 +61,10 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <!--todo:这里是doSearch然后跳转到hotellist-->
-                        <a onclick="xadmin.add_tab('酒店列表','hotellist.html')">
+                        <!--todo:这里是doOrder然后跳转到hostlist-->
+                        <a onclick="xadmin.add_tab('酒店列表','hotellist.jsp')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>酒店列表</cite></a>
-                    </li>
-                </ul>
-            </li>
-            <li>
-                <a href="javascript:;">
-                    <i class="iconfont left-nav-li" lay-tips="订单管理">&#xe723;</i>
-                    <cite>订单管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i></a>
-                <ul class="sub-menu">
-                    <li>
-                        <!--todo:这里是doSearch然后跳转到hotelbilllist-->
-                        <a onclick="xadmin.add_tab('订单列表','hotelbilllist.html')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>订单列表</cite></a>
                     </li>
                 </ul>
             </li>
@@ -103,7 +90,7 @@
         </div>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe src='welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe src='../../jsp/hotel/welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
         <div id="tab_show"></div>
