@@ -5,7 +5,7 @@
 <mapper namespace="com.HotelManagement.dao.bill.BillMapper">
 
     <!--根据订单编号和房间类型获得订单列表-->
-    <select id="getBillList" resultType="Bill">
+    <select id="getBillByBillCode" resultType="Bill">
         select  b.*
         from  bill b
         <where>
