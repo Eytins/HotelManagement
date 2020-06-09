@@ -1,8 +1,8 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!doctype html>
 <html class="x-admin-sm">
 <head>
     <meta charset="UTF-8">
-    <title>酒店预定-用户端</title>
+    <title>酒店预定-酒店端</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -27,7 +27,7 @@
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
-        <a href="./indexuser.html">酒店预订-用户端</a></div>
+        <a href="./indexhotel.html">酒店预订-用户端</a></div>
     <div class="left_open">
         <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
     </div>
@@ -55,21 +55,15 @@
         <ul id="nav">
             <li>
                 <a href="javascript:;">
-                    <i class="iconfont left-nav-li" lay-tips="订单管理">&#xe723;</i>
-                    <cite>订单管理</cite>
+                    <i class="iconfont left-nav-li" lay-tips="酒店管理">&#xe723;</i>
+                    <cite>酒店管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <!--todo:这里是doOrder然后跳转到userorder-->
-                        <a onclick="xadmin.add_tab('预定房间','userbillorder.html')">
+                        <!--todo:这里是doOrder然后跳转到hostlist-->
+                        <a onclick="xadmin.add_tab('酒店列表','hotellist.html')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>预定房间</cite></a>
-                    </li>
-                    <li>
-                        <!--todo:这里是查询订单然后跳转到userbills-->
-                        <a onclick="xadmin.add_tab('订单查询','userbillsearch.html')">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>订单查询</cite></a>
+                            <cite>酒店列表</cite></a>
                     </li>
                 </ul>
             </li>
