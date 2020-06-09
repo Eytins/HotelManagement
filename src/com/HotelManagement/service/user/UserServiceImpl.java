@@ -19,7 +19,6 @@ public class UserServiceImpl implements UserService {
         if(user!=null && !user.getUserPassword().equals(password)){
             user = null;
         }
-
         return user;
     }
 
