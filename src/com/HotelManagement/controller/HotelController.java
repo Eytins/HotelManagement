@@ -12,27 +12,26 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
-@RequestMapping("/hotel")
 public class HotelController {
 
     @Autowired
     private HotelTypeService hotelTypeService;
 
-    @RequestMapping(value = "/doUserHotelSearch.html", method = RequestMethod.POST)
+    @RequestMapping(value = "/hotel/doUserHotelSearch.html", method = {RequestMethod.POST})
+    @ResponseBody
     public List<HotelType> doSerch(@RequestParam(value = "priceMin") Integer priceMin,
                              @RequestParam(value = "priceMax") Integer priceMax,
                              @RequestParam(value = "hotelName") String hotelName,
-                             @RequestParam(value = "hotelAddress") String hotelAddress,
-                             HttpSession session, HttpServletRequest request) {
-        System.out.println("====================================================>"+priceMin+hotelName);
-        List<HotelType> hotelTypes = this.hotelTypeService.selectByUser(priceMin,priceMax,hotelName,hotelAddress);
-        System.out.println(hotelAddress);
-        return hotelTypes;
+                             @RequestParam(value = "hotelAddress") String hotelAddress
+                             ) {
+
+        return this.hotelTypeService.selectByUser(priceMin,priceMax,hotelName,hotelAddress);
     }
 }
