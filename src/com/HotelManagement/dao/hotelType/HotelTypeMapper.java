@@ -1,9 +1,9 @@
 package com.HotelManagement.dao.hotelType;
 
-import com.HotelManagement.pojo.HotelType;
-import org.apache.ibatis.annotations.Param;
+        import com.HotelManagement.pojo.HotelType;
+        import org.apache.ibatis.annotations.Param;
 
-import java.util.List;
+        import java.util.List;
 
 public interface HotelTypeMapper {
     //添加新的房间类型
