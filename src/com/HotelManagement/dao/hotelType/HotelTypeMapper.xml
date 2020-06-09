@@ -10,8 +10,9 @@ values (#{hotelId},#{hotelRoomType},#{hotelRoomNumber},#{hotelPrice},#{hotelPeop
     </insert>
 
     <delete id="deleteHotelType" parameterType="int">
-        delete * from hotelType where id = #{id}
+        delete  from hotelType where id = #{id}
     </delete>
+
     <select id="selectHotelTypeByIdType" resultType="com.HotelManagement.pojo.HotelType">
 select * from hotelType
     <where>
