@@ -28,8 +28,15 @@ public class LoginController {
         User loginUser = this.userService.login(userCode, password);
 
         if(loginUser!=null){
+            int userRole = this.userService.getUserRole(userCode);
             session.setAttribute(Constants.USER_SESSION, loginUser);
-            return "index";
+            if(userRole==2){
+                return "user/indexuser";
+            }else if (userRole==3){
+                return "hotel/indexhotel";
+            }else {
+                return "index";
+            }
         }else{
             request.setAttribute("error", "用户名或者密码错误");
             return "login";

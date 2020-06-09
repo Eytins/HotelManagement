@@ -7,4 +7,6 @@ public interface UserService {
     User login(String userCode, String password);
 
     int addUser(User user);
+
+    int getUserRole(String userCode);
 }

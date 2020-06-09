@@ -3,15 +3,15 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>订单查询</title>
+    <title>房间管理</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
           content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
-    <link rel="stylesheet" href="../../../statics/css/font.css">
-    <link rel="stylesheet" href="../../../statics/css/xadmin.css">
-    <script src="../../../statics/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../statics/js/xadmin.js"></script>
+    <link rel="stylesheet" href="../statics/css/font.css">
+    <link rel="stylesheet" href="../statics/css/xadmin.css">
+    <script src="../statics/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../statics/js/xadmin.js"></script>
 </head>
 
 <body>
@@ -20,50 +20,20 @@
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-card-body ">
-                    <!--todo:这里的action要改-->
-                    <form class="layui-form layui-col-space5"
-                          action="${pageContext.request.contextPath}/doUserBillSearch.html">
-
-                        <label class="layui-form-label">日期</label>
-                        <div class="layui-input-inline" style="width: 100px;">
-                            <!--日期-->
-                            <input type="date" name="theDay" autocomplete="off"
-                                   class="layui-input">
-                        </div>
-
-                        <div class="layui-input-inline">
-                            <select name="isPayment">
-                                <option value="">是否已支付</option>
-                                <!--todo:这里要罗列出是和否-->
-                            </select>
-                        </div>
-
-                        <div class="layui-input-inline">
-                            <select name="isCheckIn">
-                                <option value="">是否已入住</option>
-                                <!--todo:这里要罗列出是和否-->
-                            </select>
-                        </div>
-
-                        <div class="layui-input-inline layui-show-xs-block">
-                            <button class="layui-btn" lay-submit="" lay-filter="sreach">
-                                <i class="layui-icon">&#xe615;</i></button>
-                        </div>
-                    </form>
+                    <!--todo:这里跳转到roomadd，不需要带参数-->
+                    <button class="layui-btn" onclick="xadmin.open('添加房间','roomadd.html',600,400)"><i
+                            class="layui-icon"></i>添加
+                    </button>
                 </div>
                 <div class="layui-card-body ">
                     <table class="layui-table layui-form">
                         <thead>
                         <tr>
-                            <th>预定编号</th>
-                            <th>房型</th>
-                            <th>入住时间</th>
-                            <th>退房时间</th>
-                            <th>入住天数</th>
-                            <th>订单总价</th>
-                            <th>是否支付</th>
-                            <th>是否入住</th>
-                            <th>下单时间</th>
+                            <th>房型编号</th>
+                            <th>房型名称</th>
+                            <th>可住人数</th>
+                            <th>每晚价格</th>
+                            <th>剩余房间数</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -74,20 +44,12 @@
                             <td>老王:18925139194</td>
                             <td>7829.10</td>
                             <td>7854.10</td>
-                            <td>待确认</td>
-                            <td>未支付</td>
-                            <td>
-                                <div class="layui-input-block">
-                                    <input type="checkbox" name="isPayment" lay-skin="switch" lay-text="ON|OFF">
-                                </div>
-                            </td>
-                            <td>
-                                <div class="layui-input-block">
-                                    <input type="checkbox" name="isCheckIn" lay-skin="switch" lay-text="ON|OFF">
-                                </div>
-                            </td>
-                            <td>申通物流</td>
+                            <td>7854.10</td>
                             <td class="td-manage">
+                                <!--todo:带着room的信息跳转到room管理-->
+                                <button class="layui-btn layui-btn layui-btn-xs"
+                                        onclick="xadmin.open('编辑','roomedit.html',600,400)"><i class="layui-icon">&#xe642;</i>编辑
+                                </button>
                                 <!--todo:执行删除-->
                                 <button class="layui-btn-danger layui-btn layui-btn-xs"
                                         onclick="member_del(this,'要删除的id')" href="javascript:;"><i class="layui-icon">&#xe640;</i>删除
@@ -185,6 +147,7 @@ function delAll(argument) {
             });
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
-}</script>
+}
+</script>
 
 </html>

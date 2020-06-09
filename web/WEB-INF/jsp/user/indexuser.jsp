@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html class="x-admin-sm">
 <head>
@@ -8,11 +9,11 @@
     <meta name="viewport"
           content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
     <meta http-equiv="Cache-Control" content="no-siteapp"/>
-    <link rel="stylesheet" href="../../../statics/css/font.css">
-    <link rel="stylesheet" href="../../../statics/css/xadmin.css">
+    <link rel="stylesheet" href="statics/css/font.css">
+    <link rel="stylesheet" href="statics/css/xadmin.css">
     <!-- <link rel="stylesheet" href="./css/theme5.css"> -->
-    <script src="../../../statics/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../statics/js/xadmin.js"></script>
+    <script src="statics/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="statics/js/xadmin.js"></script>
     <!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -27,7 +28,7 @@
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
-        <a href="./indexuser.html">酒店预订-用户端</a></div>
+        <a href="./indexuser.jsp">酒店预订-用户端</a></div>
     <div class="left_open">
         <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
     </div>
@@ -61,13 +62,13 @@
                 <ul class="sub-menu">
                     <li>
                         <!--todo:这里是doOrder然后跳转到userorder-->
-                        <a onclick="xadmin.add_tab('预定房间','userbillorder.html')">
+                        <a onclick="xadmin.add_tab('预定房间','userstatics/userbillorder.html')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>预定房间</cite></a>
                     </li>
                     <li>
                         <!--todo:这里是查询订单然后跳转到userbills-->
-                        <a onclick="xadmin.add_tab('订单查询','userbillsearch.html')">
+                        <a onclick="xadmin.add_tab('订单查询','userstatics/userbillsearch.html')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单查询</cite></a>
                     </li>
@@ -95,7 +96,7 @@
         </div>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe src='welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe src='userstatics/welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
         <div id="tab_show"></div>

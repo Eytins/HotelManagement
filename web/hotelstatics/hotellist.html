@@ -1,17 +1,16 @@
-<!DOCTYPE html>
 <html class="x-admin-sm">
 
 <head>
     <meta charset="UTF-8">
-    <title>房间管理</title>
+    <title>酒店查询</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
           content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
-    <link rel="stylesheet" href="../../../statics/css/font.css">
-    <link rel="stylesheet" href="../../../statics/css/xadmin.css">
-    <script src="../../../statics/lib/layui/layui.js" charset="utf-8"></script>
-    <script type="text/javascript" src="../../../statics/js/xadmin.js"></script>
+    <link rel="stylesheet" href="../statics/css/font.css">
+    <link rel="stylesheet" href="../statics/css/xadmin.css">
+    <script src="../statics/lib/layui/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="../statics/js/xadmin.js"></script>
 </head>
 
 <body>
@@ -20,8 +19,33 @@
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-card-body ">
-                    <!--todo:这里跳转到roomadd，不需要带参数-->
-                    <button class="layui-btn" onclick="xadmin.open('添加房间','roomadd.html',600,400)"><i
+                    <!--todo:这里的action要改-->
+                    <form class="layui-form layui-col-space5"
+                          action="${pageContext.request.contextPath}/doUserBillSearch.html">
+
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <!--酒店名称-->
+                            <input type="text" name="hotelName" placeholder="请输入酒店名称"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <!--酒店地点-->
+                            <input type="text" name="hotelAddress" placeholder="请输入酒店地点"
+                                   autocomplete="off"
+                                   class="layui-input">
+                        </div>
+
+                        <div class="layui-input-inline layui-show-xs-block">
+                            <button class="layui-btn" lay-submit="" lay-filter="sreach">
+                                <i class="layui-icon">&#xe615;</i></button>
+                        </div>
+                    </form>
+                </div>
+                <div class="layui-card-header">
+                    <!--todo:这里跳转到hoteladd，不需要带参数-->
+                    <button class="layui-btn" onclick="xadmin.open('添加酒店','hoteladd.html',600,400)"><i
                             class="layui-icon"></i>添加
                     </button>
                 </div>
@@ -29,11 +53,11 @@
                     <table class="layui-table layui-form">
                         <thead>
                         <tr>
-                            <th>房型编号</th>
-                            <th>房型名称</th>
-                            <th>可住人数</th>
-                            <th>每晚价格</th>
-                            <th>剩余房间数</th>
+                            <th>酒店编号</th>
+                            <th>酒店名称</th>
+                            <th>酒店地址</th>
+                            <th>邮编</th>
+                            <th>电话</th>
                             <th>操作</th>
                         </tr>
                         </thead>
@@ -44,11 +68,11 @@
                             <td>老王:18925139194</td>
                             <td>7829.10</td>
                             <td>7854.10</td>
-                            <td>7854.10</td>
+                            <td>待确认</td>
                             <td class="td-manage">
-                                <!--todo:带着room的信息跳转到room管理-->
+                                <!--todo:带着hotel的信息跳转到房间管理-->
                                 <button class="layui-btn layui-btn layui-btn-xs"
-                                        onclick="xadmin.open('编辑','roomedit.html',600,400)"><i class="layui-icon">&#xe642;</i>编辑
+                                        onclick="xadmin.open('房间管理','roomlist.html')"><i class="layui-icon">&#xe642;</i>管理房间
                                 </button>
                                 <!--todo:执行删除-->
                                 <button class="layui-btn-danger layui-btn layui-btn-xs"

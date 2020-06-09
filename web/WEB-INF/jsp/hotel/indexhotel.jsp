@@ -3,7 +3,7 @@
 <html class="x-admin-sm">
 <head>
     <meta charset="UTF-8">
-    <title>酒店预定-酒店端</title>
+    <title>酒店管理-酒店端</title>
     <meta name="renderer" content="webkit|ie-comp|ie-stand">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport"
@@ -28,7 +28,7 @@
 <!-- 顶部开始 -->
 <div class="container">
     <div class="logo">
-        <a href="./indexhotel.jsp">酒店预订-用户端</a></div>
+        <a href="./indexhotel.jsp">酒店管理-酒店端</a></div>
     <div class="left_open">
         <a><i title="展开左侧栏" class="iconfont">&#xe699;</i></a>
     </div>
@@ -62,7 +62,7 @@
                 <ul class="sub-menu">
                     <li>
                         <!--todo:这里是doOrder然后跳转到hostlist-->
-                        <a onclick="xadmin.add_tab('酒店列表','hotellist.jsp')">
+                        <a onclick="xadmin.add_tab('酒店列表','hotelstatics/hotellist.html')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>酒店列表</cite></a>
                     </li>
@@ -90,7 +90,7 @@
         </div>
         <div class="layui-tab-content">
             <div class="layui-tab-item layui-show">
-                <iframe src='../../jsp/hotel/welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
+                <iframe src='hotelstatics/welcome.html' frameborder="0" scrolling="yes" class="x-iframe"></iframe>
             </div>
         </div>
         <div id="tab_show"></div>

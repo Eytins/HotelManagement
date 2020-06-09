@@ -12,4 +12,7 @@ public interface UserMapper {
 
     //注册用户
     int addUser(User user);
+
+    //检测用户类别
+    int getUserRole(@Param("userCode") String userCode);
 }
