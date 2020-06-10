@@ -245,9 +245,12 @@ $("#select").click(function () {
         type: "post",
         contentType: "application/json",
         data: formData1,
-        success: function (result) {  //这里就是我出错的地方
+        success:function(data) {
+            alert("a");
+            console.log("===============================");
             var str = "", i
-            for (i in result) {
+            /*for (i in result) {
+                alert("a");
                 str = "<tr>" +
                     "<td>" + result[i].hotelName + "</td>" +
                     "<td>" + result[i].hotelAddress + "</td>" +
@@ -255,15 +258,15 @@ $("#select").click(function () {
                     "<td>" + result[i].hotelPeople + "</td>" +
                     "<td>" + result[i].hotelPrice + "</td>" +
                     "<td class='td-manage'>" +
-                    /*"<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='xadmin.open(&quot;预定&quot;,&quot;userorderview.html&quot;, 600 , 500)'>" +*/
+                    /!*"<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='xadmin.open(&quot;预定&quot;,&quot;userorderview.html&quot;, 600 , 500)'>" +*!/
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
                     "</button>" +
                     "</td>" +
                     "</tr>"
                 document.getElementById("data").innerHTML = str;
-            }
+            }*/
         },
-        error: function (result) {
+        error:function (result) {
             alert("请求出错");
             alert(result);
         }
