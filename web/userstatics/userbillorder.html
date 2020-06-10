@@ -238,10 +238,8 @@ function delAll(argument) {
 $("#select").click(function () {
     var formData = $("#formf").serialize();
     console.log(formData);
-    alert(formData);
     $.ajax({
-        url: "/hotel/doUserHotelSearch",
-        dataType: "json",
+        url: "hotel/doUserHotelSearch",
         type: "post",
         data: formData,
         success: function (result) {  //这里就是我出错的地方
