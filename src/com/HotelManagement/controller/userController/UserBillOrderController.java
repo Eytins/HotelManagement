@@ -26,6 +26,10 @@ public class UserBillOrderController {
     @Autowired
     private HotelTypeService hotelTypeService;
 
+    /**
+     * Created by Eytins
+     * Edit by Thousand
+     */
     @RequestMapping(value = {"userBillOrder/doUserHotelSearch" ,"userstatics/userBillOrder/doUserHotelSearch"}, method = RequestMethod.GET)
     @ResponseBody
     public List<HotelType> doSerch(@RequestParam(value = "priceMin", required = false, defaultValue = "200") String priceMin,
