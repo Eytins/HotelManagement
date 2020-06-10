@@ -14,10 +14,20 @@ public class HotelServiceImpl implements  HotelService {
     @Autowired
     private HotelMapper hotelMapper;
     @Override
-    public
+
 
         //通过酒店名酒店地址搜索酒店
-    List<Hotel>   selectHotel(String hotelName, String hotelAddress){
+    public List<Hotel>  selectHotel(String hotelName, String hotelAddress){
         return  this.hotelMapper.selectHotel(hotelName,hotelAddress);
+    }
+
+    //添加新的酒店
+    public int addNewHotel(Hotel hotel){
+        return this.hotelMapper.addNewHotel(hotel);
+    }
+
+    //删除酒店
+    public int deleteHotelbyId(Integer id){
+        return  this.hotelMapper.deleteHotelbyId(id);
     }
 }
