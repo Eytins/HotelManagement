@@ -26,11 +26,11 @@ select * from hotelType
         where h.hotelId = #{hotelId} and h.id = #{hotelTypeId} LIMIT 1;
     </select>
 
-    <select id="selectByUser" resultType="com.HotelManagement.pojo.HotelType" resultMap="mid">
-        select h.hotelName,ht.* from hotelType ht,hotel h
+    <select id="selectByUser"  resultMap="mid">
+        select ht.*,h.hotelName from hotelType ht,hotel h
         <where>
-            <if test="priceMin!=null and priceMin!=''"> and ht.hotelPrice>#{priceMin}</if>
-            <if test="priceMax!=null and priceMax!=''"> and #{priceMax} > ht.hotelPrice </if>
+            <if test="priceMin!=null and priceMin!=''">  ht.hotelPrice>#{priceMin}</if>
+            <if test="priceMax!=null and priceMax!=''"> and #{priceMax}>ht.hotelPrice </if>
             <if test="hotelAddress!=null and hotelAddress!=''">and h.hotelAddress LIKE CONCAT('%',#{hotelAddress},'%')</if>
             <if test="hotelName!=null and hotelName!=''"> and h.hotelName LIKE CONCAT('%',#{hotelName},'%') and ht.hotelId = h.id</if>
         </where>

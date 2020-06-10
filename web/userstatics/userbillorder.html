@@ -236,12 +236,15 @@ function delAll(argument) {
 }
 
 $("#select").click(function () {
-    var formData = $("#formf").serialize();
-    console.log(formData);
+    var formData = $("#formf").serializeArray();
+    var formData1 = JSON.stringify(formData);
+    console.log(formData1);
     $.ajax({
+        dataType:"json",
         url: "hotel/doUserHotelSearch",
         type: "post",
-        data: formData,
+        contentType: "application/json",
+        data: formData1,
         success: function (result) {  //这里就是我出错的地方
             var str = ""
             for (i in result) {
