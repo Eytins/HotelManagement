@@ -20,7 +20,7 @@ public class LoginController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "/dologin.html")
+    @RequestMapping(value = "/dologin")
     public String doLogin(@RequestParam(value = "username") String userCode,
                           @RequestParam(value = "password") String password,
                           HttpSession session, HttpServletRequest request){

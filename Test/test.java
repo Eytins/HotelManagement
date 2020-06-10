@@ -1,3 +1,4 @@
+import com.HotelManagement.dao.hotelType.HotelTypeMapper;
 import com.HotelManagement.pojo.HotelType;
 import com.HotelManagement.pojo.User;
 import com.HotelManagement.service.hotelType.HotelTypeService;
@@ -17,8 +18,5 @@ public class test {
         UserService userService = new UserServiceImpl();
         System.out.println(userService.login("xiaoming","0000000"));
 
-        HotelTypeService hotelTypeService = new HotelTypeServiceImpl();
-        List<HotelType> hotelType = hotelTypeService.selectByUser(500,2000,"","");
-        System.out.println(hotelType);
     }
 }

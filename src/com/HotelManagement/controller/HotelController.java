@@ -24,14 +24,14 @@ public class HotelController {
     @Autowired
     private HotelTypeService hotelTypeService;
 
-    @RequestMapping(value = "/hotel/doUserHotelSearch.html", method = {RequestMethod.POST})
+    @RequestMapping(value = "hotel/doUserHotelSearch", method = {RequestMethod.POST})
     @ResponseBody
-    public List<HotelType> doSerch(@RequestParam(value = "priceMin") Integer priceMin,
+    public String doSerch(@RequestParam(value = "priceMin") Integer priceMin,
                              @RequestParam(value = "priceMax") Integer priceMax,
                              @RequestParam(value = "hotelName") String hotelName,
                              @RequestParam(value = "hotelAddress") String hotelAddress
                              ) {
-
-        return this.hotelTypeService.selectByUser(priceMin,priceMax,hotelName,hotelAddress);
+        String json = new Gson().toJson(this.hotelTypeService.selectByUser(priceMin,priceMax,hotelName,hotelAddress));
+        return json;
     }
 }

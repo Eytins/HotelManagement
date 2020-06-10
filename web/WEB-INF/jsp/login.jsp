@@ -24,7 +24,7 @@
     <div class="message">携美程团酒店预订管理系统</div>
     <div id="darkbannerwrap"></div>
 
-    <form method="post" class="layui-form" action="${pageContext.request.contextPath}/dologin.html">
+    <form method="post" class="layui-form" action="${pageContext.request.contextPath}/dologin">
         <div class="info">${error }</div>
         <input name="username" placeholder="用户名" type="text" lay-verify="required" class="layui-input">
         <hr class="hr15">
