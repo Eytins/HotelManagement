@@ -57,6 +57,7 @@
             roomType = #{roomType}
         </if>
     </select>
+
     <resultMap id="mid" type="HotelType">
         <result property="hotelRoomType" column="hotelRoomType"/>
         <result property="hotelPeople" column="hotelPeople"/>
@@ -69,5 +70,9 @@
         </set>
         where id=#{id}
     </update>
+
+    <select id="searchBill" resultType="com.HotelManagement.pojo.Bill">
+#         select * from HotelManagement.bill where checkInDate
+    </select>
 
 </mapper>

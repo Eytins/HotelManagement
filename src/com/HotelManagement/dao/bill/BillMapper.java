@@ -3,9 +3,16 @@ package com.HotelManagement.dao.bill;
 import com.HotelManagement.pojo.Bill;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface BillMapper {
+
+    //需求-用户端-查询订单-按照日期和酒店名称查询订单
+    // todo: 关联hotel表获得名称
+    public List<Bill> searchBill(@Param("checkInDate") Date checkInDate,
+                      @Param("checkOutDate") Date checkOutDate,
+                      @Param("hotelName") String hotelName);
 
     //根据订单编号和房间类型获得订单列表
     public List<Bill> getBillByBillCode(@Param("billCode") String billCode, @Param("roomType") String roomType);
