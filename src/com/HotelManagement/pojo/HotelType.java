@@ -1,6 +1,8 @@
 package com.HotelManagement.pojo;
 
 
+import java.sql.Timestamp;
+
 public class HotelType {
 
   private long id;
@@ -13,7 +15,6 @@ public class HotelType {
   private java.sql.Timestamp modifyDate;
   private String hotelName;
 
-
   public long getId() {
     return id;
   }
@@ -21,7 +22,6 @@ public class HotelType {
   public void setId(long id) {
     this.id = id;
   }
-
 
   public long getHotelId() {
     return hotelId;
@@ -31,15 +31,13 @@ public class HotelType {
     this.hotelId = hotelId;
   }
 
-
   public String getHotelRoomType() {
     return hotelRoomType;
   }
 
-  public void setHoteRoomType(String hoteRoomType) {
-    this.hotelRoomType = hoteRoomType;
+  public void setHotelRoomType(String hotelRoomType) {
+    this.hotelRoomType = hotelRoomType;
   }
-
 
   public long getHotelRoomNumber() {
     return hotelRoomNumber;
@@ -49,7 +47,6 @@ public class HotelType {
     this.hotelRoomNumber = hotelRoomNumber;
   }
 
-
   public double getHotelPrice() {
     return hotelPrice;
   }
@@ -57,7 +54,6 @@ public class HotelType {
   public void setHotelPrice(double hotelPrice) {
     this.hotelPrice = hotelPrice;
   }
-
 
   public long getHotelPeople() {
     return hotelPeople;
@@ -67,26 +63,20 @@ public class HotelType {
     this.hotelPeople = hotelPeople;
   }
 
-
-  public java.sql.Timestamp getCreationDate() {
+  public Timestamp getCreationDate() {
     return creationDate;
   }
 
-  public void setCreationDate(java.sql.Timestamp creationDate) {
+  public void setCreationDate(Timestamp creationDate) {
     this.creationDate = creationDate;
   }
 
-
-  public java.sql.Timestamp getModifyDate() {
+  public Timestamp getModifyDate() {
     return modifyDate;
   }
 
-  public void setModifyDate(java.sql.Timestamp modifyDate) {
+  public void setModifyDate(Timestamp modifyDate) {
     this.modifyDate = modifyDate;
-  }
-
-  public void setHotelRoomType(String hotelRoomType) {
-    this.hotelRoomType = hotelRoomType;
   }
 
   public String getHotelName() {

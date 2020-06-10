@@ -27,6 +27,7 @@ public class HotelController {
                                    @RequestParam(value = "hotelAddress", required = false) String hotelAddress) {
         int priceMin1 = Integer.parseInt(priceMin);
         int priceMax1 = Integer.parseInt(priceMax);
+        logger.debug(this.hotelTypeService.selectByUser(priceMin1, priceMax1, hotelName, hotelAddress));
         return this.hotelTypeService.selectByUser(priceMin1, priceMax1, hotelName, hotelAddress);
     }
 }
