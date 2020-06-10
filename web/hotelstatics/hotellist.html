@@ -172,40 +172,7 @@ function delAll(argument) {
         });
 }
 
-$("#select").click(function () {
-    var formData = $("#search").serializeArray();
-    var formData1 = JSON.stringify(formData);
-    console.log(formData1);
-    $.ajax({
-        dataType:"json",
-        url: "hotel/doUserHotelSearch",
-        type: "post",
-        contentType: "application/json",
-        data: formData1,
-        success: function (result) {  //这里就是我出错的地方
-            var str = ""
-            for (i in result) {
-                str = "<tr>" +
-                    "<td>" + result[i].hotelName + "</td>" +
-                    "<td>" + result[i].hotelAddress + "</td>" +
-                    "<td>" + result[i].hotelRoomType + "</td>" +
-                    "<td>" + result[i].hotelPeople + "</td>" +
-                    "<td>" + result[i].hotelPrice + "</td>" +
-                    "<td class='td-manage'>" +
-                    "<button class='layui-btn layui-btn-warm layui-btn-xs'onclick='xadmin.open('预定','userorderview.html',600,500)'>" +
-                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
-                    "</button>" +
-                    "</td>" +
-                    "</tr>"
-                document.getElementById("data").innerHTML=str;
-            }
-        },
-        error: function (result) {
-            alert("请求出错");
-            alert(result);
-        }
-    });
-});
+
 </script>
 
 </html>
