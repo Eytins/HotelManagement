@@ -32,7 +32,7 @@
                             <h2 class="layui-colla-title">条件筛选<i class="layui-icon layui-colla-icon"></i></h2>
                             <div class="layui-colla-content">
                                 <!--todo:这里的action为controller里的路径,doSearch-->
-                                <form class="layui-form"  id="formf" method="post" >
+                                <form class="layui-form"  id="formf"  >
                                     <div class="layui-form-item">
                                         <div class="layui-inline">
                                             <label class="layui-form-label">价格区间</label>
@@ -242,7 +242,7 @@ $("#select").click(function () {
     $.ajax({
         dataType:"json",
         url: "hotel/doUserHotelSearch",
-        type: "post",
+        type: "get",
         contentType: "application/json",
         data: formData1,
         success: function (result) {  //这里就是我出错的地方
