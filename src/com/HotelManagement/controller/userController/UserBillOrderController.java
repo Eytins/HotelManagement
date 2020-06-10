@@ -2,6 +2,7 @@ package com.HotelManagement.controller.userController;
 
 import com.HotelManagement.pojo.HotelType;
 import com.HotelManagement.service.hotelType.HotelTypeService;
+import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -30,15 +31,15 @@ public class UserBillOrderController {
      * Created by Eytins
      * Edit by Thousand
      */
-    @RequestMapping(value = {"userBillOrder/doUserHotelSearch.html", "userstatics/userBillOrder/doUserHotelSearch.html"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"userBillOrder/doUserHotelSearch.html", "userstatics/userBillOrder/doUserHotelSearch.html"}, method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
-    public List<HotelType> doSerch(@RequestParam(value = "priceMin", required = false, defaultValue = "200") String priceMin,
+    public String doSerch(@RequestParam(value = "priceMin", required = false, defaultValue = "200") String priceMin,
                                    @RequestParam(value = "priceMax", required = false, defaultValue = "20000") String priceMax,
                                    @RequestParam(value = "hotelName", required = false) String hotelName,
                                    @RequestParam(value = "hotelAddress", required = false) String hotelAddress) {
         int priceMin1 = Integer.parseInt(priceMin);
         int priceMax1 = Integer.parseInt(priceMax);
-        logger.debug(this.hotelTypeService.selectByUser(priceMin1, priceMax1, hotelName, hotelAddress));
-        return this.hotelTypeService.selectByUser(priceMin1, priceMax1, hotelName, hotelAddress);
+
+        return new Gson().toJson(this.hotelTypeService.selectByUser(priceMin1, priceMax1, hotelName, hotelAddress));
     }
 }
