@@ -10,13 +10,13 @@ public class Bill {
     private long hotelId;
     private long roomType;
     private java.sql.Date checkInDate;
-    private java.sql.Date  checkOutDate;
+    private java.sql.Date checkOutDate;
     private int isCheckIn;
     private int countDays;
-    private int  isPayment;
+    private int isPayment;
     private java.sql.Timestamp creationDate;
     private java.sql.Timestamp modifyDate;
-    private  long providerId;
+    private long providerId;
     private String hoteRoomType;
     private long hotelPeople;
 

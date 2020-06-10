@@ -7,7 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -18,18 +17,18 @@ public class RegisterController {
     private UserService userService;
 
     @RequestMapping(value = "/register.html")
-    public String register(){
+    public String register() {
         return "register";
     }
 
     @RequestMapping(value = "/doRegister.html")
-    public String doRegister(@RequestParam(value = "userCode")     String userCode,
+    public String doRegister(@RequestParam(value = "userCode") String userCode,
                              @RequestParam(value = "userPassword") String password,
-                             @RequestParam(value = "userName")     String userName,
-                             @RequestParam(value = "gender")       String gender,
-                             @RequestParam(value = "birthday")     String birthday,
-                             @RequestParam(value = "phone")        String phone,
-                             @RequestParam(value = "role")         String role){
+                             @RequestParam(value = "userName") String userName,
+                             @RequestParam(value = "gender") String gender,
+                             @RequestParam(value = "birthday") String birthday,
+                             @RequestParam(value = "phone") String phone,
+                             @RequestParam(value = "role") String role) {
 
         User user = new User();
 

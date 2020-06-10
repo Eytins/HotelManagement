@@ -26,5 +26,5 @@ public interface BillMapper {
     public List<Bill> getBillListWithType(@Param("billCode") String billCode, @Param("roomType") Integer roomType);
 
     //是否已经入住
-    public int isCheckIn(@Param("id") Integer id,@Param("flag") int flag);
+    public int isCheckIn(@Param("id") Integer id, @Param("flag") int flag);
 }

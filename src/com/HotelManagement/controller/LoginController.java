@@ -23,28 +23,28 @@ public class LoginController {
     @RequestMapping(value = "/dologin")
     public String doLogin(@RequestParam(value = "username") String userCode,
                           @RequestParam(value = "password") String password,
-                          HttpSession session, HttpServletRequest request){
+                          HttpSession session, HttpServletRequest request) {
 
         User loginUser = this.userService.login(userCode, password);
 
-        if(loginUser!=null){
+        if (loginUser != null) {
             int userRole = this.userService.getUserRole(userCode);
             session.setAttribute(Constants.USER_SESSION, loginUser);
-            if(userRole==2){
+            if (userRole == 2) {
                 return "user/indexuser";
-            }else if (userRole==3){
+            } else if (userRole == 3) {
                 return "hotel/indexhotel";
-            }else {
+            } else {
                 return "index";
             }
-        }else{
+        } else {
             request.setAttribute("error", "用户名或者密码错误");
             return "login";
         }
     }
 
     @RequestMapping(value = {"/sys/logout.html"})
-    public String logout(HttpSession session){
+    public String logout(HttpSession session) {
 
         session.invalidate();
         return "login";

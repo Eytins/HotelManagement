@@ -13,35 +13,35 @@ public class HotelTypeServiceImpl implements HotelTypeService {
     private HotelTypeMapper hotelTypeMapper;
 
     //添加新的房间类型
-    public int addNewHotelType(HotelType hotelType){
-        return  this.hotelTypeMapper.addNewHotelType(hotelType);
+    public int addNewHotelType(HotelType hotelType) {
+        return this.hotelTypeMapper.addNewHotelType(hotelType);
     }
 
     //删除房间类型
-    public int deleteHotelType(int id){
-        return  this.hotelTypeMapper.deleteHotelType(id);
+    public int deleteHotelType(int id) {
+        return this.hotelTypeMapper.deleteHotelType(id);
     }
 
     //查询房型
-    public List<HotelType> selectHotelTypeByIdType(String hotelRoomType, Integer hotelId){
-        return  this.hotelTypeMapper.selectHotelTypeByIdType(hotelRoomType,hotelId);
+    public List<HotelType> selectHotelTypeByIdType(String hotelRoomType, Integer hotelId) {
+        return this.hotelTypeMapper.selectHotelTypeByIdType(hotelRoomType, hotelId);
     }
 
     //查询剩余房型量
-   public int selectRemainNumber(
-               String hotelTypeId,
-               Integer hotelId,
-               Integer roomType,
-               Integer billHotelId){
-        return  this.hotelTypeMapper.selectRemainNumber(hotelTypeId,hotelId,roomType,billHotelId);
-   }
+    public int selectRemainNumber(
+            String hotelTypeId,
+            Integer hotelId,
+            Integer roomType,
+            Integer billHotelId) {
+        return this.hotelTypeMapper.selectRemainNumber(hotelTypeId, hotelId, roomType, billHotelId);
+    }
 
     public List<HotelType> selectByUser(
             Integer priceMin,
             Integer priceMax,
             String hotelName,
-            String hotelAddress
-    ) {
-        return  this.hotelTypeMapper.selectByUser(priceMin,priceMax,hotelName,hotelAddress);
+            String hotelAddress) {
+
+        return this.hotelTypeMapper.selectByUser(priceMin, priceMax, hotelName, hotelAddress);
     }
 }

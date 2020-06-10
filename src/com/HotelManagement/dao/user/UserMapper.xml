@@ -21,6 +21,8 @@
     </insert>
 
     <select id="getUserRole" resultType="java.lang.Integer">
-        select userRole from user where userCode=#{userCode}
+        select userRole
+        from user
+        where userCode = #{userCode}
     </select>
 </mapper>

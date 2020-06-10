@@ -4,38 +4,50 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.HotelManagement.dao.hotelType.HotelTypeMapper">
+
     <insert id="addNewHotelType" parameterType="HotelType">
-insert into hotelType(hotelId,hotelRoomType,hotelRoomNumber,hotelPrice,hotelPeople,creationDate,modifyDate)
-values (#{hotelId},#{hotelRoomType},#{hotelRoomNumber},#{hotelPrice},#{hotelPeople},#{creationDate},#{modifyDate})
+        insert into hotelType(hotelId, hotelRoomType, hotelRoomNumber, hotelPrice, hotelPeople, creationDate,
+                              modifyDate)
+        values (#{hotelId}, #{hotelRoomType}, #{hotelRoomNumber}, #{hotelPrice}, #{hotelPeople}, #{creationDate},
+                #{modifyDate})
     </insert>
 
     <delete id="deleteHotelType" parameterType="int">
-        delete  from hotelType where id = #{id}
+        delete
+        from hotelType
+        where id = #{id}
     </delete>
 
-    <select id="selectHotelTypeByIdType" resultType="com.HotelManagement.pojo.HotelType" >
-select * from hotelType
-    <where>
-        and hotelRoomType LIKE CONCAT('%',#{hotelRoomType},'%')
-    </where>
+    <select id="selectHotelTypeByIdType" resultType="com.HotelManagement.pojo.HotelType">
+        select * from hotelType
+        <where>
+            and hotelRoomType LIKE CONCAT('%',#{hotelRoomType},'%')
+        </where>
         and hotelId = #{hotelId}
     </select>
 
     <select id="selectRemainNumber" resultType="java.lang.Integer">
-        select h.hotelRoomNumber- (select count(*) from bill b where b.hotelId = #{billHotelId} and b.roomType = #{roomType}) from hotelType h,bill b
-        where h.hotelId = #{hotelId} and h.id = #{hotelTypeId} LIMIT 1;
+        select h.hotelRoomNumber -
+               (select count(*) from bill b where b.hotelId = #{billHotelId} and b.roomType = #{roomType})
+        from hotelType h,
+             bill b
+        where h.hotelId = #{hotelId}
+          and h.id = #{hotelTypeId}
+        LIMIT 1;
     </select>
 
-    <select id="selectByUser"  resultType="list" resultMap="midd">
+    <select id="selectByUser" resultType="list" resultMap="midd">
         select ht.*,h.hotelName from hotelType ht,hotel h
         <where>
-            <if test="priceMin!=null and priceMin!=''">  ht.hotelPrice>#{priceMin}</if>
-            <if test="priceMax!=null and priceMax!=''"> and #{priceMax}>ht.hotelPrice </if>
-            <if test="hotelAddress!=null and hotelAddress!=''">and h.hotelAddress LIKE CONCAT('%',#{hotelAddress},'%')</if>
-            <if test="hotelName!=null and hotelName!=''"> and h.hotelName LIKE CONCAT('%',#{hotelName},'%') </if>
+            <if test="priceMin!=null and priceMin!=''">ht.hotelPrice>#{priceMin}</if>
+            <if test="priceMax!=null and priceMax!=''">and #{priceMax}>ht.hotelPrice</if>
+            <if test="hotelAddress!=null and hotelAddress!=''">and h.hotelAddress LIKE CONCAT('%',#{hotelAddress},'%')
+            </if>
+            <if test="hotelName!=null and hotelName!=''">and h.hotelName LIKE CONCAT('%',#{hotelName},'%')</if>
             and ht.hotelId = h.id
         </where>
     </select>
+
     <resultMap id="midd" type="HotelType">
         <result property="hotelName" column="hotelName"/>
     </resultMap>
