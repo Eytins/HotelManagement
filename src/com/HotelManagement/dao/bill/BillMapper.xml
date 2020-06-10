@@ -89,8 +89,4 @@
         where id=#{id}
     </update>
 
-    <select id="searchBill" resultType="com.HotelManagement.pojo.Bill">
-#         select * from HotelManagement.bill where checkInDate
-    </select>
-
 </mapper>
