@@ -18,9 +18,9 @@ public class SysInterceptor extends HandlerInterceptorAdapter {
         HttpSession session = request.getSession();
         User loginUser = (User) session.getAttribute(Constants.USER_SESSION);
 
-        if(loginUser!=null){
+        if (loginUser != null) {
             return true;
-        } else{
+        } else {
             request.getRequestDispatcher("/401.jsp").forward(request, response);
             return false;
         }

@@ -4,25 +4,29 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.HotelManagement.dao.hotel.HotelMapper">
+
     <!--添加新的酒店-->
     <insert id="addNewHotel" parameterType="Hotel">
-        insert into hotel(hotelName,hotelAddress,postCode,tel,creationDate,userId)
-        values (#{hotelName},#{hotelAddress},#{postCode},#{tel},#{creationDate},#{userId})
+        insert into hotel(hotelName, hotelAddress, postCode, tel, creationDate, userId)
+        values (#{hotelName}, #{hotelAddress}, #{postCode}, #{tel}, #{creationDate}, #{userId})
     </insert>
+
     <!--搜索所有酒店名-->
     <select id="selectHotel" resultType="com.HotelManagement.pojo.Hotel">
         select * from hotel
         <where>
-        <if test="hotelName!=null and hotelAddress!=''">
-            and hotelName=#{hotelName}
-        </if>
-        <if test="hotelAddress!=null and hotelAddress!=''">
-            and hotelAddress=#{hotelAddress}
-        </if>
+            <if test="hotelName!=null and hotelAddress!=''">
+                and hotelName=#{hotelName}
+            </if>
+            <if test="hotelAddress!=null and hotelAddress!=''">
+                and hotelAddress=#{hotelAddress}
+            </if>
         </where>
     </select>
 
     <delete id="deleteHotelbyId" parameterType="Integer">
-        delete from bill where id=#{HotelId}
+        delete
+        from bill
+        where id = #{HotelId}
     </delete>
 </mapper>

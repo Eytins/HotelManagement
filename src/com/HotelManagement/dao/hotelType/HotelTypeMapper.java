@@ -1,25 +1,27 @@
 package com.HotelManagement.dao.hotelType;
 
-        import com.HotelManagement.pojo.HotelType;
-        import org.apache.ibatis.annotations.Param;
-        import org.springframework.web.bind.annotation.RequestParam;
+import com.HotelManagement.pojo.HotelType;
+import org.apache.ibatis.annotations.Param;
 
-        import javax.servlet.http.HttpServletRequest;
-        import javax.servlet.http.HttpSession;
-        import java.util.List;
+import java.util.List;
 
 public interface HotelTypeMapper {
+
     //添加新的房间类型
     int addNewHotelType(HotelType hotelType);
+
     //删除房间类型
     int deleteHotelType(int id);
+
     //查询房型
     List<HotelType> selectHotelTypeByIdType(@Param("hotelRoomType") String hotelRoomType, @Param("hotelId") Integer hotelId);
+
     //查询剩余房型量
     int selectRemainNumber(@Param("hotelTypeId") String hotelTypeId,
                            @Param("hotelId") Integer hotelId,
                            @Param("roomType") Integer roomType,
                            @Param("billHotelId") Integer billHotelId);
+
     //用户查询
     List<HotelType> selectByUser(
             @Param(value = "priceMin") Integer priceMin,

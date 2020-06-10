@@ -34,7 +34,7 @@
         <hr class="hr20">
 
         <a href="${pageContext.request.contextPath}/register.html">
-<%--            <input type="button" value="注册">--%>
+            <%--            <input type="button" value="注册">--%>
             <input value="注册" lay-submit style="width:100%;" type="button">
         </a>
         <hr class="hr20">

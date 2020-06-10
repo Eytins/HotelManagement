@@ -1,7 +1,6 @@
 package com.HotelManagement.service.bill;
 
 import com.HotelManagement.pojo.Bill;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -23,6 +22,6 @@ public interface BillService {
     public int deleteBillbyId(Integer id);
 
     //是否已经入住
-    public int isCheckIn( Integer id,  int flag);
+    public int isCheckIn(Integer id, int flag);
 
 }
