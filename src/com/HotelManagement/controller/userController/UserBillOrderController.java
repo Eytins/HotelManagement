@@ -17,7 +17,6 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping(value = "/userBillOrder")
 public class UserBillOrderController {
 
     private static final Logger logger = Logger.getLogger(UserBillOrderController.class);
@@ -27,7 +26,7 @@ public class UserBillOrderController {
     @Autowired
     private HotelTypeService hotelTypeService;
 
-    @RequestMapping(value = {"/doUserHotelSearch.html" ,"userstatics/hotel/doUserHotelSearch"}, method = RequestMethod.POST)
+    @RequestMapping(value = {"userBillOrder/doUserHotelSearch" ,"userstatics/userBillOrder/doUserHotelSearch"}, method = RequestMethod.GET)
     @ResponseBody
     public List<HotelType> doSerch(@RequestParam(value = "priceMin", required = false, defaultValue = "200") String priceMin,
                                    @RequestParam(value = "priceMax", required = false, defaultValue = "20000") String priceMax,
