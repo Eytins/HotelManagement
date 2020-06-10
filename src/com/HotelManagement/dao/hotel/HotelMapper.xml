@@ -24,9 +24,9 @@
         </where>
     </select>
 
-    <delete id="deleteHotelbyId" parameterType="Integer">
+    <delete id="deleteHotelById" parameterType="Integer">
         delete
-        from bill
+        from HotelManagement.bill
         where id = #{HotelId}
     </delete>
 </mapper>

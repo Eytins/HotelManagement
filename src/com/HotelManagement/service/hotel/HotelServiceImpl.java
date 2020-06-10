@@ -25,7 +25,7 @@ public class HotelServiceImpl implements HotelService {
     }
 
     //删除酒店
-    public int deleteHotelbyId(Integer id) {
-        return this.hotelMapper.deleteHotelbyId(id);
+    public int deleteHotelById(Integer id) {
+        return this.hotelMapper.deleteHotelById(id);
     }
 }

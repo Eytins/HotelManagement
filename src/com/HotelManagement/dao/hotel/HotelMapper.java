@@ -14,5 +14,5 @@ public interface HotelMapper {
     int addNewHotel(Hotel hotel);
 
     //删除酒店
-    int deleteHotelbyId(Integer id);
+    int deleteHotelById(Integer id);
 }

@@ -37,7 +37,8 @@ public class HotelListController {
         return this.hotelService.searchHotel(hotelName, hotelAddress);
     }
 
-    @RequestMapping(value = {"hotelAdd/doAddNewHotel.html", "hotelstatics/hotelAdd/doAddNewHotel.html"}, method = RequestMethod.GET)
+    // test: hotelAdd/doAddNewHotel.html?hotelName=1112&hotelAddress=122&postCode=123455&tel=123423
+    @RequestMapping(value = {"hotelAdd/doAddNewHotel.html", "hotelstatics/hotelAdd/doAddNewHotel.html"}, method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     public int addNewHotel(@RequestParam(value = "hotelName") String hotelName,
                            @RequestParam(value = "hotelAddress") String hotelAddress,
@@ -57,5 +58,13 @@ public class HotelListController {
         hotel.setUserId(loginUser.getId());
 
         return this.hotelService.addNewHotel(hotel);
+    }
+
+    // test: http://localhost:8080/HotelManagement_war_exploded/hotelList/deleteHotel.html?id=5
+    // todo: 删除失败
+    @RequestMapping(value = {"hotelList/deleteHotel.html", "hotelstatics/hotelList/deleteHotel.html"}, method = RequestMethod.GET)
+    @ResponseBody
+    public int deleteHotel(@RequestParam(value = "id") String id){
+        return this.hotelService.deleteHotelById(Integer.parseInt(id));
     }
 }
