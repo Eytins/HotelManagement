@@ -3,6 +3,7 @@ package com.HotelManagement.dao.bill;
 import com.HotelManagement.pojo.Bill;
 import org.apache.ibatis.annotations.Param;
 
+import java.util.Date;
 import java.util.List;
 
 public interface BillMapper {
@@ -27,4 +28,7 @@ public interface BillMapper {
 
     //是否已经入住
     public int isCheckIn(@Param("id") Integer id, @Param("flag") int flag);
+
+    //根据Date、酒店名称、地址获取订单列表
+    List<Bill> getBillListAndHotelNameByDateAndHotelNameAndAddress(@Param("date") Date date, @Param("hotelName") String hotelName, @Param("hotelAddress") String hotelAddress);
 }

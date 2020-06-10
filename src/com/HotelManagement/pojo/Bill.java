@@ -4,21 +4,39 @@ import java.sql.Date;
 import java.sql.Timestamp;
 
 public class Bill {
-    private long id;
-    private String billCode;
-    private long orderId;
-    private long hotelId;
-    private long roomType;
-    private java.sql.Date checkInDate;
-    private java.sql.Date checkOutDate;
-    private int isCheckIn;
-    private int countDays;
-    private int isPayment;
+    private long               id;
+    private String             billCode;
+    private long               orderId;
+    private long               hotelId;
+    private long               roomType;
+    private java.sql.Date      checkInDate;
+    private java.sql.Date      checkOutDate;
+    private int                isCheckIn;
+    private int                countDays;
+    private int                isPayment;
     private java.sql.Timestamp creationDate;
     private java.sql.Timestamp modifyDate;
-    private long providerId;
-    private String hoteRoomType;
-    private long hotelPeople;
+    private long               providerId;
+    private String             hoteRoomType;
+    private long               hotelPeople;
+    private String             hotelName;
+    private long               totalPrice;
+
+    public String getHotelName() {
+        return hotelName;
+    }
+
+    public void setHotelName(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    public long getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(long totalPrice) {
+        this.totalPrice = totalPrice;
+    }
 
     public long getId() {
         return id;

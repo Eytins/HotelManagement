@@ -5,6 +5,7 @@ import com.HotelManagement.pojo.Bill;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -42,5 +43,10 @@ public class BillServiceImpl implements BillService {
     //是否已经入住
     public int isCheckIn(Integer id, int flag) {
         return this.billMapper.isCheckIn(id, flag);
+    }
+
+    @Override
+    public List<Bill> getBillListAndHotelNameByDateAndHotelNameAndAddress(Date date, String hotelName, String hotelAddress) {
+        return billMapper.getBillListAndHotelNameByDateAndHotelNameAndAddress(date, hotelName, hotelAddress);
     }
 }
