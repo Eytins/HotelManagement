@@ -43,7 +43,7 @@ public class LoginController {
         }
     }
 
-    @RequestMapping(value = {"/sys/logout.html","/sys/user/logout.html"})
+    @RequestMapping(value = {"/sys/logout.html"})
     public String logout(HttpSession session){
 
         session.invalidate();

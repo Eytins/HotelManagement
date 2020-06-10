@@ -17,12 +17,12 @@ public class RegisterController {
     @Autowired
     private UserService userService;
 
-    @RequestMapping(value = "register.html")
+    @RequestMapping(value = "/register.html")
     public String register(){
         return "register";
     }
 
-    @RequestMapping(value = {"doRegister.html","doRegister.do"})
+    @RequestMapping(value = "/doRegister.html")
     public String doRegister(@RequestParam(value = "userCode")     String userCode,
                              @RequestParam(value = "userPassword") String password,
                              @RequestParam(value = "userName")     String userName,

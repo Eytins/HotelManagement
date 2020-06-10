@@ -43,7 +43,7 @@
                     <a onclick="xadmin.open('个人信息','http://www.baidu.com')">个人信息</a></dd>
                 <dd>
                     <!--todo:这里改成dologout-->
-                    <a href="../login.html">退出</a></dd>
+                    <a href="${pageContext.request.contextPath}/sys/logout.html">退出</a></dd>
             </dl>
         </li>
     </ul>

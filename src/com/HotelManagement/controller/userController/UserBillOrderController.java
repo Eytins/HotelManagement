@@ -1,4 +1,4 @@
-package com.HotelManagement.controller;
+package com.HotelManagement.controller.userController;
 
 import com.HotelManagement.pojo.HotelType;
 import com.HotelManagement.service.hotelType.HotelTypeService;
@@ -12,14 +12,22 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
+/**
+ * Created by Eytins
+ */
+
 @Controller
-public class HotelController {
-    private static final org.apache.log4j.Logger logger = Logger.getLogger(HotelController.class);
+@RequestMapping(value = "/userBillOrder")
+public class UserBillOrderController {
+
+    private static final Logger logger = Logger.getLogger(UserBillOrderController.class);
+
+    //service自己视需求调用
 
     @Autowired
     private HotelTypeService hotelTypeService;
 
-    @RequestMapping(value = "hotel/doUserHotelSearch" , method = RequestMethod.GET)
+    @RequestMapping(value = "/doUserHotelSearch.html" , method = RequestMethod.GET)
     @ResponseBody
     public List<HotelType> doSerch(@RequestParam(value = "priceMin", required = false, defaultValue = "200") String priceMin,
                                    @RequestParam(value = "priceMax", required = false, defaultValue = "20000") String priceMax,
