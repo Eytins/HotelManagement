@@ -32,7 +32,7 @@
                             <h2 class="layui-colla-title">条件筛选<i class="layui-icon layui-colla-icon"></i></h2>
                             <div class="layui-colla-content">
                                 <!--todo:这里的action为controller里的路径,doSearch-->
-                                <form class="layui-form"  id="formf"  >
+                                <form class="layui-form"  id="formf" >
                                     <div class="layui-form-item">
                                         <div class="layui-inline">
                                             <label class="layui-form-label">价格区间</label>
@@ -242,11 +242,11 @@ $("#select").click(function () {
     $.ajax({
         dataType:"json",
         url: "userBillOrder/doUserHotelSearch.html",
-        type: "get",
+        type: "post",
         contentType: "application/json",
         data: formData1,
         success: function (result) {  //这里就是我出错的地方
-            var str = ""
+            var str = "", i
             for (i in result) {
                 str = "<tr>" +
                     "<td>" + result[i].hotelName + "</td>" +
@@ -255,7 +255,7 @@ $("#select").click(function () {
                     "<td>" + result[i].hotelPeople + "</td>" +
                     "<td>" + result[i].hotelPrice + "</td>" +
                     "<td class='td-manage'>" +
-                    "<button class='layui-btn layui-btn-warm layui-btn-xs'onclick='xadmin.open('预定','userorderview.html',600,500)'>" +
+                    /*"<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='xadmin.open(&quot;预定&quot;,&quot;userorderview.html&quot;, 600 , 500)'>" +*/
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
                     "</button>" +
                     "</td>" +
