@@ -20,10 +20,12 @@ select * from hotelType
     </where>
         and hotelId = #{hotelId}
     </select>
+
     <select id="selectRemainNumber" resultType="java.lang.Integer">
         select h.hotelRoomNumber- (select count(*) from bill b where b.hotelId = #{billHotelId} and b.roomType = #{roomType}) from hotelType h,bill b
         where h.hotelId = #{hotelId} and h.id = #{hotelTypeId} LIMIT 1;
     </select>
+
     <select id="selectByUser" resultType="com.HotelManagement.pojo.HotelType" resultMap="mid">
         select h.hotelName,ht.* from hotelType ht,hotel h
         <where>
@@ -36,4 +38,7 @@ select * from hotelType
     <resultMap id="mid" type="Hotel">
         <result property="hotelName" column="hotelName"/>
     </resultMap>
+
+
+
 </mapper>

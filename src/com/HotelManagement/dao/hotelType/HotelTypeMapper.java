@@ -28,4 +28,5 @@ public interface HotelTypeMapper {
             @Param(value = "hotelAddress") String hotelAddress
     );
     //按时间查询已预定房间数量
+
 }
