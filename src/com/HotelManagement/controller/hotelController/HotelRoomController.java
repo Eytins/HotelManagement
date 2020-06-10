@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 
 @Controller
-@RequestMapping(value = "/hotelRoomController")
 public class HotelRoomController {
 
     private static final Logger logger = Logger.getLogger(HotelRoomController.class);

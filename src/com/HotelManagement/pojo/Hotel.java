@@ -1,6 +1,8 @@
 package com.HotelManagement.pojo;
 
 
+import java.util.Date;
+
 public class Hotel {
 
     private long id;
@@ -8,7 +10,7 @@ public class Hotel {
     private String hotelAddress;
     private String postCode;
     private String tel;
-    private java.sql.Timestamp creationDate;
+    private Date creationDate;
     private long userId;
 
 
@@ -57,11 +59,11 @@ public class Hotel {
     }
 
 
-    public java.sql.Timestamp getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(java.sql.Timestamp creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
