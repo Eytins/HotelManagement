@@ -14,6 +14,7 @@ public class HotelType {
     private java.sql.Timestamp creationDate;
     private java.sql.Timestamp modifyDate;
     private String hotelName;
+    private String hotelAddress;
 
     public long getId() {
         return id;
@@ -85,5 +86,13 @@ public class HotelType {
 
     public void setHotelName(String hotelName) {
         this.hotelName = hotelName;
+    }
+
+    public String getHotelAddress() {
+        return hotelAddress;
+    }
+
+    public void setHotelAddress(String hotelAddress) {
+        this.hotelAddress = hotelAddress;
     }
 }

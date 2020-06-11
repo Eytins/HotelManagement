@@ -2,6 +2,7 @@ package com.HotelManagement.controller.userController;
 
 import com.HotelManagement.pojo.HotelType;
 import com.HotelManagement.service.hotelType.HotelTypeService;
+import com.alibaba.fastjson.JSONArray;
 import com.google.gson.Gson;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,7 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping("billorder")
 public class UserBillOrderController {
 
     private static final Logger logger = Logger.getLogger(UserBillOrderController.class);
@@ -31,7 +33,7 @@ public class UserBillOrderController {
      * Created by Eytins
      * Edit by Thousand
      */
-    @RequestMapping(value = {"userBillOrder/doUserHotelSearch.html", "userstatics/userBillOrder/doUserHotelSearch.html"}, method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "doUserHotelSearch",method = {RequestMethod.POST,RequestMethod.GET},produces = "text/html;charset=utf-8")
     @ResponseBody
     public String doSerch(@RequestParam(value = "priceMin", required = false, defaultValue = "200") String priceMin,
                                    @RequestParam(value = "priceMax", required = false, defaultValue = "20000") String priceMax,
@@ -39,7 +41,6 @@ public class UserBillOrderController {
                                    @RequestParam(value = "hotelAddress", required = false) String hotelAddress) {
         int priceMin1 = Integer.parseInt(priceMin);
         int priceMax1 = Integer.parseInt(priceMax);
-
         return new Gson().toJson(this.hotelTypeService.selectByUser(priceMin1, priceMax1, hotelName, hotelAddress));
     }
 }
