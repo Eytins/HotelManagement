@@ -8,9 +8,16 @@
     <meta name="viewport"
           content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"/>
     <link rel="stylesheet" href="../statics/css/font.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <link rel="stylesheet" href="../statics/css/xadmin.css">
     <script src="../statics/lib/layui/layui.js" charset="utf-8"></script>
     <script type="text/javascript" src="../statics/js/xadmin.js"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+
+    <![endif]-->
 </head>
 
 <body>
@@ -24,22 +31,23 @@
 
                         <div class="layui-input-inline" style="width: 100px;">
                             <!--酒店名称-->
-                            <input type="text" id="hotelName" name="hotelName" placeholder="请输入酒店名称"
-                                   autocomplete="off"
-                                   class="layui-input">
+                            <input autocomplete="off" class="layui-input" name="hotelName"
+                                   placeholder="请输入酒店名称"
+                                   type="text">
                         </div>
 
                         <div class="layui-input-inline" style="width: 100px;">
                             <!--酒店地点-->
-                            <input type="text" id="hotelAddress" name="hotelAddress" placeholder="请输入酒店地点"
-                                   autocomplete="off"
-                                   class="layui-input">
+                            <input autocomplete="off" class="layui-input" name="hotelAddress"
+                                   placeholder="请输入酒店地点"
+                                   type="text">
                         </div>
 
                         <div class="layui-input-inline layui-show-xs-block">
                             <button id="select" class="layui-btn" lay-submit="" lay-filter="sreach">
                                 <i class="layui-icon">&#xe615;</i></button>
                         </div>
+
                     </form>
                 </div>
                 <div class="layui-card-header">
@@ -60,30 +68,12 @@
                             <th>操作</th>
                         </tr>
                         </thead>
-                        <tbody>
-                        <!--todo:一个tr是一行，这里要做循环输出-->
-                        <tr>
-                            <td>2017009171822298053</td>
-                            <td>老王:18925139194</td>
-                            <td>7829.10</td>
-                            <td>7854.10</td>
-                            <td>待确认</td>
-                            <td class="td-manage">
-                                <!--todo:带着hotel的信息跳转到房间管理-->
-                                <button class="layui-btn layui-btn layui-btn-xs"
-                                        onclick="xadmin.open('房间管理','roomlist.html')"><i class="layui-icon">&#xe642;</i>管理房间
-                                </button>
-                                <!--todo:执行删除-->
-                                <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                        onclick="member_del(this,'要删除的id')" href="javascript:;"><i class="layui-icon">&#xe640;</i>删除
-                                </button>
-                            </td>
-                        </tr>
+                        <tbody id="data">
 
                         </tbody>
                     </table>
                 </div>
-                <div class="layui-card-body ">
+                <!--<div class="layui-card-body ">
                     <div class="page">
                         <div>
                             <a class="prev" href="">&lt;&lt;</a>
@@ -91,9 +81,10 @@
                             <span class="current">2</span>
                             <a class="num" href="">3</a>
                             <a class="num" href="">489</a>
-                            <a class="next" href="">&gt;&gt;</a></div>
+                            <a class="next" href="">&gt;&gt;</a>
+                        </div>
                     </div>
-                </div>
+                </div>-->
             </div>
         </div>
     </div>
@@ -172,43 +163,65 @@ function delAll(argument) {
         });
 }
 
+function dosearch() {
+    console.log((event.target.id));
+    $.removeCookie("hotelId");
+    if (event.target.id == 0) {
+        $.cookie("hotelId", document.getElementById("01").innerText);
+    } else {
+        $.cookie("hotelId", document.getElementById((event.target.id * 10 + 1)).innerText);
+    }
+    xadmin.open("管理房间", "roomlist.html");
+}
+
+function dodelete() {
+    console.log((event.target.id));
+    $.removeCookie("hotelId");
+    if (event.target.id == 0) {
+        $.cookie("hotelId", document.getElementById("01").innerText);
+    } else {
+        $.cookie("hotelId", document.getElementById((event.target.id * 10 + 1)).innerText);
+    }
+    //todo:执行delete
+    xadmi.open("删除", "userorderview.html", 600, 500);
+}
+
+//todo:差一个添加按钮的function
+
 $("#select").click(function () {
-    var formData = $("#search").serializeArray();
-    var formData1 = JSON.stringify(formData);
-    console.log(formData1);
+    var formData = $("#search").serialize();
     $.ajax({
         dataType: "json",
-        url: "hotelList/doHotelSearch.html",
+        url: "http://localhost:8080/HotelManagement_war_exploded/hotelList/doHotelSearch",
         type: "post",
-        contentType: "application/json",
-        data: formData1,
-        success:function(data) {
-            alert("a");
-            console.log("===============================");
-            var str = "", i
-            /*for (i in result) {
-                alert("a");
-                str = "<tr>" +
-                    "<td>" + result[i].hotelName + "</td>" +
-                    "<td>" + result[i].hotelAddress + "</td>" +
-                    "<td>" + result[i].hotelRoomType + "</td>" +
-                    "<td>" + result[i].hotelPeople + "</td>" +
-                    "<td>" + result[i].hotelPrice + "</td>" +
+        data: formData,
+        success: function (result) {
+            var str = ""
+            for (i in result) {
+                str += "<tr >" +
+                    "<td id=" + i + 1 + ">" + result[i].id + "</td>" +
+                    "<td id=" + i + 2 + ">" + result[i].hotelName + "</td>" +
+                    "<td id=" + i + 3 + ">" + result[i].hotelAddress + "</td>" +
+                    "<td id=" + i + 4 + ">" + result[i].postCode + "</td>" +
+                    "<td id=" + i + 5 + ">" + result[i].tel + "</td>" +
                     "<td class='td-manage'>" +
-                    /!*"<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='xadmin.open(&quot;预定&quot;,&quot;userorderview.html&quot;, 600 , 500)'>" +*!/
-                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
-                    "</button>" +
+                    "<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='dosearch()' id=" + i + ">" +
+                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "管理房间" +
+                    "<button class='layui-btn-danger layui-btn layui-btn-xs'  onclick='dodelete()' id=" + i + ">" +
+                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "删除" +
                     "</td>" +
                     "</tr>"
-                document.getElementById("data").innerHTML = str;
-            }*/
+            }
+            document.getElementById("data").innerHTML = str;
         },
-        error:function (result) {
+        error: function (result) {
             alert("请求出错");
             alert(result);
         }
     });
+    return false;
 });
+
 </script>
 
 </html>

@@ -15,11 +15,11 @@
     <select id="searchHotel" resultType="com.HotelManagement.pojo.Hotel">
         select * from hotel
         <where>
-            <if test="hotelName!=null and hotelAddress!=''">
-                and hotelName=#{hotelName}
+            <if test="hotelName!=null and hotelName!=''">
+                hotelName like CONCAT('%',#{hotelName},'%')
             </if>
             <if test="hotelAddress!=null and hotelAddress!=''">
-                and hotelAddress=#{hotelAddress}
+                and hotelAddress like CONCAT('%',#{hotelAddress},'%')
             </if>
         </where>
     </select>

@@ -44,7 +44,6 @@ public class UserBillOrderController {
         HotelType hotelType ;
         List<HotelType> list = this.hotelTypeService.selectByUser(priceMin1, priceMax1, hotelName, hotelAddress);
 
-
         return list;
     }
 }

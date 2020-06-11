@@ -16,7 +16,7 @@ public class HotelType {
         this.roomType = roomType;
     }
 
-    private  int roomType;
+    private int roomType;
     private String hotelRoomType;
     private long hotelRoomNumber;
     private double hotelPrice;

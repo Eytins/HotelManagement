@@ -29,26 +29,29 @@ public class HotelListController {
 
     @Autowired
     private HotelService hotelService;
-/*
-* 对酒店本身的搜索
-* */
-    @RequestMapping(value ="doHotelSearch", method = {RequestMethod.POST,RequestMethod.GET})
+
+    /*
+     * 对酒店本身的搜索
+     * */
+    @RequestMapping(value = "doHotelSearch", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public List<Hotel> doHotelSearch(@RequestParam(value = "hotelName", required = false) String hotelName,
-                                     @RequestParam(value = "hotelAddress", required = false) String hotelAddress){
+                                     @RequestParam(value = "hotelAddress", required = false) String hotelAddress) {
+        logger.debug("HotelListController---------------->doHotelSearch");
+
         return this.hotelService.searchHotel(hotelName, hotelAddress);
     }
 
     // test: hotelAdd/doAddNewHotel.html?hotelName=1112&hotelAddress=122&postCode=123455&tel=123423
     /*
-    * 新增酒店
-    * */
-    @RequestMapping(value = "doAddNewHotel", method = {RequestMethod.POST,RequestMethod.GET})
+     * 新增酒店
+     * */
+    @RequestMapping(value = "doAddNewHotel", method = {RequestMethod.POST, RequestMethod.GET})
     public int addNewHotel(@RequestParam(value = "hotelName") String hotelName,
                            @RequestParam(value = "hotelAddress") String hotelAddress,
                            @RequestParam(value = "postCode") String postCode,
                            @RequestParam(value = "tel") String tel,
-                           HttpSession session){
+                           HttpSession session) {
 
         Hotel hotel = new Hotel();
 
@@ -67,10 +70,10 @@ public class HotelListController {
     // test: http://localhost:8080/HotelManagement_war_exploded/hotelList/deleteHotel.html?id=5
     // todo: 删除失败
     /*
-    * 删除酒店
-    * */
-    @RequestMapping(value = "deleteHotel", method = {RequestMethod.POST,RequestMethod.GET})
-    public int deleteHotel(@RequestParam(value = "id") String id){
+     * 删除酒店
+     * */
+    @RequestMapping(value = "deleteHotel", method = {RequestMethod.POST, RequestMethod.GET})
+    public int deleteHotel(@RequestParam(value = "id") String id) {
         return this.hotelService.deleteHotelById(Integer.parseInt(id));
     }
 }
