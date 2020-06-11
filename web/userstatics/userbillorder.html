@@ -10,12 +10,14 @@
           name="viewport"/>
     <link href="../statics/css/font.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <link href="../statics/css/xadmin.css" rel="stylesheet">
     <script charset="utf-8" src="../statics/lib/layui/layui.js"></script>
     <script src="../statics/js/xadmin.js" type="text/javascript"></script>
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+
     <![endif]-->
 </head>
 
@@ -222,6 +224,11 @@ function delAll(argument) {
         });
 }
 
+function addorder(){
+    $.removeCookie("hotelName");
+    $.cookie("hotelName",document.getElementById("6").innerText);
+    xadmin.open("预定","userorderview.html",600 , 500);
+}
 $("#select").click(function () {
     var formData = $("#formf").serialize();
     $.ajax({
@@ -234,15 +241,14 @@ $("#select").click(function () {
             console.log(result)
             for (i in result) {
                 str += "<tr>" +
-                    "<td>" + result[i].hotelName +"</td>" +
-                    "<td>" + result[i].hotelAddress + "</td>" +
-                    "<td>" + result[i].hotelRoomType+ "</td>" +
-                    "<td>" + result[i].hotelPeople + "</td>" +
-                    "<td>" + result[i].hotelPrice + "</td>" +
+                    "<td id='1'>" + result[i].hotelName +"</td>" +
+                    "<td id='2'>" + result[i].hotelAddress + "</td>" +
+                    "<td id='3'>" + result[i].hotelRoomType+ "</td>" +
+                    "<td id='4'>" + result[i].hotelPeople + "</td>" +
+                    "<td id='5'>" + result[i].hotelPrice + "</td>" +
                     "<td class='td-manage'>" +
-                    "<button class='layui-btn layui-btn-warm layui-btn-xs' id='order' onclick='xadmin.open(&quot;预定&quot;,&quot;userorderview.html?hotelname=&quot;, 600 , 500)'>" +
+                    "<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='addorder()'>" +
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
-                    "<button>" +
                     "</td>" +
                     "</tr>"
             }
