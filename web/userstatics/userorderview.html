@@ -22,7 +22,7 @@
 <div class="layui-fluid">
     <div class="layui-row">
         <!--todo:action要改-->
-        <form action="${pageContext.request.contextPath}/doOrder.html" class="layui-form">
+        <form id="newOrder" class="layui-form">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">酒店名称</label>
@@ -79,8 +79,6 @@
         $ = layui.jquery;
         var form = layui.form,
             layer = layui.layer;
-
-
         //监听提交
         form.on('submit(add)',
             function (data) {
