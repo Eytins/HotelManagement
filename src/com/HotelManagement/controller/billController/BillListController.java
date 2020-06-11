@@ -1,8 +1,11 @@
 package com.HotelManagement.controller.billController;
 
 import com.HotelManagement.pojo.Bill;
+import com.HotelManagement.pojo.User;
 import com.HotelManagement.service.bill.BillService;
+import com.HotelManagement.tools.Constants;
 import org.apache.log4j.Logger;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,8 +13,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 @Controller
 @RequestMapping("billlist")
@@ -34,32 +40,59 @@ public class BillListController {
     }
 
     @RequestMapping(value ="addNewBill" , method = {RequestMethod.POST,RequestMethod.GET})
-    public int addNewBill(@RequestParam(value = "orderId") Integer orderId,
-                          @RequestParam(value = "hotelId") Integer hotelId,
+    public int addNewBill(@RequestParam(value = "hotelId") Integer hotelId,
                           @RequestParam(value = "roomType") Integer roomType,
                           @RequestParam(value = "checkInDate") Date checkInDate,
                           @RequestParam(value = "checkOutDate") Date checkOutDate,
-                          @RequestParam(value = "totalPrice") Integer totalPrice
-                                     )
-            {
-                Bill bill= new Bill();
+                          @RequestParam(value = "totalPrice") Integer totalPrice,
+                          HttpSession session) {
+//        billCode, orderId, hotelId, roomType, checkInDate, checkOutDate, isCheckIn, countDays,
+//                totalPrice, isPayment, providerId
+        Bill bill= new Bill();
+        User loginUser = (User) session.getAttribute(Constants.USER_SESSION);
 
-                bill.setOrderId(orderId);
-                bill.setHotelId(hotelId);
-                bill.setRoomType(roomType);
-                bill.setCheckInDate(checkInDate);
-                bill.setCheckOutDate(checkOutDate);
-                bill.setTotalPrice(totalPrice);
+        bill.setBillCode(getRandomString(12));
+        bill.setOrderId(Integer.parseInt(session.getId()));
+        bill.setHotelId(hotelId);
+        bill.setRoomType(roomType);
+        bill.setCheckInDate(checkInDate);
+        bill.setCheckOutDate(checkOutDate);
+        bill.setIsCheckIn(0);
+        bill.setIsPayment(2);
+        bill.setCountDays(getDifferenceDays(checkInDate,checkOutDate));
+        bill.setTotalPrice(totalPrice);
+        bill.setTotalPrice(totalPrice);
 
-                return this.billService.addBill(bill);
+        //todo: 老板的id通过hotelservice查询hotelid然后获得userid，有空再加
+        // bill.setProviderId(this.billService.);
 
+        return this.billService.addBill(bill);
     }
 
 
     @RequestMapping(value = "deleteBill", method = {RequestMethod.POST,RequestMethod.GET})
     public int deleteBill(@RequestParam(value = "id") String id){
-        return this.billService.deleteBillbyId(Integer.parseInt(id));
+        return this.billService.deleteBillById(Integer.parseInt(id));
     }
 
+    // 生成随机orderId字符串
+    public static String getRandomString(int length){
 
+        String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random random = new Random();
+        StringBuilder buffer = new StringBuilder();
+
+        for(int i = 0; i < length; i++){
+            int number=random.nextInt(62);
+            buffer.append(str.charAt(number));
+        }
+
+        return buffer.toString();
+    }
+
+    //计算两天之差
+    public static int getDifferenceDays(Date d1, Date d2) {
+        long diff = d2.getTime() - d1.getTime();
+        return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+    }
 }
