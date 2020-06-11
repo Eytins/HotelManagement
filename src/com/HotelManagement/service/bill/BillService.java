@@ -20,7 +20,7 @@ public interface BillService {
     public int getLPrice();
 
     //根据订单id删除订单
-    public int deleteBillById(Integer id);
+    public int deleteBillbyId(String billCode);
 
     //是否已经入住
     public int isCheckIn(Integer id, int flag);

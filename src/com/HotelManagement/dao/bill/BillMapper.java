@@ -11,8 +11,8 @@ public interface BillMapper {
     //用户端：新建订单
     public int addBill(Bill bill);
 
-    //用户端：根据id删除订单信息
-    public int deleteBillById(@Param("billId") Integer id);
+    //根据id删除订单信息
+    public int deleteBillbyId(@Param("billCode") String billCode);
 
     //根据订单编号和房间类型获得包含房间类型和房间规格的订单列表
     public List<Bill> getBillListWithType(@Param("billCode") String billCode, @Param("roomType") Integer roomType);

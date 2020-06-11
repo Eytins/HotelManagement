@@ -35,7 +35,7 @@
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
             <!--todo:这里是从session获取用户名，不一定对-->
-            <script type="text/javascript">document.write($.cookie("userName"));</script>
+            <script type="text/javascript"></script>
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>

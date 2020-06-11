@@ -41,6 +41,11 @@ public class BillServiceImpl implements BillService {
         return this.billMapper.LPrice();
     }
 
+    //根据订单id删除订单
+    public int deleteBillbyId(String billcode) {
+        return this.billMapper.deleteBillbyId(billcode);
+    }
+
     //是否已经入住
     public int isCheckIn(Integer id, int flag) {
         return this.billMapper.isCheckIn(id, flag);

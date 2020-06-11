@@ -33,12 +33,19 @@ public class HotelRoomController {
     @ResponseBody
     public List<HotelType> doRoomSearch(@RequestParam(value = "hotelId") String hotelId) {
 
-        Integer i = null;
+        Integer hotelIdOfInt = null;
         if (hotelId != null) {
-            i = Integer.valueOf(hotelId);
+            hotelIdOfInt = Integer.valueOf(hotelId);
         }
 
-        return hotelTypeService.selectHotelTypeByIdType(null, i);
+        List<HotelType> hotelTypes= hotelTypeService.selectHotelTypeByIdType(null, hotelIdOfInt);
+
+        //todo:添加一个剩余房间数的属性
+        for (int j = 0; j <hotelTypes.size(); j++) {
+            hotelTypes.get(j).setRemainNumber(
+                    hotelTypeService.selectRemainNumber(hotelTypes.get(j).getId(),hotelIdOfInt));
+        }
+        return hotelTypes;
     }
 /*
 * 新增酒店房间类型

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 
 public class HotelType {
 
-    private long id;
+    private Integer id;
     private long hotelId;
 
     public int getRoomType() {
@@ -25,12 +25,21 @@ public class HotelType {
     private java.sql.Timestamp modifyDate;
     private String hotelName;
     private String hotelAddress;
+    private Integer remainNumber;
 
-    public long getId() {
+    public Integer getRemainNumber() {
+        return remainNumber;
+    }
+
+    public void setRemainNumber(Integer remainNumber) {
+        this.remainNumber = remainNumber;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

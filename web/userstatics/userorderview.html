@@ -106,7 +106,42 @@
     hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
-})();</script>
+})();
+
+$("#select").click(function () {
+    var formData = $("#formf").serialize();
+    $.ajax({
+        dataType:"json",
+        url: "http://localhost:8080/HotelManagement_war_exploded/userbillorder/doUserHotelSearch",
+        type: "post",
+        data: formData,
+        success:function(result){
+            var str=""
+            for (i in result) {
+                str += "<tr >" +
+                    "<td id="+i+1+">" + result[i].hotelName +"</td>" +
+                    "<td id="+i+2+">" + result[i].hotelAddress + "</td>" +
+                    "<td id="+i+3+">" + result[i].hotelRoomType+ "</td>" +
+                    "<td id="+i+4+">" + result[i].hotelPeople + "</td>" +
+                    "<td id="+i+5+">" + result[i].hotelPrice + "</td>" +
+                    "<td class='td-manage'>" +
+                    "<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+i+">" +
+                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
+                    "</td>" +
+                    "</tr>"
+            }
+            document.getElementById("data").innerHTML = str;
+        },
+        error:function (result) {
+            alert("请求出错");
+            alert(result);
+        }
+    });
+    return false;
+});
+
+
+</script>
 </body>
 
 </html>

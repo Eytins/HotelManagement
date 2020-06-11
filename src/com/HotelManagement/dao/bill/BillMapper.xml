@@ -27,10 +27,10 @@
     </insert>
 
     <!--根据id删除订单信息-->
-    <delete id="deleteBillById" parameterType="Integer">
+    <delete id="deleteBillbyId" parameterType="String">
         delete
         from bill
-        where id = #{billId}
+        where billCode = #{billCode}
     </delete>
 
     <!--获取订单最高价格-->

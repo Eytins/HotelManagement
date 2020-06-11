@@ -80,8 +80,9 @@ public class BillListController {
 
 
     @RequestMapping(value = "deleteBill", method = {RequestMethod.POST,RequestMethod.GET})
-    public int deleteBill(@RequestParam(value = "id") String id){
-        return this.billService.deleteBillById(Integer.parseInt(id));
+    @ResponseBody
+    public int deleteBill(@RequestParam(value = "billCode") String billCode){
+        return this.billService.deleteBillbyId(billCode);
     }
 
     // 生成随机orderId字符串
