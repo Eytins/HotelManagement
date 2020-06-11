@@ -32,7 +32,7 @@
 
     <select id="selectRemainNumber" resultType="java.lang.Integer">
         select h.hotelRoomNumber -
-               (select count(*) from bill b where b.hotelId = #{billHotelId} and b.roomType = #{roomType})
+               (select count(*) from bill b where b.hotelId = #{hotelId} and b.roomType = #{hotelTypeId})
         from hotelType h,
              bill b
         where h.hotelId = #{hotelId}

@@ -21,8 +21,9 @@
     <!--添加订单-->
     <insert id="addBill" parameterType="Bill">
         insert into bill(billCode, orderId, hotelId, roomType, checkInDate, checkOutDate, isCheckIn, countDays,
-                         totalPrice, isPayment,providerId)
-        values (#{userCode}#{orderId}#{hotelId}#{roomType}#{checkInDate}#{checkOutDate}#{isCheckIn}#{countDays}#{totalPrice}#{providerId})
+                         totalPrice, isPayment, providerId)
+        values (#{billCode}, #{orderId}, #{hotelId}, #{roomType}, #{checkInDate}, #{checkOutDate},
+                #{isCheckIn},#{countDays}, #{totalPrice}, #{isPayment}, #{providerId})
     </insert>
 
     <!--根据id删除订单信息-->
@@ -88,5 +89,4 @@
         </set>
         where id=#{id}
     </update>
-
 </mapper>

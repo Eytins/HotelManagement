@@ -17,10 +17,8 @@ public interface HotelTypeMapper {
     List<HotelType> selectHotelTypeByIdType(@Param("hotelRoomType") String hotelRoomType, @Param("hotelId") Integer hotelId);
 
     //查询剩余房型量
-    int selectRemainNumber(@Param("hotelTypeId") String hotelTypeId,
-                           @Param("hotelId") Integer hotelId,
-                           @Param("roomType") Integer roomType,
-                           @Param("billHotelId") Integer billHotelId);
+    int selectRemainNumber(@Param("hotelTypeId") Integer hotelTypeId,
+                           @Param("hotelId") Integer hotelId);
 
     //用户查询
     List<HotelType> selectByUser(

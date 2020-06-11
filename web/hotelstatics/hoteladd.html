@@ -108,6 +108,10 @@ $("#select").click(function () {
         error: function (result) {
             alert("请求出错");
             alert(result);
+        },
+        error: function (result) {
+            alert("运行成功");
+            result;
         }
     });
     return false;

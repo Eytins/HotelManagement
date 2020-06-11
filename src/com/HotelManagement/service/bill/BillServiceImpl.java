@@ -15,14 +15,20 @@ public class BillServiceImpl implements BillService {
     private BillMapper billMapper;
 
     @Override
-    //增加订单
+    //用户端：新建订单
     public int addBill(Bill bill) {
         return this.billMapper.addBill(bill);
     }
 
-    //通过订单号和房间类型返回带有房间名和房间规格的表
-    public List<Bill> getBillByBillCode(String billCode,Integer roomType) {
-        return this.billMapper.getBillByBillCode(billCode, roomType);
+    //用户端：根据id删除订单信息
+    public int deleteBillById(Integer id) {
+        return this.billMapper.deleteBillById(id);
+    }
+
+    //用户端: 根据Date、酒店名称、地址获取订单列表
+    @Override
+    public List<Bill> getBillListAndHotelNameByDateAndHotelNameAndAddress(Date date, String hotelName, String hotelAddress) {
+        return billMapper.getBillListAndHotelNameByDateAndHotelNameAndAddress(date, hotelName, hotelAddress);
     }
 
     //获取订单价格最高值
@@ -45,8 +51,8 @@ public class BillServiceImpl implements BillService {
         return this.billMapper.isCheckIn(id, flag);
     }
 
-    @Override
-    public List<Bill> getBillListAndHotelNameByDateAndHotelNameAndAddress(Date date, String hotelName, String hotelAddress) {
-        return billMapper.getBillListAndHotelNameByDateAndHotelNameAndAddress(date, hotelName, hotelAddress);
+    //通过订单号和房间类型返回带有房间名和房间规格的表
+    public List<Bill> getBillByBillCode(String billCode,Integer roomType) {
+        return this.billMapper.getBillByBillCode(billCode, roomType);
     }
 }
