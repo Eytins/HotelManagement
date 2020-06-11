@@ -33,14 +33,18 @@ public class UserBillOrderController {
      * Created by Eytins
      * Edit by Thousand
      */
-    @RequestMapping(value = "doUserHotelSearch",method = {RequestMethod.POST,RequestMethod.GET},produces = "text/html;charset=utf-8")
+    @RequestMapping(value = "doUserHotelSearch",method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
-    public String doSerch(@RequestParam(value = "priceMin", required = false, defaultValue = "200") String priceMin,
+    public List<HotelType> doSerch(@RequestParam(value = "priceMin", required = false, defaultValue = "200") String priceMin,
                                    @RequestParam(value = "priceMax", required = false, defaultValue = "20000") String priceMax,
                                    @RequestParam(value = "hotelName", required = false) String hotelName,
                                    @RequestParam(value = "hotelAddress", required = false) String hotelAddress) {
         int priceMin1 = Integer.parseInt(priceMin);
         int priceMax1 = Integer.parseInt(priceMax);
-        return new Gson().toJson(this.hotelTypeService.selectByUser(priceMin1, priceMax1, hotelName, hotelAddress));
+        HotelType hotelType ;
+        List<HotelType> list = this.hotelTypeService.selectByUser(priceMin1, priceMax1, hotelName, hotelAddress);
+
+
+        return list;
     }
 }

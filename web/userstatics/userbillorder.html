@@ -130,19 +130,6 @@
                         </tr>
                         </thead>
                         <tbody id="data">
-                        <tr>
-                            <td>未支付</td>
-                            <td>未发货</td>
-                            <td>其他方式</td>
-                            <td>申通物流</td>
-                            <td>2017-08-17 18:22</td>
-                            <td class="td-manage">
-                                <button class="layui-btn layui-btn-warm layui-btn-xs"
-                                        onclick="xadmin.open('预定','userorderview.html',600,500)"><i
-                                        class="layui-icon">&#xe642;</i>预定
-                                </button>
-                            </td>
-                        </tr>
                         </tbody>
                     </table>
                 </div>
@@ -243,22 +230,23 @@ $("#select").click(function () {
         type: "post",
         data: formData,
         success:function(result){
+            var str=""
             console.log(result)
             for (i in result) {
-                str = "<tr>" +
-                    "<td>" + result[0].hotelName + "</td>" +
-                    "<td>" + result[0].hotelAddress + "</td>" +
-                    "<td>" + result[i].hotelRoomType + "</td>" +
+                str += "<tr>" +
+                    "<td>" + result[i].hotelName +"</td>" +
+                    "<td>" + result[i].hotelAddress + "</td>" +
+                    "<td>" + result[i].hotelRoomType+ "</td>" +
                     "<td>" + result[i].hotelPeople + "</td>" +
                     "<td>" + result[i].hotelPrice + "</td>" +
-                    /*"<td class='td-manage'>" +
+                    "<td class='td-manage'>" +
                     "<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='xadmin.open(&quot;预定&quot;,&quot;userorderview.html&quot;, 600 , 500)'>" +
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
-                    "<tton>" +*/
+                    "<button>" +
                     "</td>" +
                     "</tr>"
-                document.getElementById("data").innerHTML = str;
             }
+            document.getElementById("data").innerHTML = str;
         },
         error:function (result) {
             alert("请求出错");
