@@ -174,18 +174,18 @@ function delAll(argument) {
             url: "http://localhost:8080/HotelManagement_war_exploded/billlist/doBillSearch",
             type: "post",
             data: formData2,
-            success:function(result2){
+            success:function(result){
                 var str=""
-                console.log(result2)
-                for (i in result2) {
-                    str = "<tr>" +
-                        "<td id='1'>" + result2[i].billCode +"</td>" +
-                        "<td id='2'>" + result2[i].orderId + "</td>" +
-                        "<td id='3'>" + result2[i].hotelId+ "</td>" +
-                        "<td id='4'>" + result2[i].roomType + "</td>" +
-                        "<td id='5'>" + result2[i].checkInDate + "</td>" +
-                        "<td id='6'>" + result2[i].countDays + "</td>" +
-                        "<td id='7'>" + result2[i].totalPrice + "</td>"+
+                console.log(result)
+                for (i in result) {
+                    str += "<tr>" +
+                        "<td id="+i+1+">" + result[i].billCode +"</td>" +
+                        "<td id="+i+2+">" + result[i].orderId + "</td>" +
+                        "<td id="+i+3+">" + result[i].hotelId+ "</td>" +
+                        "<td id="+i+4+">" + result[i].roomType + "</td>" +
+                        "<td id="+i+5+">" + result[i].checkInDate + "</td>" +
+                        "<td id="+i+6+">" + result[i].countDays + "</td>" +
+                        "<td id="+i+5+">" + result[i].totalPrice + "</td>"+
                     "<td class='td-manage'>" +
                     /*"<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+i+">" +*/
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "删除" +

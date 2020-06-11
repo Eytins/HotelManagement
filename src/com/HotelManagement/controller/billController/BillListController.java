@@ -29,9 +29,7 @@ public class BillListController {
     * */
     public List<Bill> doBillSearch(@RequestParam(value = "billCode", required = false) String billCode,
                                      @RequestParam(value = "roomType", required = false,defaultValue = "1") String roomType){
-
         int roomType1 = Integer.parseInt(roomType);
-        logger.debug(this.billService.getBillByBillCode(billCode,roomType1));
         return this.billService.getBillByBillCode(billCode,roomType1);
     }
 
