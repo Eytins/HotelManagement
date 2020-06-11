@@ -40,7 +40,8 @@ public class BillListController {
     }
 
     @RequestMapping(value ="addNewBill" , method = {RequestMethod.POST,RequestMethod.GET})
-    public int addNewBill(@RequestParam(value = "hotelId") Integer hotelId,
+    @ResponseBody
+    public int addNewBill(@RequestParam(value = "hotelName") String hotelName,
                           @RequestParam(value = "roomType") Integer roomType,
                           @RequestParam(value = "checkInDate") String checkInDate,
                           @RequestParam(value = "checkOutDate") String checkOutDate,
@@ -49,7 +50,6 @@ public class BillListController {
 
         Bill bill= new Bill();
         User loginUser = (User) session.getAttribute(Constants.USER_SESSION);
-
         Date inDate = null;
         Date outDate = null;
         try {
@@ -58,6 +58,7 @@ public class BillListController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        int hotelId = this.billService.getHotelId(hotelName);
 
         bill.setBillCode(getRandomString(12));
         bill.setOrderId(Integer.parseInt(session.getId()));

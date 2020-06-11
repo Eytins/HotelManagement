@@ -32,4 +32,6 @@ public interface BillMapper {
 
     //根据订单编号和房间类型获得订单列表
     public List<Bill> getBillByBillCode(@Param("billCode") String billCode, @Param("roomType")Integer roomType);
+
+    public Integer getHotelId(String hotelName);
 }

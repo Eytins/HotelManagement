@@ -47,6 +47,11 @@ public class BillServiceImpl implements BillService {
         return this.billMapper.isCheckIn(id, flag);
     }
 
+    @Override
+    public int getHotelId(String hotelName) {
+        return this.billMapper.getHotelId(hotelName);
+    }
+
     //通过订单号和房间类型返回带有房间名和房间规格的表
     public List<Bill> getBillByBillCode(String billCode,Integer roomType) {
         return this.billMapper.getBillByBillCode(billCode, roomType);

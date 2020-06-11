@@ -25,6 +25,8 @@ public interface BillService {
     //是否已经入住
     public int isCheckIn(Integer id, int flag);
 
+    public int getHotelId(String hotelName);
+
     //根据时间、酒店名称、酒店地址获取订单和酒店
     List<Bill> getBillListAndHotelNameByDateAndHotelNameAndAddress(Date date, String hotelName, String hotelAddress);
 }

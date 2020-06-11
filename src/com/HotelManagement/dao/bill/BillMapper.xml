@@ -73,6 +73,10 @@
         </if>
     </select>
 
+    <select id="getHotelId" resultType="java.lang.Integer">
+        select hotelId from hotel where hotelName=#{hotelName}
+    </select>
+
     <resultMap id="hid" type="Bill">
         <result property="hotelName" column="hotelName"/>
     </resultMap>
