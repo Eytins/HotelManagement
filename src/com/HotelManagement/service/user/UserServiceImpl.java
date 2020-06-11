@@ -46,4 +46,8 @@ public class UserServiceImpl implements UserService {
         return   this.userMapper.getRoleList();
 
     }
+
+    public  int deleteUserByUserCode( String userCode){
+        return  this.userMapper.deleteUserByUserCode(userCode);
+    }
 }

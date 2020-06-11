@@ -51,4 +51,10 @@
         select * from role
     </select>
 
+
+    <delete id="deleteUserByUserCode" parameterType="String">
+        delete
+        from user
+        where userCode = #{userCode}
+    </delete>
 </mapper>

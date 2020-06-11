@@ -94,12 +94,12 @@ public class HotelRoomController {
     @RequestMapping(value = "editHotelRoom", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public int editRoom(@RequestParam(value = "roomId") String roomTypeId,
-                        @RequestParam(value = "price") String price,
+                        @RequestParam(value = "roomPrice") String price,
                         @RequestParam(value = "numberOfPerson") String numberOfPerson) {
 
 
         Integer roomTypeIdOfInt = null;
-        if (price != null) {
+        if (roomTypeId != null) {
             roomTypeIdOfInt = Integer.valueOf(roomTypeId);
         }
 
