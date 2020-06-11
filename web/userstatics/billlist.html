@@ -194,15 +194,15 @@ $("#search").click(function () {
             console.log(result)
             for (i in result) {
                 str += "<tr>" +
-                    "<td id='1'>" + result[i].billCode + "</td>" +
-                    "<td id='2'>" + result[i].orderId + "</td>" +
-                    "<td id='3'>" + result[i].hotelId + "</td>" +
-                    "<td id='4'>" + result[i].roomType + "</td>" +
-                    "<td id='5'>" + result[i].checkInDate + "</td>" +
-                    "<td id='6'>" + result[i].countDays + "</td>" +
-                    "<td id='7'>" + result[i].totalPrice + "</td>" +
+                    "<td id="+i+1+">" + result[i].billCode + "</td>" +
+                    "<td id="+i+2+">" + result[i].orderId + "</td>" +
+                    "<td id="+i+3+">" + result[i].hotelId + "</td>" +
+                    "<td id="+i+4+">" + result[i].roomType + "</td>" +
+                    "<td id="+i+5+">" + result[i].checkInDate + "</td>" +
+                    "<td id="+i+6+">" + result[i].countDays + "</td>" +
+                    "<td id="+i+7+">" + result[i].totalPrice + "</td>" +
                     "<td class='td-manage'>" +
-                    "<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='addorder()'>" +
+                    "<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='addorder()' id="+i+">"+
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
                     "</td>" +
                     "</tr>"

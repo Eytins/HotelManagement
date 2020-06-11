@@ -15,7 +15,7 @@ public interface BillMapper {
     public int addBill(Bill bill);
 
     //根据id删除订单信息
-    public int deleteBillbyId(@Param("billId") Integer id);
+    public int deleteBillbyId(@Param("billCode") String billCode);
 
     //获取订单价格最高值
     public int HPrice();

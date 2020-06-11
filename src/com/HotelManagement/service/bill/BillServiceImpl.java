@@ -36,8 +36,8 @@ public class BillServiceImpl implements BillService {
     }
 
     //根据订单id删除订单
-    public int deleteBillbyId(Integer id) {
-        return this.billMapper.deleteBillbyId(id);
+    public int deleteBillbyId(String billcode) {
+        return this.billMapper.deleteBillbyId(billcode);
     }
 
     //是否已经入住
