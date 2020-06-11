@@ -28,7 +28,7 @@ public class BillListController {
     * 订单的查询
     * */
     public List<Bill> doBillSearch(@RequestParam(value = "billCode", required = false) String billCode,
-                                     @RequestParam(value = "roomType", required = false,defaultValue = "1") Integer roomType){
+                                     @RequestParam(value = "roomType", required = false) Integer roomType){
         return this.billService.getBillByBillCode(billCode,roomType);
     }
 

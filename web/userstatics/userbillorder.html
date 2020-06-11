@@ -251,7 +251,7 @@ $("#select").click(function () {
     var formData = $("#formf").serialize();
     $.ajax({
         dataType:"json",
-        url: "http://localhost:8080/HotelManagement_war_exploded/billorder/doUserHotelSearch",
+        url: "http://localhost:8080/HotelManagement_war_exploded/userbillorder/doUserHotelSearch",
         type: "post",
         data: formData,
         success:function(result){

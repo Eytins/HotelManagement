@@ -51,7 +51,7 @@
                         </div>
 
                         <div class="layui-input-inline layui-show-xs-block">
-                            <button class="layui-btn" lay-filter="sreach" lay-submit="">
+                            <button class="layui-btn" lay-filter="sreach" id="select" lay-submit="">
                                 <i class="layui-icon">&#xe615;</i></button>
                         </div>
 
@@ -60,7 +60,7 @@
 
                 <div class="layui-card-header">
                     <!--todo:这里跳转到hoteladd，不需要带参数-->
-                    <button class="layui-btn" onclick="xadmin.open('添加用户','useradd.html',600,400)"><i
+                    <button class="layui-btn" onclick="xadmin.open('添加订单','useradd.html',600,400)"><i
                             class="layui-icon"></i>添加
                     </button>
                 </div>
@@ -197,11 +197,11 @@ function delAll(argument) {
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
 
-    $("#search").click(function () {
+    $("#select").click(function () {
         var formData = $("#search").serialize();
         $.ajax({
             dataType:"json",
-            url: "http://localhost:8080/HotelManagement_war_exploded/billlist/doBillSearch",
+            url: "http://localhost:8080/HotelManagement_war_exploded/billlist/doBillSearch.html",
             type: "post",
             data: formData,
             success:function(result){
