@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="statics/css/login.css">
     <link rel="stylesheet" href="statics/css/xadmin.css">
     <script type="text/javascript" src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <script src="statics/lib/layui/layui.js" charset="utf-8"></script>
     <!--[if lt IE 9]>
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
@@ -26,7 +28,7 @@
 
     <form method="post" class="layui-form" action="${pageContext.request.contextPath}/dologin">
         <div class="info">${error}</div>
-        <input name="username" placeholder="用户名" type="text" lay-verify="required" class="layui-input">
+        <input  id="username"  name="username" placeholder="用户名" type="text" lay-verify="required" class="layui-input">
         <hr class="hr15">
         <input name="password" lay-verify="required" placeholder="密码" type="password" class="layui-input">
         <hr class="hr15">
@@ -39,39 +41,15 @@
         </a>
         <hr class="hr20">
     </form>
-
 </div>
+<script>
 
-<%--这里是原框架中用来进行json前后端分离的jsp语句，现在改为上面的表单提交，具体json方法有待查询--%>
+    function saveCooike() {
+        $.removeCookie("userName");
+        $.cookie("userName",document.getElementById("username").innerText);
+        console.log(document.getElementById("username").innerText);
+    }
 
-<%--<script>--%>
-<%--    $(function () {--%>
-<%--        layui.use('form', function () {--%>
-<%--            var form = layui.form;--%>
-<%--            // layer.msg('玩命卖萌中', function(){--%>
-<%--            //   //关闭后的操作--%>
-<%--            //   });--%>
-<%--            //监听提交--%>
-<%--            form.on('submit(login)', function (data) {--%>
-<%--                // alert(888)--%>
-<%--                layer.msg(JSON.stringify(data.field), function () {--%>
-<%--                    location.href = 'indexhotel.jsp'--%>
-<%--                });--%>
-<%--                return false;--%>
-<%--            });--%>
-<%--        });--%>
-<%--    })--%>
-<%--</script>--%>
-<%--<!-- 底部结束 -->--%>
-<%--<script>--%>
-<%--    //百度统计可去掉--%>
-<%--    var _hmt = _hmt || [];--%>
-<%--    (function () {--%>
-<%--        var hm = document.createElement("script");--%>
-<%--        hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";--%>
-<%--        var s = document.getElementsByTagName("script")[0];--%>
-<%--        s.parentNode.insertBefore(hm, s);--%>
-<%--    })();--%>
-<%--</script>--%>
+</script>
 </body>
 </html>

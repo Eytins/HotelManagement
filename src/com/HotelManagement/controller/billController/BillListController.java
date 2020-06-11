@@ -28,8 +28,9 @@ public class BillListController {
     * 订单的查询
     * */
     public List<Bill> doBillSearch(@RequestParam(value = "billCode", required = false) String billCode,
-                                     @RequestParam(value = "roomType", required = false,defaultValue = "1") Integer roomType){
-        return this.billService.getBillByBillCode(billCode,roomType);
+                                     @RequestParam(value = "roomType", required = false,defaultValue = "1") String roomType){
+        int roomType1 = Integer.parseInt(roomType);
+        return this.billService.getBillByBillCode(billCode,roomType1);
     }
 
     @RequestMapping(value ="addNewBill" , method = {RequestMethod.POST,RequestMethod.GET})

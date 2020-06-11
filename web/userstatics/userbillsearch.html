@@ -51,17 +51,16 @@
                     <table class="layui-table layui-form">
                         <thead>
                         <tr>
-                            <th>预定编号</th>
-                            <th>酒店</th>
-                            <th>房型</th>
-                            <th>入住时间</th>
-                            <th>退房时间</th>
-                            <th>入住状态</th>
-                            <th>入住天数</th>
-                            <th>订单总价</th>
-                            <th>是否支付</th>
-                            <th>下单时间</th>
-                            <th>操作</th>
+                            <th width="10%">预定编号</th>
+                            <th width="10%">酒店</th>
+                            <th width="5%">房型</th>
+                            <th width="10%">入住时间</th>
+                            <th width="10%">退房时间</th>
+                            <th  width="10%">入住状态</th>
+                            <th  width="10%">入住天数</th>
+                            <th width="10%">订单总价</th>
+                            <th width="10%">操作</th>
+
                         </tr>
                         </thead>
                         <thead id="data">
@@ -158,9 +157,31 @@ function delAll(argument) {
         });
 }
 
+function addorder(){
+    console.log((event.target.id));
+    $.removeCookie("hotelName");
+    $.removeCookie("hotelAddress");
+    $.removeCookie("hotelRoomType");
+    $.removeCookie("hotelPeople");
+    $.removeCookie("hotelPrice");
+    if(event.target.id==0){
+        $.cookie("hotelName",document.getElementById("01").innerText);
+        $.cookie("hotelAddress",document.getElementById("02").innerText);
+        $.cookie("hotelRoomType",document.getElementById("03").innerText);
+        $.cookie("hotelPeople",document.getElementById("04").innerText);
+        $.cookie("hotelPrice",document.getElementById("05").innerText);
+    }else{
+        $.cookie("hotelName",document.getElementById((event.target.id*10+1)).innerText);
+        $.cookie("hotelAddress",document.getElementById((event.target.id*10)+2).innerText);
+        $.cookie("hotelRoomType",document.getElementById((event.target.id*10)+3).innerText);
+        $.cookie("hotelPeople",document.getElementById((event.target.id*10)+4).innerText);
+        $.cookie("hotelPrice",document.getElementById((event.target.id*10)+5).innerText);
+    }
+    xadmin.open("预定","userorderview.html",600 , 500);
+}
+
 $("#select").click(function () {
     var formData1 = $("#search").serializeArray();
-
     console.log(formData1);
     $.ajax({
         dataType: "json",
@@ -168,32 +189,30 @@ $("#select").click(function () {
         type: "post",
         contentType: "application/json",
         data: formData1,
-        success: function (result1) {
+        success: function (result) {
             var str = ""
-            for (i in result1) {
-                str = "<tr>" +
-                    "<td>" + result1[i].billCode + "</td>" +
-                    "<td>" + result1[i].hotelName + "</td>" +
-                    "<td>" + result1[i].roomType + "</td>" +
-                    "<td>" + result1[i].checkInDate + "</td>" +
-                    "<td>" + result1[i].checkOutDate + "</td>" +
-                    "<td>" + result1[i].isCheckIn + "</td>" +
-                    "<td>" + result1[i].countDays + "</td>" +
-                    "<td>" + result1[i].totalPrice + "</td>" +
-                    "<td>" + result1[i].isPayment + "</td>" +
-                    "<td>" + result1[i].creationDate + "</td>" +
+            for (i in result) {
+                str += "<tr>" +
+                    "<td id="+i+1+">" + result[i].billCode + "</td>" +
+                    "<td id="+i+2+">" + result[i].hotelName + "</td>" +
+                    "<td id="+i+3+">" + result[i].roomType + "</td>" +
+                    "<td id="+i+4+">" + result[i].checkInDate + "</td>" +
+                    "<td id="+i+5+">" + result[i].checkOutDate + "</td>" +
+                    "<td id="+i+6+">" + result[i].isCheckIn + "</td>" +
+                    "<td id="+i+7+">" + result[i].countDays + "</td>" +
+                    "<td id="+i+8+">" + result[i].totalPrice + "</td>" +
                     "<td class='td-manage'>" +
-                    /*"<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='xadmin.open(&quot;预定&quot;,&quot;userorderview.html&quot;, 600 , 500)'>" +*/
+                    /*"<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+i+">" +*/
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "删除" +
                     "</button>" +
                     "</td>" +
                     "</tr>"
-                document.getElementById("data").innerHTML = str;
             }
+            document.getElementById("data").innerHTML = str;
         },
-        error: function (result1) {
+        error: function (result) {
             alert("请求出错");
-            alert(result1);
+            alert(result);
         }
     });
     return false;

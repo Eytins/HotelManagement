@@ -6,14 +6,14 @@
 
 
     <!--根据订单编号和房间类型获得订单列表-->
-    <select id="getBillByBillCode" resultType="list">
-        select b.* from bill b
+    <select id="getBillByBillCode" resultType="Bill">
+        select * from bill
         <where>
             <if test="billCode!=null and billCode!=''">
-                and b.billCode like CONCAT('%',#{billCode},'%')
+                and billCode like CONCAT('%',#{billCode},'%')
             </if>
             <if test="roomType!=null and roomType!=''">
-                and b.roomType like CONCAT('%',#{roomType},'%')
+                and roomType like CONCAT('%',#{roomType},'%')
             </if>
         </where>
     </select>
