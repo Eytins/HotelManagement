@@ -38,7 +38,7 @@
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>
-                    <a onclick="xadmin.open('最大化','http://www.baidu.com','','')">
+                    <a onclick="xadmin.open('最大化','http://www.baidu.com','','',true)">
                         <i class="iconfont">&#xe6a2;</i>弹出最大化</a></dd>
                 <dd>
                     <a onclick="xadmin.open('弹出自动宽高','http://www.baidu.com')">
@@ -79,18 +79,18 @@
     <div id="side-nav">
         <ul id="nav">
             <li>
-                 <a onclick="xadmin.add_tab('用户管理','userstatics/userlist.html')">
-                <i class="iconfont left-nav-li" lay-tips="用户管理">&#xe723;</i>
-                <cite>用户管理</cite>
-                <i class="iconfont nav_right">&#xe697;</i></a>
+                <a onclick="xadmin.add_tab('用户管理','adminstatics/userlist.html')">
+                    <i class="iconfont left-nav-li" lay-tips="用户管理">&#xe723;</i>
+                    <cite>用户管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i></a>
 
             </li>
 
             <li>
-                 <a onclick="xadmin.add_tab('订单管理','userstatics/userbillsearch.html')">
-                <i class="iconfont left-nav-li" lay-tips="订单管理">&#xe723;</i>
-                <cite>订单管理</cite>
-                <i class="iconfont nav_right">&#xe697;</i></a>
+                <a onclick="xadmin.add_tab('订单管理','userstatics/billlist.html')">
+                    <i class="iconfont left-nav-li" lay-tips="订单管理">&#xe723;</i>
+                    <cite>订单管理</cite>
+                    <i class="iconfont nav_right">&#xe697;</i></a>
 
             </li>
 
@@ -109,7 +109,6 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
 
             </li>
-
 
         </ul>
     </div>

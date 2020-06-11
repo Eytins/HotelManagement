@@ -29,7 +29,7 @@ public interface HotelTypeService {
 
     //更改房型信息
     int modifyRoomType(Integer roomTypeId,
-                       long price,
+                       Integer price,
                        Integer numberOfPerson);
 
 }
