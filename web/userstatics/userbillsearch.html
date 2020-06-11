@@ -168,7 +168,7 @@ $("#select").click(function () {
     console.log(formData1);
     $.ajax({
         dataType: "json",
-        url: "http://localhost:8080/HotelManagement_war_exploded/userBillSearch/doUserHotelSearch.html",
+        url: "http://localhost:8080/HotelManagement_war_exploded/userbillsearch/doUserHotelSearch",
         type: "post",
         contentType: "application/json",
         data: formData1,
@@ -200,6 +200,7 @@ $("#select").click(function () {
             alert(result1);
         }
     });
+    return false;
 });
 
 </script>
