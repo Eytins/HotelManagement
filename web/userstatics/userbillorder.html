@@ -227,15 +227,23 @@ function delAll(argument) {
 function addorder(){
 console.log((event.target.id));
     $.removeCookie("hotelName");
-    $.cookie("hotelName",document.getElementById((event.target.id*10+1)).innerText);
     $.removeCookie("hotelAddress");
-    $.cookie("hotelAddress",document.getElementById((event.target.id*10)+2).innerText);
     $.removeCookie("hotelRoomType");
-    $.cookie("hotelRoomType",document.getElementById((event.target.id*10)+3).innerText);
     $.removeCookie("hotelPeople");
-    $.cookie("hotelPeople",document.getElementById((event.target.id*10)+4).innerText);
     $.removeCookie("hotelPrice");
+    if(event.target.id==0){
+        $.cookie("hotelName",document.getElementById("01").innerText);
+        $.cookie("hotelAddress",document.getElementById("02").innerText);
+        $.cookie("hotelRoomType",document.getElementById("03").innerText);
+        $.cookie("hotelPeople",document.getElementById("04").innerText);
+        $.cookie("hotelPrice",document.getElementById("05").innerText);
+    }else{
+    $.cookie("hotelName",document.getElementById((event.target.id*10+1)).innerText);
+    $.cookie("hotelAddress",document.getElementById((event.target.id*10)+2).innerText);
+    $.cookie("hotelRoomType",document.getElementById((event.target.id*10)+3).innerText);
+    $.cookie("hotelPeople",document.getElementById((event.target.id*10)+4).innerText);
     $.cookie("hotelPrice",document.getElementById((event.target.id*10)+5).innerText);
+    }
     xadmin.open("预定","userorderview.html",600 , 500);
 }
 
@@ -249,7 +257,7 @@ $("#select").click(function () {
         success:function(result){
             var str=""
             for (i in result) {
-                str += "<tr class='modifyID'>" +
+                str += "<tr >" +
                     "<td id="+i+1+">" + result[i].hotelName +"</td>" +
                     "<td id="+i+2+">" + result[i].hotelAddress + "</td>" +
                     "<td id="+i+3+">" + result[i].hotelRoomType+ "</td>" +
