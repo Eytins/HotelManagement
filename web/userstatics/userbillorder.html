@@ -225,6 +225,7 @@ function delAll(argument) {
 }
 
 function addorder(){
+
     $.removeCookie("hotelName");
     $.cookie("hotelName",document.getElementById((event.target.id)-50).innerText);
     $.removeCookie("hotelAddress");
@@ -234,7 +235,7 @@ function addorder(){
     $.removeCookie("hotelPeople");
     $.cookie("hotelPeople",document.getElementById((event.target.id)-20).innerText);
     $.removeCookie("hotelPrice");
-    $.cookie("hotelPrice ",document.getElementById((event.target.id)-10).innerText);
+    $.cookie("hotelPrice",document.getElementById((event.target.id)-10).innerText);
     xadmin.open("预定","userorderview.html",600 , 500);
 }
 
