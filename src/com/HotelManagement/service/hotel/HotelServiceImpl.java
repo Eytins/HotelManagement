@@ -36,4 +36,9 @@ public class HotelServiceImpl implements HotelService {
     public List<Bill> searchBillByHotel(int isPayment, int isCheckIn) {
         return this.hotelMapper.searchBillByHotel(isPayment, isCheckIn);
     }
+
+    @Override
+    public int checkIn(int billId) {
+        return this.hotelMapper.checkIn(billId);
+    }
 }

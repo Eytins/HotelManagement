@@ -41,4 +41,10 @@
             </if>
         </where>
     </select>
+
+    <update id="checkIn" parameterType="int">
+        update HotelManagement.bill
+        set isCheckIn = 1
+        where id = #{billId}
+    </update>
 </mapper>

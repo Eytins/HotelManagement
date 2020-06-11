@@ -18,4 +18,7 @@ public interface HotelService {
 
     // 酒店端：查询订单
     List<Bill> searchBillByHotel(int isPayment, int isCheckIn);
+
+    //办理入住
+    int checkIn(int billId);
 }

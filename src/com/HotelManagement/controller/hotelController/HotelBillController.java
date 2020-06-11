@@ -28,11 +28,16 @@ public class HotelBillController {
 
     @RequestMapping(value = "searchBillByHotel", method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
-    public List<Bill> searchBillByHotel(@RequestParam(value = "isPayment") String isPayment,
-                                        @RequestParam(value = "isCheckIn") String isCheckIn){
+    public List<Bill> searchBillByHotel(@RequestParam(value = "isPayment", required = false) String isPayment,
+                                        @RequestParam(value = "isCheckIn", required = false) String isCheckIn){
 
         return this.hotelService.searchBillByHotel(Integer.parseInt(isPayment),
                                                    Integer.parseInt(isCheckIn));
     }
 
+    @RequestMapping(value = "checkIn", method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
+    public int checkIn(@RequestParam(value = "billId") String billId){
+        return this.hotelService.checkIn(Integer.parseInt(billId));
+    }
 }

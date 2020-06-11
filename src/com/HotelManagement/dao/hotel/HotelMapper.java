@@ -20,4 +20,7 @@ public interface HotelMapper {
     // 酒店端：查询订单
     List<Bill> searchBillByHotel(@Param("isPayment") int isPayment,
                                  @Param("isCheckIn") int isCheckIn);
+
+    // 通过billId办理入住
+    int checkIn(@Param("billId") int billId);
 }
