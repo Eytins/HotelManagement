@@ -20,10 +20,6 @@ public class BillServiceImpl implements BillService {
         return this.billMapper.addBill(bill);
     }
 
-    //用户端：根据id删除订单信息
-    public int deleteBillById(Integer id) {
-        return this.billMapper.deleteBillById(id);
-    }
 
     //用户端: 根据Date、酒店名称、地址获取订单列表
     @Override
@@ -39,6 +35,11 @@ public class BillServiceImpl implements BillService {
     //获取订单价格最低值
     public int getLPrice() {
         return this.billMapper.LPrice();
+    }
+
+    //根据订单id删除订单
+    public int deleteBillbyId(String billcode) {
+        return this.billMapper.deleteBillbyId(billcode);
     }
 
     //是否已经入住

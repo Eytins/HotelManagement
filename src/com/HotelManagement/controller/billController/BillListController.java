@@ -5,7 +5,6 @@ import com.HotelManagement.pojo.User;
 import com.HotelManagement.service.bill.BillService;
 import com.HotelManagement.tools.Constants;
 import org.apache.log4j.Logger;
-import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
-import java.sql.Date;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
@@ -40,25 +40,35 @@ public class BillListController {
     }
 
     @RequestMapping(value ="addNewBill" , method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
     public int addNewBill(@RequestParam(value = "hotelId") Integer hotelId,
                           @RequestParam(value = "roomType") Integer roomType,
-                          @RequestParam(value = "checkInDate") Date checkInDate,
-                          @RequestParam(value = "checkOutDate") Date checkOutDate,
+                          @RequestParam(value = "checkInDate") String checkInDate,
+                          @RequestParam(value = "checkOutDate") String checkOutDate,
                           @RequestParam(value = "totalPrice") Integer totalPrice,
                           HttpSession session) {
-//        billCode, orderId, hotelId, roomType, checkInDate, checkOutDate, isCheckIn, countDays,
-//                totalPrice, isPayment, providerId
+
         Bill bill= new Bill();
         User loginUser = (User) session.getAttribute(Constants.USER_SESSION);
 
+        Date inDate = null;
+        Date outDate = null;
+        try {
+            inDate = new SimpleDateFormat("yyyy-MM-dd").parse(checkInDate);
+            outDate = new SimpleDateFormat("yyyy-MM-dd").parse(checkOutDate);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
         bill.setBillCode(getRandomString(12));
-        bill.setOrderId(Integer.parseInt(session.getId()));
+        bill.setOrderId((int) loginUser.getId());
         bill.setHotelId(hotelId);
         bill.setRoomType(roomType);
-        bill.setCheckInDate(checkInDate);
-        bill.setCheckOutDate(checkOutDate);
+        bill.setCheckInDate(inDate);
+        bill.setCheckOutDate(outDate);
         bill.setIsCheckIn(0);
         bill.setIsPayment(2);
+        bill.setCreationDate(new Date());
         bill.setCountDays(getDifferenceDays(checkInDate,checkOutDate));
         bill.setTotalPrice(totalPrice);
         bill.setTotalPrice(totalPrice);
@@ -71,8 +81,9 @@ public class BillListController {
 
 
     @RequestMapping(value = "deleteBill", method = {RequestMethod.POST,RequestMethod.GET})
-    public int deleteBill(@RequestParam(value = "id") String id){
-        return this.billService.deleteBillById(Integer.parseInt(id));
+    @ResponseBody
+    public int deleteBill(@RequestParam(value = "billCode") String billCode){
+        return this.billService.deleteBillbyId(billCode);
     }
 
     // 生成随机orderId字符串
@@ -91,8 +102,9 @@ public class BillListController {
     }
 
     //计算两天之差
-    public static int getDifferenceDays(Date d1, Date d2) {
-        long diff = d2.getTime() - d1.getTime();
-        return (int) TimeUnit.DAYS.convert(diff, TimeUnit.MILLISECONDS);
+    public static int getDifferenceDays(String in, String out) {
+        int a = Integer.parseInt(in.substring(in.length()-1, in.length()));
+        int b = Integer.parseInt(out.substring(out.length()-1, out.length()));
+        return b-a;
     }
 }

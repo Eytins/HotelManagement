@@ -24,7 +24,7 @@
 <div class="layui-fluid">
     <div class="layui-row">
         <!--todo:action要改-->
-        <form id="newOrder" class="layui-form">
+        <form id="newOrder" class="layui-form" id="formf">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">酒店名称</label>
@@ -71,7 +71,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <!--todo:这里按钮是否起作用了？-->
-                <button class="layui-btn" lay-submit="" type="submit">预定</button>
+                <button class="layui-btn" lay-submit="" type="submit" id="select">预定</button>
             </div>
         </form>
     </div>
@@ -106,7 +106,31 @@
     hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
-})();</script>
+})();
+
+$("#select").click(function () {
+    var formData = $("#formf").serialize();
+    $.ajax({
+        dataType:"json",
+        url: "http://localhost:8080/HotelManagement_war_exploded/userbillorder/addNewBill",
+        type: "post",
+        data: formData,
+        success:function(result){
+            var str=""
+            for (i in result) {
+            }
+
+        },
+        error:function (result) {
+            alert("请求出错");
+            alert(result);
+        }
+    });
+    return false;
+});
+
+
+</script>
 </body>
 
 </html>
