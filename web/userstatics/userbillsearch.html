@@ -59,9 +59,8 @@
                             <th  width="10%">入住状态</th>
                             <th  width="10%">入住天数</th>
                             <th width="10%">订单总价</th>
-                            <th width="10%">是否支付</th>
-                            <th width="10%">下单时间</th>
-                            <th width="5%">操作</th>
+                            <th width="10%">操作</th>
+
                         </tr>
                         </thead>
                         <thead id="data">
@@ -203,8 +202,6 @@ $("#select").click(function () {
                     "<td>" + result1[i].isCheckIn + "</td>" +
                     "<td>" + result1[i].countDays + "</td>" +
                     "<td>" + result1[i].totalPrice + "</td>" +
-                    "<td>" + result1[i].isPayment + "</td>" +
-                    "<td>" + result1[i].creationDate + "</td>" +
                     "<td class='td-manage'>" +
                     /*"<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+i+">" +*/
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "删除" +

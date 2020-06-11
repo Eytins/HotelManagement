@@ -11,8 +11,13 @@
           name="viewport"/>
     <link href="../statics/css/font.css" rel="stylesheet">
     <link href="../statics/css/xadmin.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <script charset="utf-8" src="../statics/lib/layui/layui.js"></script>
     <script src="../statics/js/xadmin.js" type="text/javascript"></script>
+    <!--[if lt IE 9]>
+    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body>
@@ -22,47 +27,33 @@
             <div class="layui-card">
                 <div class="layui-card-body ">
                     <!--todo:这里的action要改-->
-                    <form class="layui-form layui-col-space5" id="search" method="post">
+                    <form id="search"
+                          class="layui-form layui-col-space5">
 
-                        <label class="layui-form-label">日期区间</label>
+
+
                         <div class="layui-input-inline" style="width: 100px;">
-                            <!--开始日-->
-                            <input autocomplete="off" class="layui-input" name="startDay"
-                                   type="date">
-                        </div>
-                        <div class="layui-input-inline" style="width: 100px;">
-                            <!--结束日-->
-                            <input autocomplete="off" class="layui-input" name="endDay"
-                                   type="date">
+                            <!--日期-->
+                            <input autocomplete="off" class="layui-input" name="billCode"
+                                   placeholder="请输入订单编号"
+                                   type="text">
                         </div>
 
                         <div class="layui-input-inline" style="width: 100px;">
                             <!--酒店名称-->
-                            <input autocomplete="off" class="layui-input" name="hotelName"
-                                   placeholder="请输入酒店名称"
+                            <input autocomplete="off" class="layui-input" name="roomType"
+                                   placeholder="请输入房间类型"
                                    type="text">
                         </div>
 
-                        <div class="layui-input-inline" style="width: 100px;">
-                            <!--酒店地点-->
-                            <input autocomplete="off" class="layui-input" name="hotelAddress"
-                                   placeholder="请输入酒店地点"
-                                   type="text">
-                        </div>
 
-                        <div class="layui-input-inline layui-show-xs-block">
-                            <button class="layui-btn" lay-filter="sreach" id="select" lay-submit="">
-                                <i class="layui-icon">&#xe615;</i></button>
-                        </div>
 
-                    </form>
+                <div class="layui-input-inline layui-show-xs-block">
+                    <button id="select" class="layui-btn" lay-filter="search" lay-submit="">
+                        <i class="layui-icon">&#xe615;</i></button>
                 </div>
 
-                <div class="layui-card-header">
-                    <!--todo:这里跳转到hoteladd，不需要带参数-->
-                    <button class="layui-btn" onclick="xadmin.open('添加订单','useradd.html',600,400)"><i
-                            class="layui-icon"></i>添加
-                    </button>
+                    </form>
                 </div>
 
                 <div class="layui-card-body ">
@@ -81,30 +72,9 @@
                         </tr>
                         </thead>
 
-                        <!--todo:一个tr是一行，这里要做循环输出-->
+                        <thead id="data">
 
-                            <tr>
-                                <td> <span>${user.userCode }</span></td>
-                                <td>老王:18925139194</td>
-                                <td>7829.10</td>
-                                <td>7854.10</td>
-                                <td>待确认</td>
-                                <td>未支付</td>
-                                <td>7854.10</td>
-                                <td>待确认</td>
-
-
-
-                                <td class="td-manage">
-                                    <!--todo:执行删除-->
-                                    <!--todo:带着hotel的信息跳转到房间管理-->
-
-                                    <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                            href="javascript:;" onclick="member_del(this,'要删除的id')"><i class="layui-icon">&#xe640;</i>删除
-                                    </button>
-                                </td>
-                            </tr>
-
+                        </thead>
 
 
                     </table>
@@ -198,35 +168,38 @@ function delAll(argument) {
         });
 
     $("#select").click(function () {
-        var formData = $("#search").serialize();
+        var formData2 = $("#search").serialize();
         $.ajax({
             dataType:"json",
             url: "http://localhost:8080/HotelManagement_war_exploded/billlist/doBillSearch.html",
             type: "post",
-            data: formData,
-            success:function(result){
+            data: formData2,
+            success:function(result2){
                 var str=""
-                console.log(result)
-                for (i in result) {
-                    str += "<tr>" +
-                        "<td id='1'>" + result[i].billCode +"</td>" +
-                        "<td id='2'>" + result[i].orderId + "</td>" +
-                        "<td id='3'>" + result[i].hotelId+ "</td>" +
-                        "<td id='4'>" + result[i].roomType + "</td>" +
-                        "<td id='5'>" + result[i].checkInDate + "</td>" +
-                        "<td id='6'>" + result[i].countDays + "</td>" +
-                        "<td id='7'>" + result[i].totalPrice + "</td>" +
-                        "<td class='td-manage'>" +
-                        "<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='addorder()'>" +
-                        "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
-                        "</td>" +
+                console.log(result2)
+                for (i in result2) {
+                    str = "<tr>" +
+                        "<td id='1'>" + result2[i].billCode +"</td>" +
+                        "<td id='2'>" + result2[i].orderId + "</td>" +
+                        "<td id='3'>" + result2[i].hotelId+ "</td>" +
+                        "<td id='4'>" + result2[i].roomType + "</td>" +
+                        "<td id='5'>" + result2[i].checkInDate + "</td>" +
+                        "<td id='6'>" + result2[i].countDays + "</td>" +
+                        "<td id='7'>" + result2[i].totalPrice + "</td>"+
+                    "<td class='td-manage'>" +
+                    /*"<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+i+">" +*/
+                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "删除" +
+                    "</button>" +
+                    "</td>" +
+                    "</tr>"
+
                         "</tr>"
                 }
                 document.getElementById("data").innerHTML = str;
             },
-            error:function (result) {
+            error:function (result2) {
                 alert("请求出错");
-                alert(result);
+                alert(result2);
             }
         });
         return false;

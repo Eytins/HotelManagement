@@ -39,4 +39,6 @@ public class UserBillSearchController {
         logger.debug(this.billService.getBillListAndHotelNameByDateAndHotelNameAndAddress(theDay, hotelName, hotelAddress));
         return this.billService.getBillListAndHotelNameByDateAndHotelNameAndAddress(theDay, hotelName, hotelAddress);
     }
+
+
 }
