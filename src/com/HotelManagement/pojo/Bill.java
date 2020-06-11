@@ -1,7 +1,6 @@
 package com.HotelManagement.pojo;
 
-import java.sql.Date;
-import java.sql.Timestamp;
+import java.util.Date;
 
 public class Bill {
     private long               id;
@@ -9,13 +8,13 @@ public class Bill {
     private long               orderId;
     private long               hotelId;
     private long               roomType;
-    private java.sql.Date      checkInDate;
-    private java.sql.Date      checkOutDate;
+    private Date               checkInDate;
+    private Date               checkOutDate;
     private int                isCheckIn;
     private int                countDays;
     private int                isPayment;
-    private java.sql.Timestamp creationDate;
-    private java.sql.Timestamp modifyDate;
+    private Date               creationDate;
+    private Date               modifyDate;
     private long               providerId;
     private String             hoteRoomType;
     private long               hotelPeople;
@@ -118,19 +117,19 @@ public class Bill {
         this.isPayment = isPayment;
     }
 
-    public Timestamp getCreationDate() {
+    public Date getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(Timestamp creationDate) {
+    public void setCreationDate(Date creationDate) {
         this.creationDate = creationDate;
     }
 
-    public Timestamp getModifyDate() {
+    public Date getModifyDate() {
         return modifyDate;
     }
 
-    public void setModifyDate(Timestamp modifyDate) {
+    public void setModifyDate(Date modifyDate) {
         this.modifyDate = modifyDate;
     }
 
