@@ -9,7 +9,7 @@ import java.util.List;
 public interface BillMapper {
 
     //根据订单编号和房间类型获得订单列表
-    public List<Bill> getBillByBillCode(@Param("billCode") String billCode, @Param("roomType") String roomType);
+    public List<Bill> getBillByBillCode(@Param("billCode") String billCode, @Param("roomType")Integer roomType);
 
     //新建订单
     public int addBill(Bill bill);

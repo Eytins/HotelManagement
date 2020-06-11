@@ -61,10 +61,17 @@
                     <i class="iconfont nav_right">&#xe697;</i></a>
                 <ul class="sub-menu">
                     <li>
-                        <!--todo:这里是doOrder然后跳转到hostlist-->
-                        <a onclick="xadmin.add_tab('酒店列表','hotelstatics/hotellist.html')">
+                    <!--todo:这里是doOrder然后跳转到hostlist-->
+                    <a onclick="xadmin.add_tab('酒店列表','hotelstatics/hotellist.html')">
+                        <i class="iconfont">&#xe6a7;</i>
+                        <cite>酒店列表</cite></a>
+                </li>
+
+                    <li>
+
+                        <a onclick="xadmin.add_tab('订单列表','userstatics/billlist.html')">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>酒店列表</cite></a>
+                            <cite>订单列表</cite></a>
                     </li>
                 </ul>
             </li>
