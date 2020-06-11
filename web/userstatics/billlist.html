@@ -171,7 +171,7 @@ function delAll(argument) {
         var formData2 = $("#search").serialize();
         $.ajax({
             dataType:"json",
-            url: "http://localhost:8080/HotelManagement_war_exploded/billlist/doBillSearch.html",
+            url: "http://localhost:8080/HotelManagement_war_exploded/billlist/doBillSearch",
             type: "post",
             data: formData2,
             success:function(result2){
@@ -192,8 +192,6 @@ function delAll(argument) {
                     "</button>" +
                     "</td>" +
                     "</tr>"
-
-                        "</tr>"
                 }
                 document.getElementById("data").innerHTML = str;
             },

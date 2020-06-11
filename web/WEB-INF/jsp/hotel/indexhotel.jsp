@@ -35,7 +35,7 @@
     <ul class="layui-nav right" lay-filter="">
         <li class="layui-nav-item">
             <!--todo:这里是从session获取用户名，不一定对-->
-            <a href="javascript:;">${sessionScope.userSession}</a>
+            <script type="text/javascript">document.write($.cookie("userName"));</script>
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>
@@ -55,7 +55,7 @@
     <div id="side-nav">
         <ul id="nav">
             <li>
-                <a href="javascript:;">
+                <a href="javascript:">
                     <i class="iconfont left-nav-li" lay-tips="酒店管理">&#xe723;</i>
                     <cite>酒店管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>
