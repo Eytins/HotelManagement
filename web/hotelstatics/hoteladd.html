@@ -21,7 +21,7 @@
 <body>
 <div class="layui-fluid">
     <div class="layui-row">
-        <form class="layui-form">
+        <form id="add" class="layui-form">
             <div class="layui-form-item">
                 <label class="layui-form-label" for="hotelName">酒店名称</label>
                 <div class="layui-input-inline">
@@ -53,7 +53,7 @@
 
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
-                <button class="layui-btn" lay-filter="add" lay-submit="">添加</button>
+                <button id="select" class="layui-btn" lay-filter="add" lay-submit="">添加</button>
             </div>
         </form>
     </div>
@@ -90,7 +90,46 @@
     hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
     var s = document.getElementsByTagName("script")[0];
     s.parentNode.insertBefore(hm, s);
-})();</script>
+})();
+
+$("#select").click(function () {
+    var formData = $("#add").serializeArray();
+    var formData1 = JSON.stringify(formData);
+    console.log(formData1);
+    $.ajax({
+        dataType: "json",
+        url: "hotelAdd/doAddNewHotel.html",
+        type: "post",
+        contentType: "application/json",
+        data: formData1,
+        success:function(data) {
+            alert("a");
+            console.log("===============================");
+            var str = "", i
+            /*for (i in result) {
+                alert("a");
+                str = "<tr>" +
+                    "<td>" + result[i].hotelName + "</td>" +
+                    "<td>" + result[i].hotelAddress + "</td>" +
+                    "<td>" + result[i].hotelRoomType + "</td>" +
+                    "<td>" + result[i].hotelPeople + "</td>" +
+                    "<td>" + result[i].hotelPrice + "</td>" +
+                    "<td class='td-manage'>" +
+                    /!*"<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='xadmin.open(&quot;预定&quot;,&quot;userorderview.html&quot;, 600 , 500)'>" +*!/
+                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
+                    "</button>" +
+                    "</td>" +
+                    "</tr>"
+                document.getElementById("data").innerHTML = str;
+            }*/
+        },
+        error:function (result) {
+            alert("请求出错");
+            alert(result);
+        }
+    });
+});
+</script>
 </body>
 
 </html>

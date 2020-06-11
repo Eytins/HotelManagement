@@ -29,7 +29,7 @@ public class HotelListController {
     @Autowired
     private HotelService hotelService;
 
-    @RequestMapping(value = {"hotelList/doHotelSearch.html", "hotelstatics/hotelList/doHotelSearch.html"}, method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = {"hotelList/doHotelSearch.html"}, method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     public List<Hotel> doHotelSearch(@RequestParam(value = "hotelName", required = false) String hotelName,
                                      @RequestParam(value = "hotelAddress", required = false) String hotelAddress){
@@ -38,7 +38,7 @@ public class HotelListController {
     }
 
     // test: hotelAdd/doAddNewHotel.html?hotelName=1112&hotelAddress=122&postCode=123455&tel=123423
-    @RequestMapping(value = {"hotelAdd/doAddNewHotel.html", "hotelstatics/hotelAdd/doAddNewHotel.html"}, method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = {"hotelAdd/doAddNewHotel.html"}, method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     public int addNewHotel(@RequestParam(value = "hotelName") String hotelName,
                            @RequestParam(value = "hotelAddress") String hotelAddress,

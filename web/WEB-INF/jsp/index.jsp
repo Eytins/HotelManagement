@@ -94,7 +94,6 @@
 
             </li>
 
-
             <li>
                 <a onclick="xadmin.add_tab('酒店管理','hotelstatics/hotellist.html')">
                     <i class="iconfont left-nav-li" lay-tips="酒店管理">&#xe726;</i>
