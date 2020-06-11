@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+
+<head>
+    <meta charset="UTF-8">
+    <title>添加用户</title>
+   <script charset="utf-8" src="../statics/lib/layui/layui.js" type="text/javascript"></script>
+    <script src="../statics/js/xadmin.js" type="text/javascript"></script>
+</head>
+
+<body>
+<div class="layui-fluid">
+    <div class="layui-row">
+        <form class="layui-form">
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="userName">用户名称</label>
+                <div class="layui-input-inline">
+                    <input autocomplete="off" class="layui-input" id="userName" name="userName" required=""
+                           type="text"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="userCode">用户编码</label>
+                <div class="layui-input-inline">
+                    <input autocomplete="off" class="layui-input" id="userCode" name="userCode" required=""
+                           type="text"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="gender">性别</label>
+                <div class="layui-input-inline">
+                    <input autocomplete="off" class="layui-input" id="gender" name="gender" required=""
+                           type="text"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="phone">电话</label>
+                <div class="layui-input-inline">
+                    <input autocomplete="off" class="layui-input" id="phone" name="phone" required=""
+                           type="tel"></div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label" for="userRole">用户角色</label>
+                <div class="layui-input-inline">
+                    <input autocomplete="off" class="layui-input" id="userRole" name="userRole" required=""
+                           type="tel"></div>
+            </div>
+
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label"></label>
+                <button class="layui-btn" lay-filter="add" lay-submit="">添加</button>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+
+<script>layui.use(['form', 'layer', 'jquery'],
+    function () {
+        $ = layui.jquery;
+        var form = layui.form,
+            layer = layui.layer;
+
+
+        //监听提交
+        form.on('submit(add)',
+            function (data) {
+                console.log(data);
+                //发异步，把数据提交给php
+                layer.alert("增加成功", {
+                        icon: 6
+                    },
+                    function () {
+                        //关闭当前frame
+                        xadmin.close();
+
+                        // 可以对父窗口进行刷新
+                        xadmin.father_reload();
+                    });
+                return false;
+            });
+
+    });</script>
+<script>var _hmt = _hmt || [];
+(function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
+})();</script>
+
+
+</html>

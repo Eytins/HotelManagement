@@ -25,4 +25,30 @@
         from user
         where userCode = #{userCode}
     </select>
+
+    <!--根据用户名和用户角色获得用户列表-->
+    <select id="getUserList" resultMap="rm_includeRoleName">
+        select u.*,r.roleName
+        from user u,role r
+        where u.userRole=r.id
+        <if test="userName!=null and userName!=''">
+            and u.userName like CONCAT('%',#{userName},'%')
+        </if>
+        <if test="userRole!=null and userRole!=''">
+            and u.userRole=#{userRole}
+        </if>
+
+    </select>
+
+    <resultMap id="rm_includeRoleName" type="User">
+        <result property="userRoleName" column="roleName"/>
+    </resultMap>
+
+
+
+    <!--获得角色列表-->
+    <select id="getRoleList" resultType="Role">
+        select * from role
+    </select>
+
 </mapper>

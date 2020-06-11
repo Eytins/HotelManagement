@@ -5,6 +5,9 @@ import com.HotelManagement.pojo.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
+import java.util.List;
+
 @Service
 public class UserServiceImpl implements UserService {
 
@@ -30,5 +33,17 @@ public class UserServiceImpl implements UserService {
     @Override
     public int getUserRole(String userCode) {
         return this.userMapper.getUserRole(userCode);
+    }
+
+    //根据用户名和用户角色获得用户列表
+    public List<User> getUserList(String userName, Integer userRole) {
+        return this.userMapper.getUserList(userName,userRole);
+
+    }
+
+    //获得角色列表
+    public List<Role> getRoleList() {
+        return   this.userMapper.getRoleList();
+
     }
 }

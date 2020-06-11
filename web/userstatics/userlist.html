@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html class="x-admin-sm">
 
+
 <head>
     <meta charset="UTF-8">
     <title>订单查询</title>
@@ -9,14 +10,9 @@
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"
           name="viewport"/>
     <link href="../statics/css/font.css" rel="stylesheet">
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
     <link href="../statics/css/xadmin.css" rel="stylesheet">
     <script charset="utf-8" src="../statics/lib/layui/layui.js"></script>
     <script src="../statics/js/xadmin.js" type="text/javascript"></script>
-    <!--[if lt IE 9]>
-    <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
-    <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -25,12 +21,18 @@
         <div class="layui-col-md12">
             <div class="layui-card">
                 <div class="layui-card-body ">
-                    <form id="search"
-                          class="layui-form layui-col-space5">
+                    <!--todo:这里的action要改-->
+                    <form class="layui-form layui-col-space5" id="search" method="post">
 
+                        <label class="layui-form-label">日期区间</label>
                         <div class="layui-input-inline" style="width: 100px;">
-                            <!--日期-->
-                            <input autocomplete="off" class="layui-input" name="theDay"
+                            <!--开始日-->
+                            <input autocomplete="off" class="layui-input" name="startDay"
+                                   type="date">
+                        </div>
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <!--结束日-->
+                            <input autocomplete="off" class="layui-input" name="endDay"
                                    type="date">
                         </div>
 
@@ -41,51 +43,63 @@
                                    type="text">
                         </div>
 
+                        <div class="layui-input-inline" style="width: 100px;">
+                            <!--酒店地点-->
+                            <input autocomplete="off" class="layui-input" name="hotelAddress"
+                                   placeholder="请输入酒店地点"
+                                   type="text">
+                        </div>
+
                         <div class="layui-input-inline layui-show-xs-block">
-                            <button id="select" class="layui-btn" lay-filter="sreach" lay-submit="">
+                            <button class="layui-btn" lay-filter="sreach" lay-submit="">
                                 <i class="layui-icon">&#xe615;</i></button>
                         </div>
+
                     </form>
                 </div>
+
+                <div class="layui-card-header">
+                    <!--todo:这里跳转到hoteladd，不需要带参数-->
+                    <button class="layui-btn" onclick="xadmin.open('添加用户','useradd.html',600,400)"><i
+                            class="layui-icon"></i>添加
+                    </button>
+                </div>
+
                 <div class="layui-card-body ">
                     <table class="layui-table layui-form">
                         <thead>
                         <tr>
-                            <th>预定编号</th>
-                            <th>酒店</th>
-                            <th>房型</th>
-                            <th>入住时间</th>
-                            <th>退房时间</th>
-                            <th>入住状态</th>
-                            <th>入住天数</th>
-                            <th>订单总价</th>
-                            <th>是否支付</th>
-                            <th>下单时间</th>
-                            <th>操作</th>
+                            <th width="10%">用户编码</th>
+                            <th width="20%">用户名称</th>
+                            <th width="10%">性别</th>
+                            <th width="10%">年龄</th>
+                            <th width="10%">电话</th>
+                            <th width="10%">用户角色</th>
+                            <th width="30%">操作</th>
                         </tr>
                         </thead>
 
                         <!--todo:一个tr是一行，这里要做循环输出-->
+                        <c:forEach var="user" items="${userList }" varStatus="status">
+                            <tr>
+                                <td> <span>${user.userCode }</span></td>
+                                <td>老王:18925139194</td>
+                                <td>7829.10</td>
+                                <td>7854.10</td>
+                                <td>待确认</td>
+                                <td>未支付</td>
 
-                        <tr>
-                            <td>2017009171822298053</td>
-                            <td>老王:18925139194</td>
-                            <td>7829.10</td>
-                            <td>7854.10</td>
-                            <td>待确认</td>
-                            <td>未支付</td>
-                            <td>未发货</td>
-                            <td>其他方式</td>
-                            <td>申通物流</td>
-                            <td>2017-08-17 18:22</td>
-                            <td class="td-manage">
-                                <!--todo:执行删除-->
-                                <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                        href="javascript:;" onclick="member_del(this,'要删除的id')"><i class="layui-icon">&#xe640;</i>删除
-                                </button>
-                            </td>
-                        </tr>
 
+                                <td class="td-manage">
+                                    <!--todo:执行删除-->
+                                    <!--todo:带着hotel的信息跳转到房间管理-->
+
+                                    <button class="layui-btn-danger layui-btn layui-btn-xs"
+                                            href="javascript:;" onclick="member_del(this,'要删除的id')"><i class="layui-icon">&#xe640;</i>删除
+                                    </button>
+                                </td>
+                            </tr>
+                        </c:forEach>
 
 
                     </table>
@@ -177,49 +191,6 @@ function delAll(argument) {
             });
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
-}
-
-$("#select").click(function () {
-    var formData = $("#search").serializeArray();
-    var formData1 = JSON.stringify(formData);
-    console.log(formData1);
-    $.ajax({
-        dataType: "json",
-        url: "userBillSearch/doUserHotelSearch.html",
-        type: "post",
-        contentType: "application/json",
-        data: formData1,
-        success: function (result) {
-            var str = "", i
-            for (i in result) {
-                str = "<tr>" +
-                    "<td>" + result[i].billCode + "</td>" +
-                    "<td>" + result[i].hotelName + "</td>" +
-                    "<td>" + result[i].roomType + "</td>" +
-                    "<td>" + result[i].checkInDate + "</td>" +
-                    "<td>" + result[i].checkOutDate + "</td>" +
-                    "<td>" + result[i].isCheckIn + "</td>" +
-                    "<td>" + result[i].countDays + "</td>" +
-                    "<td>" + result[i].totalPrice + "</td>" +
-                    "<td>" + result[i].isPayment + "</td>" +
-                    "<td>" + result[i].creationDate + "</td>" +
-                    "<td class='td-manage'>" +
-                    /*"<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='xadmin.open(&quot;预定&quot;,&quot;userorderview.html&quot;, 600 , 500)'>" +*/
-                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "删除" +
-                    "</button>" +
-                    "</td>" +
-                    "</tr>"
-                document.getElementById("data").innerHTML = str;
-            }
-        },
-        error: function (result) {
-            alert("请求出错");
-            alert(result);
-        }
-    });
-});
-
-</script>
-
+}</script>
 
 </html>

@@ -15,7 +15,26 @@ public class User {
     private long userRole;
     private Date creationDate;
     private java.sql.Timestamp modifyDate;
+    private String userRoleName;    //用户角色名称
+    private  Integer age;
 
+
+
+    public Integer getAge() {
+		/*long time = System.currentTimeMillis()-birthday.getTime();
+		Integer age = Long.valueOf(time/365/24/60/60/1000).IntegerValue();*/
+        Date date = new Date();
+        Integer age = date.getYear()-birthday.getYear();
+        return age;
+    }
+
+    public String getUserRoleName() {
+        return userRoleName;
+    }
+
+    public void setUserRoleName(String userRoleName) {
+        this.userRoleName = userRoleName;
+    }
 
     public long getId() {
         return id;
