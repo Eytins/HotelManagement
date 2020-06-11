@@ -24,10 +24,10 @@
         </where>
     </select>
 
-    <delete id="deleteHotelById" parameterType="Integer">
+    <delete id="deleteHotelById" parameterType="int">
         delete
-        from HotelManagement.bill
-        where id = #{HotelId}
+        from HotelManagement.hotel
+        where id = #{hotelId}
     </delete>
 
     <select id="searchBillByHotel" resultType="com.HotelManagement.pojo.Bill">
