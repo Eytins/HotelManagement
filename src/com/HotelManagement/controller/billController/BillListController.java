@@ -40,6 +40,7 @@ public class BillListController {
     }
 
     @RequestMapping(value ="addNewBill" , method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
     public int addNewBill(@RequestParam(value = "hotelId") Integer hotelId,
                           @RequestParam(value = "roomType") Integer roomType,
                           @RequestParam(value = "checkInDate") String checkInDate,
@@ -60,7 +61,7 @@ public class BillListController {
         }
 
         bill.setBillCode(getRandomString(12));
-        bill.setOrderId(Integer.parseInt(session.getId()));
+        bill.setOrderId((int) loginUser.getId());
         bill.setHotelId(hotelId);
         bill.setRoomType(roomType);
         bill.setCheckInDate(inDate);
