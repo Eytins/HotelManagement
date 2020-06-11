@@ -120,7 +120,7 @@
                     </div>
                 </div>
                 <div class="layui-card-body ">
-                    <table class="layui-table layui-form">
+                    <table class="layui-table layui-form" id="selecttable">
                         <thead>
                         <tr>
                             <th>酒店名称</th>
@@ -226,9 +226,18 @@ function delAll(argument) {
 
 function addorder(){
     $.removeCookie("hotelName");
-    $.cookie("hotelName",document.getElementById("6").innerText);
+    $.cookie("hotelName",document.getElementById((event.target.id)-50).innerText);
+    $.removeCookie("hotelAddress");
+    $.cookie("hotelAddress",document.getElementById((event.target.id)-40).innerText);
+    $.removeCookie("hotelRoomType");
+    $.cookie("hotelRoomType",document.getElementById((event.target.id)-30).innerText);
+    $.removeCookie("hotelPeople");
+    $.cookie("hotelPeople",document.getElementById((event.target.id)-20).innerText);
+    $.removeCookie("hotelPrice");
+    $.cookie("hotelPrice ",document.getElementById((event.target.id)-10).innerText);
     xadmin.open("预定","userorderview.html",600 , 500);
 }
+
 $("#select").click(function () {
     var formData = $("#formf").serialize();
     $.ajax({
@@ -238,16 +247,15 @@ $("#select").click(function () {
         data: formData,
         success:function(result){
             var str=""
-            console.log(result)
             for (i in result) {
-                str += "<tr>" +
-                    "<td id='1'>" + result[i].hotelName +"</td>" +
-                    "<td id='2'>" + result[i].hotelAddress + "</td>" +
-                    "<td id='3'>" + result[i].hotelRoomType+ "</td>" +
-                    "<td id='4'>" + result[i].hotelPeople + "</td>" +
-                    "<td id='5'>" + result[i].hotelPrice + "</td>" +
+                str += "<tr class='modifyID'>" +
+                    "<td id="+1+i+">" + result[i].hotelName +"</td>" +
+                    "<td id="+2+i+">" + result[i].hotelAddress + "</td>" +
+                    "<td id="+3+i+">" + result[i].hotelRoomType+ "</td>" +
+                    "<td id="+4+i+">" + result[i].hotelPeople + "</td>" +
+                    "<td id="+5+i+">" + result[i].hotelPrice + "</td>" +
                     "<td class='td-manage'>" +
-                    "<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='addorder()'>" +
+                    "<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+6+i+">" +
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
                     "</td>" +
                     "</tr>"
@@ -261,6 +269,7 @@ $("#select").click(function () {
     });
     return false;
 });
+
 </script>
 
 </html>
