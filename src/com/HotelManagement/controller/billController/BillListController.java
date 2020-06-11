@@ -2,6 +2,7 @@ package com.HotelManagement.controller.billController;
 
 import com.HotelManagement.pojo.Bill;
 import com.HotelManagement.pojo.Hotel;
+import com.HotelManagement.pojo.HotelType;
 import com.HotelManagement.service.bill.BillService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,9 +27,11 @@ public class BillListController {
     @RequestMapping(value = {"doBillSearch.html"}, method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     public List<Bill> doBillSearch(@RequestParam(value = "billCode", required = false) String billCode,
-                                     @RequestParam(value = "roomType", required = false) Integer roomType){
+                                     @RequestParam(value = "roomType", required = false,defaultValue = "1") Integer roomType){
 
-        return this.billService.getBillByBillCode(billCode,roomType);
+
+                List< Bill > list=this.billService.getBillByBillCode(billCode,roomType);
+                return  list;
     }
 
     @RequestMapping(value ={"addNewBill.html"} , method = {RequestMethod.POST,RequestMethod.GET})

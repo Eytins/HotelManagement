@@ -42,7 +42,7 @@
                         </div>
 
                         <div class="layui-input-inline layui-show-xs-block">
-                            <button id="select" class="layui-btn" lay-filter="sreach" lay-submit="">
+                            <button id="select" class="layui-btn" lay-filter="search" lay-submit="">
                                 <i class="layui-icon">&#xe615;</i></button>
                         </div>
                     </form>
@@ -67,24 +67,7 @@
 
                         <!--todo:一个tr是一行，这里要做循环输出-->
 
-                        <tr>
-                            <td>2017009171822298053</td>
-                            <td>老王:18925139194</td>
-                            <td>7829.10</td>
-                            <td>7854.10</td>
-                            <td>待确认</td>
-                            <td>未支付</td>
-                            <td>未发货</td>
-                            <td>其他方式</td>
-                            <td>申通物流</td>
-                            <td>2017-08-17 18:22</td>
-                            <td class="td-manage">
-                                <!--todo:执行删除-->
-                                <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                        href="javascript:;" onclick="member_del(this,'要删除的id')"><i class="layui-icon">&#xe640;</i>删除
-                                </button>
-                            </td>
-                        </tr>
+
 
 
 
@@ -180,29 +163,29 @@ function delAll(argument) {
 }
 
 $("#select").click(function () {
-    var formData = $("#search").serializeArray();
-    var formData1 = JSON.stringify(formData);
+    var formData1 = $("#search").serializeArray();
+
     console.log(formData1);
     $.ajax({
         dataType: "json",
-        url: "userBillSearch/doUserHotelSearch.html",
+        url: "http://localhost:8080/HotelManagement_war_exploded/userBillSearch/doUserHotelSearch.html",
         type: "post",
         contentType: "application/json",
         data: formData1,
-        success: function (result) {
-            var str = "", i
-            for (i in result) {
+        success: function (result1) {
+            var str = ""
+            for (i in result1) {
                 str = "<tr>" +
-                    "<td>" + result[i].billCode + "</td>" +
-                    "<td>" + result[i].hotelName + "</td>" +
-                    "<td>" + result[i].roomType + "</td>" +
-                    "<td>" + result[i].checkInDate + "</td>" +
-                    "<td>" + result[i].checkOutDate + "</td>" +
-                    "<td>" + result[i].isCheckIn + "</td>" +
-                    "<td>" + result[i].countDays + "</td>" +
-                    "<td>" + result[i].totalPrice + "</td>" +
-                    "<td>" + result[i].isPayment + "</td>" +
-                    "<td>" + result[i].creationDate + "</td>" +
+                    "<td>" + result1[i].billCode + "</td>" +
+                    "<td>" + result1[i].hotelName + "</td>" +
+                    "<td>" + result1[i].roomType + "</td>" +
+                    "<td>" + result1[i].checkInDate + "</td>" +
+                    "<td>" + result1[i].checkOutDate + "</td>" +
+                    "<td>" + result1[i].isCheckIn + "</td>" +
+                    "<td>" + result1[i].countDays + "</td>" +
+                    "<td>" + result1[i].totalPrice + "</td>" +
+                    "<td>" + result1[i].isPayment + "</td>" +
+                    "<td>" + result1[i].creationDate + "</td>" +
                     "<td class='td-manage'>" +
                     /*"<button class='layui-btn layui-btn-warm layui-btn-xs' onclick='xadmin.open(&quot;预定&quot;,&quot;userorderview.html&quot;, 600 , 500)'>" +*/
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "删除" +
@@ -212,9 +195,9 @@ $("#select").click(function () {
                 document.getElementById("data").innerHTML = str;
             }
         },
-        error: function (result) {
+        error: function (result1) {
             alert("请求出错");
-            alert(result);
+            alert(result1);
         }
     });
 });

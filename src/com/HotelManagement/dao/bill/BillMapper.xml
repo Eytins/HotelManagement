@@ -6,7 +6,7 @@
 
 
     <!--根据订单编号和房间类型获得订单列表-->
-    <select id="getBillByBillCode" resultType="Bill">
+    <select id="getBillByBillCode" resultType="list">
         select b.* from bill b
         <where>
             <if test="billCode!=null and billCode!=''">
