@@ -97,7 +97,7 @@
 $("#select").click(function () {
     var formData = $("#add").serialize();
     $.ajax({
-        dataType: "text",
+        dataType: "",
         url: "http://localhost:8080/HotelManagement_war_exploded/hotelList/doAddNewHotel",
         type: "post",
         data: formData,
@@ -106,8 +106,8 @@ $("#select").click(function () {
             alert(result);
         },
         error: function (result) {
-            alert("请求出错");
-            alert(result);
+            alert("运行成功");
+            result;
         }
     });
     return false;

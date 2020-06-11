@@ -29,11 +29,9 @@ public class HotelTypeServiceImpl implements HotelTypeService {
 
     //查询剩余房型量
     public int selectRemainNumber(
-            String hotelTypeId,
-            Integer hotelId,
-            Integer roomType,
-            Integer billHotelId) {
-        return this.hotelTypeMapper.selectRemainNumber(hotelTypeId, hotelId, roomType, billHotelId);
+            Integer hotelTypeId,
+            Integer hotelId) {
+        return this.hotelTypeMapper.selectRemainNumber(hotelTypeId, hotelId);
     }
 
     public List<HotelType> selectByUser(

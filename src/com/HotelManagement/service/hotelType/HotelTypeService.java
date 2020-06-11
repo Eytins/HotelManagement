@@ -1,7 +1,6 @@
 package com.HotelManagement.service.hotelType;
 
 import com.HotelManagement.pojo.HotelType;
-import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -14,10 +13,8 @@ public interface HotelTypeService {
     int deleteHotelType(int id);
 
     //查询剩余房型量
-    int selectRemainNumber(String hotelTypeId,
-                           Integer hotelId,
-                           Integer roomType,
-                           Integer billHotelId);
+    int selectRemainNumber(Integer hotelTypeId,
+                           Integer hotelId);
 
     //用户查询
     public List<HotelType> selectByUser(
