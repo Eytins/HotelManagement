@@ -29,7 +29,6 @@
 
                 <div class="layui-card-body ">
                     <form id="search">
-                        <!--todo:怎么从cookie取值-->
                         <input type="hidden" id="hotelId" name="hotelId">
                         <script type="text/javascript">$("#hotelId").val($.cookie("hotelId"))</script>
                         <button class="layui-btn" id="select" lay-filter="demo1" lay-submit="">
@@ -38,10 +37,10 @@
                     </form>
                 </div>
 
+
                 <div class="layui-card-body ">
-                    <!--todo:这里跳转到roomadd，不需要带参数-->
-                    <button class="layui-btn" onclick="xadmin.open('添加房间','roomadd.html',600,400)"><i
-                            class="layui-icon"></i>添加
+                    <button class="layui-btn" onclick="xadmin.open('添加房间','roomadd.html',600,400)">
+                        添加
                     </button>
                 </div>
 
@@ -122,6 +121,7 @@ function goToRoomEdit() {
     xadmin.open("编辑房型", "roomedit.html", 600, 500);
 }
 
+
 function deleteRoom() {
     console.log((event.target.id));
     $.removeCookie("roomId");
@@ -133,6 +133,7 @@ function deleteRoom() {
     //todo:删除roomId的这一条
     xadmin.open("预定", "userorderview.html", 600, 500);
 }
+
 
 $("#select").click(function () {
     var formData = $("#search").serialize();
