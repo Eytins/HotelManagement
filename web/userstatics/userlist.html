@@ -9,6 +9,8 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi"
           name="viewport"/>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="https://cdn.bootcss.com/jquery-cookie/1.4.1/jquery.cookie.js"></script>
     <link href="../statics/css/font.css" rel="stylesheet">
     <link href="../statics/css/xadmin.css" rel="stylesheet">
     <script charset="utf-8" src="../statics/lib/layui/layui.js"></script>
@@ -22,37 +24,30 @@
             <div class="layui-card">
                 <div class="layui-card-body ">
                     <!--todo:这里的action要改-->
-                    <form class="layui-form layui-col-space5" id="search" method="post">
+                    <form class="layui-form" id="search">
 
-                        <label class="layui-form-label">日期区间</label>
-                        <div class="layui-input-inline" style="width: 100px;">
-                            <!--开始日-->
-                            <input autocomplete="off" class="layui-input" name="startDay"
-                                   type="date">
-                        </div>
-                        <div class="layui-input-inline" style="width: 100px;">
-                            <!--结束日-->
-                            <input autocomplete="off" class="layui-input" name="endDay"
-                                   type="date">
-                        </div>
 
                         <div class="layui-input-inline" style="width: 100px;">
                             <!--酒店名称-->
-                            <input autocomplete="off" class="layui-input" name="hotelName"
-                                   placeholder="请输入酒店名称"
+                            <input autocomplete="off" class="layui-input" name="UserName"
+                                   placeholder="请输入用户名"
                                    type="text">
                         </div>
 
                         <div class="layui-input-inline" style="width: 100px;">
                             <!--酒店地点-->
-                            <input autocomplete="off" class="layui-input" name="hotelAddress"
-                                   placeholder="请输入酒店地点"
+                            <input autocomplete="off" class="layui-input" name="UserRole"
+                                   placeholder="请输入用户角色"
                                    type="text">
                         </div>
 
-                        <div class="layui-input-inline layui-show-xs-block">
-                            <button class="layui-btn" lay-filter="sreach" lay-submit="">
-                                <i class="layui-icon">&#xe615;</i></button>
+                        <div class="layui-form-item">
+                            <div class="layui-input-block">
+                                <button class="layui-btn" id="select" lay-filter="demo1" lay-submit="">
+                                    立即查询
+                                </button>
+
+                            </div>
                         </div>
 
                     </form>
@@ -66,7 +61,7 @@
                 </div>
 
                 <div class="layui-card-body ">
-                    <table class="layui-table layui-form">
+                    <table class="layui-table layui-form" id="selecttable">
                         <thead>
                         <tr>
                             <th width="10%">用户编码</th>
@@ -80,26 +75,11 @@
                         </thead>
 
                         <!--todo:一个tr是一行，这里要做循环输出-->
-                        <c:forEach var="user" items="${userList }" varStatus="status">
-                            <tr>
-                                <td> <span>${user.userCode }</span></td>
-                                <td>老王:18925139194</td>
-                                <td>7829.10</td>
-                                <td>7854.10</td>
-                                <td>待确认</td>
-                                <td>未支付</td>
 
 
-                                <td class="td-manage">
-                                    <!--todo:执行删除-->
-                                    <!--todo:带着hotel的信息跳转到房间管理-->
+                        <tbody id="data">
+                        </tbody>
 
-                                    <button class="layui-btn-danger layui-btn layui-btn-xs"
-                                            href="javascript:;" onclick="member_del(this,'要删除的id')"><i class="layui-icon">&#xe640;</i>删除
-                                    </button>
-                                </td>
-                            </tr>
-                        </c:forEach>
 
 
                     </table>
@@ -178,6 +158,31 @@ function member_del(obj, id) {
             });
         });
 }
+function deleteuser() {
+    console.log((event.target.id));
+
+    $.removeCookie("userCode");
+    if (event.target.id == 0) {
+        formData1 = document.getElementById("01").innerText;
+    } else {
+        formData1 = document.getElementById((event.target.id * 10 + 1)).innerText;
+    }
+
+    console.log(formData1);
+    $.ajax({
+        url: "http://localhost:8080/HotelManagement_war_exploded/userlist/deleteUser?userCode="+formData1,
+        type: "post",
+        contentType: "application/json",
+        data: formData1,
+        success: function (result) {
+            alert("删除成功");
+        },
+        error: function (result) {
+            alert("请求出错");
+            alert(result);
+        }
+    });
+}
 
 function delAll(argument) {
 
@@ -191,6 +196,45 @@ function delAll(argument) {
             });
             $(".layui-form-checked").not('.header').parents('tr').remove();
         });
-}</script>
+}
+
+$("#select").click(function () {
+    var formData2 = $("#search").serialize();
+    $.ajax({
+        dataType:"json",
+        url: "http://localhost:8080/HotelManagement_war_exploded/userlist/doUserSearch",
+        type: "post",
+        data: formData2,
+        success:function(result2){
+            var str=""
+            console.log(result2)
+            for (i in result2) {
+                str += "<tr>" +
+                    "<td id=" + i + 1 + ">" + result2[i].userCode +"</td>" +
+                    "<td id=" + i + 2+ ">" + result2[i].userName + "</td>" +
+                    "<td id=" + i + 3+ ">" + result2[i].gender+ "</td>" +
+                    "<td id=" + i + 4 + ">" + result2[i].birthday + "</td>" +
+                    "<td id=" + i + 5 + ">" + result2[i].phone + "</td>" +
+                    "<td id=" + i + 6 + ">" + result2[i].userRole + "</td>" +
+                    "<td class='td-manage'>" +
+                    "<button class='layui-btn-danger layui-btn layui-btn-xs'  onclick='deleteuser()' id=" + i + ">" +
+                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "删除" +
+                    "</button>" +
+                    "</td>" +
+                    "</tr>"
+            }
+            document.getElementById("data").innerHTML = str;
+        },
+        error:function (result2) {
+            alert("请求出错");
+            alert(result2);
+        }
+    });
+    return false;
+});
+
+</script>
+
+
 
 </html>
