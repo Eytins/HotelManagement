@@ -24,7 +24,7 @@
 <div class="layui-fluid">
     <div class="layui-row">
         <!--todo:action要改-->
-        <form id="newOrder" class="layui-form">
+        <form id="newOrder" class="layui-form" id="formf">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">酒店名称</label>
@@ -71,7 +71,7 @@
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
                 <!--todo:这里按钮是否起作用了？-->
-                <button class="layui-btn" lay-submit="" type="submit">预定</button>
+                <button class="layui-btn" lay-submit="" type="submit" id="select">预定</button>
             </div>
         </form>
     </div>
@@ -112,25 +112,14 @@ $("#select").click(function () {
     var formData = $("#formf").serialize();
     $.ajax({
         dataType:"json",
-        url: "http://localhost:8080/HotelManagement_war_exploded/userbillorder/doUserHotelSearch",
+        url: "http://localhost:8080/HotelManagement_war_exploded/userbillorder/addNewBill",
         type: "post",
         data: formData,
         success:function(result){
             var str=""
             for (i in result) {
-                str += "<tr >" +
-                    "<td id="+i+1+">" + result[i].hotelName +"</td>" +
-                    "<td id="+i+2+">" + result[i].hotelAddress + "</td>" +
-                    "<td id="+i+3+">" + result[i].hotelRoomType+ "</td>" +
-                    "<td id="+i+4+">" + result[i].hotelPeople + "</td>" +
-                    "<td id="+i+5+">" + result[i].hotelPrice + "</td>" +
-                    "<td class='td-manage'>" +
-                    "<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+i+">" +
-                    "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
-                    "</td>" +
-                    "</tr>"
             }
-            document.getElementById("data").innerHTML = str;
+
         },
         error:function (result) {
             alert("请求出错");
