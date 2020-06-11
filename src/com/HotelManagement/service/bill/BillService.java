@@ -11,7 +11,7 @@ public interface BillService {
     public int addBill(Bill bill);
 
     //通过订单号和房间类型返回带有房间名和房间规格的表
-    public List<Bill> getBillByBillCode(String billCode, String roomType);
+    public List<Bill> getBillByBillCode(String billCode,Integer roomType);
 
     //获取订单价格最高值
     public int getHPrice();
