@@ -1,6 +1,7 @@
 package com.HotelManagement.service.hotelType;
 
 import com.HotelManagement.pojo.HotelType;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -29,5 +30,9 @@ public interface HotelTypeService {
     //查询房型
     List<HotelType> selectHotelTypeByIdType(String hotelRoomType, Integer hotelId);
 
+    //更改房型信息
+    int modifyRoomType(Integer roomTypeId,
+                       Integer price,
+                       Integer numberOfPerson);
 
 }

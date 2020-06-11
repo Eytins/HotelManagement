@@ -21,9 +21,13 @@
     <select id="selectHotelTypeByIdType" resultType="com.HotelManagement.pojo.HotelType">
         select * from hotelType
         <where>
-            and hotelRoomType LIKE CONCAT('%',#{hotelRoomType},'%')
+            <if test="hotelRoomType!=null and hotelRoomType!=''">
+                hotelRoomType LIKE CONCAT('%',#{hotelRoomType},'%')
+            </if>
+            <if test="hotelId!=null and hotelId!=''">
+                and hotelId = #{hotelId}
+            </if>
         </where>
-        and hotelId = #{hotelId}
     </select>
 
     <select id="selectRemainNumber" resultType="java.lang.Integer">
@@ -52,4 +56,12 @@
         <result property="hotelName" column="hotelName"/>
         <result property="hotelAddress" column="hotelAddress"/>
     </resultMap>
+
+    <update id="modifyRoomType">
+        update hotelType
+        <trim prefix="set" suffix="where id=#{roomTypeId}" suffixOverrides=",">
+            <if test="numberOfPerson!=null">hotelPeople=#{numberOfPerson},</if>
+            <if test="roomTypeId!=null">roomTypeId=#{roomTypeId},</if>
+        </trim>
+    </update>
 </mapper>

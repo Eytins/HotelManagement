@@ -44,4 +44,9 @@ public class HotelTypeServiceImpl implements HotelTypeService {
 
         return this.hotelTypeMapper.selectByUser(priceMin, priceMax, hotelName, hotelAddress);
     }
+
+    @Override
+    public int modifyRoomType(Integer roomTypeId, Integer price, Integer numberOfPerson) {
+        return this.hotelTypeMapper.modifyRoomType(roomTypeId,price,numberOfPerson);
+    }
 }

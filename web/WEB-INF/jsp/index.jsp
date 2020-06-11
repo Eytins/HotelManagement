@@ -87,13 +87,12 @@
             </li>
 
             <li>
-                < <a onclick="xadmin.add_tab('订单管理','userstatics/userbillsearch.html')">
+                < <a onclick="xadmin.add_tab('订单管理','userstatics/billlist.html')">
                 <i class="iconfont left-nav-li" lay-tips="订单管理">&#xe723;</i>
                 <cite>订单管理</cite>
                 <i class="iconfont nav_right">&#xe697;</i></a>
 
             </li>
-
 
             <li>
                 <a onclick="xadmin.add_tab('酒店管理','hotelstatics/hotellist.html')">
@@ -104,7 +103,7 @@
             </li>
 
             <li>
-                <a onclick="xadmin.add_tab('房间管理','userstatics/userbillsearch.html')">
+                <a onclick="xadmin.add_tab('房间管理','hotelstatics/roomlist.html')">
                     <i class="iconfont left-nav-li" lay-tips="房间管理">&#xe723;</i>
                     <cite>房间管理</cite>
                     <i class="iconfont nav_right">&#xe697;</i></a>

@@ -7,6 +7,16 @@ public class HotelType {
 
     private long id;
     private long hotelId;
+
+    public int getRoomType() {
+        return roomType;
+    }
+
+    public void setRoomType(int roomType) {
+        this.roomType = roomType;
+    }
+
+    private  int roomType;
     private String hotelRoomType;
     private long hotelRoomNumber;
     private double hotelPrice;
