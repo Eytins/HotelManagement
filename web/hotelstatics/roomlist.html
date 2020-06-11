@@ -40,7 +40,7 @@
 
                 <div class="layui-card-body ">
                     <button class="layui-btn" onclick="xadmin.open('添加房间','roomadd.html',600,400)">
-                        添加
+                        <i class="layui-icon"></i>添加
                     </button>
                 </div>
 
@@ -48,7 +48,7 @@
                     <table class="layui-table layui-form">
                         <thead>
                         <tr>
-                            <th>酒店编号</th>
+                            <th>房型编号</th>
                             <th>房型名称</th>
                             <th>可住人数</th>
                             <th>每晚价格</th>
@@ -163,7 +163,7 @@ $("#select").click(function () {
         },
         error: function (result) {
             alert("请求出错");
-            alert(result);
+            result;
         }
     });
     return false;

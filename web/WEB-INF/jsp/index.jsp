@@ -38,7 +38,7 @@
             <dl class="layui-nav-child">
                 <!-- 二级菜单 -->
                 <dd>
-                    <a onclick="xadmin.open('最大化','http://www.baidu.com','','',true)">
+                    <a onclick="xadmin.open('最大化','http://www.baidu.com','','')">
                         <i class="iconfont">&#xe6a2;</i>弹出最大化</a></dd>
                 <dd>
                     <a onclick="xadmin.open('弹出自动宽高','http://www.baidu.com')">

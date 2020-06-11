@@ -29,14 +29,10 @@
             <script type="text/javascript">$("#hotelId").val($.cookie("hotelId"))</script>
 
             <div class="layui-form-item">
-                <label class="layui-form-label">选择房型</label>
-                <div class="layui-input-inline layui-show-xs-block">
-                    <select name="roomType" id="roomType">
-                        <option value="">选择房型</option>
-                        <option value="标准间">标准间</option>
-                        <option value="豪华大床房">豪华大床房</option>
-                    </select>
-                </div>
+                <label class="layui-form-label" for="roomType">房间类型</label>
+                <div class="layui-input-inline">
+                    <input autocomplete="off" class="layui-input" id="roomType" name="roomType" required=""
+                           type="text"></div>
             </div>
 
             <div class="layui-form-item">
