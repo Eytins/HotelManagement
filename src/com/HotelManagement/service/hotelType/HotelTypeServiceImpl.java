@@ -44,7 +44,7 @@ public class HotelTypeServiceImpl implements HotelTypeService {
     }
 
     @Override
-    public int modifyRoomType(Integer roomTypeId, Integer price, Integer numberOfPerson) {
+    public int modifyRoomType(Integer roomTypeId, long price, Integer numberOfPerson) {
         return this.hotelTypeMapper.modifyRoomType(roomTypeId,price,numberOfPerson);
     }
 
