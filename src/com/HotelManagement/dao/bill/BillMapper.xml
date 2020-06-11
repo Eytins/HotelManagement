@@ -71,10 +71,13 @@
         <if test="hotelAddress!=null and hotelName!=''">
             and hotelAddress like CONCAT('%',#{hotelAddress},'%')
         </if>
+        <if test="id!=null and id!=''">
+            and b.orderId = #{id}
+        </if>
     </select>
 
     <select id="getHotelId" resultType="java.lang.Integer">
-        select hotelId from hotel where hotelName=#{hotelName}
+        select id from hotel where hotelName=#{hotelName}
     </select>
 
     <resultMap id="hid" type="Bill">
@@ -93,4 +96,8 @@
         </set>
         where id=#{id}
     </update>
+
+    <select id="getRoomType" resultType="java.lang.Integer">
+        select id from hotelType where hotelRoomType = #{hotelRoomType} LIMIT 1
+    </select>
 </mapper>

@@ -19,7 +19,7 @@ public interface BillMapper {
 
     //用户端: 根据Date、酒店名称、地址获取订单列表
     //todo:需要配置是哪一个用户的订单
-    List<Bill> getBillListAndHotelNameByDateAndHotelNameAndAddress(@Param("date") Date date, @Param("hotelName") String hotelName, @Param("hotelAddress") String hotelAddress);
+    List<Bill> getBillListAndHotelNameByDateAndHotelNameAndAddress(@Param("id") int id,@Param("date") Date date, @Param("hotelName") String hotelName, @Param("hotelAddress") String hotelAddress);
 
     //获取订单价格最高值
     public int HPrice();
@@ -34,4 +34,5 @@ public interface BillMapper {
     public List<Bill> getBillByBillCode(@Param("billCode") String billCode, @Param("roomType")Integer roomType);
 
     public Integer getHotelId(String hotelName);
+    int getRoomType(String hotelRoomType);
 }

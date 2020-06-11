@@ -23,8 +23,8 @@ public class BillServiceImpl implements BillService {
 
     //用户端: 根据Date、酒店名称、地址获取订单列表
     @Override
-    public List<Bill> getBillListAndHotelNameByDateAndHotelNameAndAddress(Date date, String hotelName, String hotelAddress) {
-        return billMapper.getBillListAndHotelNameByDateAndHotelNameAndAddress(date, hotelName, hotelAddress);
+    public List<Bill> getBillListAndHotelNameByDateAndHotelNameAndAddress(int id,Date date, String hotelName, String hotelAddress) {
+        return billMapper.getBillListAndHotelNameByDateAndHotelNameAndAddress(id,date, hotelName, hotelAddress);
     }
 
     //获取订单价格最高值
@@ -55,5 +55,9 @@ public class BillServiceImpl implements BillService {
     //通过订单号和房间类型返回带有房间名和房间规格的表
     public List<Bill> getBillByBillCode(String billCode,Integer roomType) {
         return this.billMapper.getBillByBillCode(billCode, roomType);
+    }
+    @Override
+    public int getRoomType(String hotelRoomType) {
+        return this.billMapper.getRoomType(hotelRoomType);
     }
 }
