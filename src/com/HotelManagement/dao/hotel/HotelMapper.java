@@ -1,5 +1,6 @@
 package com.HotelManagement.dao.hotel;
 
+import com.HotelManagement.pojo.Bill;
 import com.HotelManagement.pojo.Hotel;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,4 +16,8 @@ public interface HotelMapper {
 
     //删除酒店
     int deleteHotelById(Integer id);
+
+    // 酒店端：查询订单
+    List<Bill> searchBillByHotel(@Param("isPayment") int isPayment,
+                                 @Param("isCheckIn") int isCheckIn);
 }

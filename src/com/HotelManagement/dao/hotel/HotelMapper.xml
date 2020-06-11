@@ -29,4 +29,16 @@
         from HotelManagement.bill
         where id = #{HotelId}
     </delete>
+
+    <select id="searchBillByHotel" resultType="com.HotelManagement.pojo.Bill">
+        select * from HotelManagement.bill
+        <where>
+            <if test="isPayment!=null and isPayment!=''">
+                isPayment = #{isPayment}
+            </if>
+            <if test="isCheckIn!=null and isCheckIn!=''">
+                and isCheckIn = #{isCheckIn}
+            </if>
+        </where>
+    </select>
 </mapper>
