@@ -35,7 +35,7 @@ public class UserBillOrderController {
      */
     @RequestMapping(value = "doUserHotelSearch",method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
-    public List<HotelType> doSerch(@RequestParam(value = "priceMin", required = false, defaultValue = "200") String priceMin,
+    public List<HotelType> doSearch(@RequestParam(value = "priceMin", required = false, defaultValue = "200") String priceMin,
                                    @RequestParam(value = "priceMax", required = false, defaultValue = "20000") String priceMax,
                                    @RequestParam(value = "hotelName", required = false) String hotelName,
                                    @RequestParam(value = "hotelAddress", required = false) String hotelAddress) {
