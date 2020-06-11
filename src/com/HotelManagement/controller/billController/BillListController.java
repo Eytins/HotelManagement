@@ -80,9 +80,7 @@ public class BillListController {
         bill.setCountDays(getDifferenceDays(checkInDate,checkOutDate));
         bill.setTotalPrice(totalPrice);
         bill.setTotalPrice(totalPrice);
-
-        //todo: 老板的id通过hotelservice查询hotelid然后获得userid，有空再加
-        // bill.setProviderId(this.billService.);
+        bill.setProviderId(1);
 
         return this.billService.addBill(bill);
     }
