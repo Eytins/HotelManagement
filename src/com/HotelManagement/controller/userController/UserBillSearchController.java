@@ -19,6 +19,7 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping("userbillserch")
 public class UserBillSearchController {
 
     private static final Logger logger = Logger.getLogger(UserBillOrderController.class);
@@ -27,14 +28,14 @@ public class UserBillSearchController {
     @Autowired
     private BillService billService;
 
-    @RequestMapping(value = {"userBillSearch/doUserHotelSearch.html", "userstatics/userBillSearch/doUserHotelSearch.html"}, method = RequestMethod.GET)
+    @RequestMapping(value = "doUserHotelSearch", method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
-    public List<Bill> doUserHotelSearch(@RequestParam(value = "theDay", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd")
-                                           Date theDay,
+    /*
+    * 用户自身的订单查询
+    * */
+    public List<Bill> doUserHotelSearch(@RequestParam(value = "theDay", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") Date theDay,
                               @RequestParam(value = "hotelName", required = false) String hotelName,
                               @RequestParam(value = "hotelAddress", required = false) String hotelAddress) {
-
-
         logger.debug(this.billService.getBillListAndHotelNameByDateAndHotelNameAndAddress(theDay, hotelName, hotelAddress));
         return this.billService.getBillListAndHotelNameByDateAndHotelNameAndAddress(theDay, hotelName, hotelAddress);
     }

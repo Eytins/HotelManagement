@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping("hotelroom")
 public class HotelRoomController {
 
     private static final Logger logger = Logger.getLogger(HotelRoomController.class);
@@ -24,8 +26,11 @@ public class HotelRoomController {
 
     @Autowired
     private HotelTypeService hotelTypeService;
-
-    @RequestMapping(value = "hotelRoom/searchHotelRoom.html", method = {RequestMethod.GET, RequestMethod.POST})
+/*
+* 所有房间的查询
+* */
+    @RequestMapping(value = "searchHotelRoom", method = {RequestMethod.GET, RequestMethod.POST})
+    @ResponseBody
     public List<HotelType> doRoomSearch(@RequestParam(value = "hotelId") String hotelId) {
 
         Integer i = null;
@@ -35,15 +40,15 @@ public class HotelRoomController {
 
         return hotelTypeService.selectHotelTypeByIdType(null, i);
     }
-
-    @RequestMapping(value = "hotelRoom/addHotelRoom.html", method = {RequestMethod.GET, RequestMethod.POST})
+/*
+* 新增酒店房间类型
+* */
+    @RequestMapping(value = "addHotelRoom", method = {RequestMethod.GET, RequestMethod.POST})
     public int addNewRoom(@RequestParam(value = "hotelId") String hotelId,
                           @RequestParam(value = "roomType") String roomType,
                           @RequestParam(value = "roomNumber") String roomNumber,
                           @RequestParam(value = "price") String price,
                           @RequestParam(value = "numberOfPerson") String numberOfPerson) {
-
-
         HotelType hotelType    = new HotelType();
         Integer   hotelIdOfInt = null;
         if (hotelId != null) {
@@ -72,8 +77,10 @@ public class HotelRoomController {
 
         return hotelTypeService.addNewHotelType(hotelType);
     }
-
-    @RequestMapping(value = "hotelRoom/editHotelRoom.html", method = {RequestMethod.GET, RequestMethod.POST})
+/*
+* 编辑酒店房间
+* */
+    @RequestMapping(value = "editHotelRoom", method = {RequestMethod.GET, RequestMethod.POST})
     public int editRoom(@RequestParam(value = "roomTypeId") String roomTypeId,
                         @RequestParam(value = "price") String price,
                         @RequestParam(value = "numberOfPerson") String numberOfPerson) {
@@ -97,8 +104,10 @@ public class HotelRoomController {
 
         return hotelTypeService.modifyRoomType(roomTypeIdOfInt, priceOfInt, numberOfPersonOfInt);
     }
-
-    @RequestMapping(value = "hotelRoom/deleteHotelRoom.html", method = {RequestMethod.GET, RequestMethod.POST})
+/*
+* 删除酒店房间
+* */
+    @RequestMapping(value = "deleteHotelRoom", method = {RequestMethod.GET, RequestMethod.POST})
     public int deleteHotelRoom(@RequestParam(value = "roomId") String roomId) {
 
         Integer roomIdOfInt = null;

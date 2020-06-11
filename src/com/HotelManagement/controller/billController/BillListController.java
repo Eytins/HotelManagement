@@ -1,8 +1,6 @@
 package com.HotelManagement.controller.billController;
 
 import com.HotelManagement.pojo.Bill;
-import com.HotelManagement.pojo.Hotel;
-import com.HotelManagement.pojo.HotelType;
 import com.HotelManagement.service.bill.BillService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,11 +10,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import javax.servlet.http.HttpSession;
 import java.sql.Date;
 import java.util.List;
 
 @Controller
+@RequestMapping("billlist")
 public class BillListController {
 
     private static final Logger logger = Logger.getLogger(BillListController.class);
@@ -24,18 +22,17 @@ public class BillListController {
     @Autowired
     private BillService billService;
 
-    @RequestMapping(value = {"doBillSearch.html"}, method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "doBillSearch", method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
+    /*
+    * 订单的查询
+    * */
     public List<Bill> doBillSearch(@RequestParam(value = "billCode", required = false) String billCode,
                                      @RequestParam(value = "roomType", required = false,defaultValue = "1") Integer roomType){
-
-
-                List< Bill > list=this.billService.getBillByBillCode(billCode,roomType);
-                return  list;
+        return this.billService.getBillByBillCode(billCode,roomType);
     }
 
-    @RequestMapping(value ={"addNewBill.html"} , method = {RequestMethod.POST,RequestMethod.GET})
-    @ResponseBody
+    @RequestMapping(value ="addNewBill" , method = {RequestMethod.POST,RequestMethod.GET})
     public int addNewBill(@RequestParam(value = "orderId") Integer orderId,
                           @RequestParam(value = "hotelId") Integer hotelId,
                           @RequestParam(value = "roomType") Integer roomType,
@@ -58,8 +55,7 @@ public class BillListController {
     }
 
 
-    @RequestMapping(value = {"deleteBill.html"}, method = RequestMethod.GET)
-    @ResponseBody
+    @RequestMapping(value = "deleteBill", method = {RequestMethod.POST,RequestMethod.GET})
     public int deleteBill(@RequestParam(value = "id") String id){
         return this.billService.deleteBillbyId(Integer.parseInt(id));
     }

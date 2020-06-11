@@ -19,7 +19,7 @@ import java.util.List;
  */
 
 @Controller
-@RequestMapping("billorder")
+@RequestMapping("userbillorder")
 public class UserBillOrderController {
 
     private static final Logger logger = Logger.getLogger(UserBillOrderController.class);

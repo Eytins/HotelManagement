@@ -22,24 +22,28 @@ import java.util.List;
  */
 
 @Controller
+@RequestMapping("hotelList")
 public class HotelListController {
 
     private static final Logger logger = Logger.getLogger(HotelListController.class);
 
     @Autowired
     private HotelService hotelService;
-
-    @RequestMapping(value = {"hotelList/doHotelSearch.html"}, method = {RequestMethod.POST,RequestMethod.GET})
+/*
+* 对酒店本身的搜索
+* */
+    @RequestMapping(value ="doHotelSearch", method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
     public List<Hotel> doHotelSearch(@RequestParam(value = "hotelName", required = false) String hotelName,
                                      @RequestParam(value = "hotelAddress", required = false) String hotelAddress){
-
         return this.hotelService.searchHotel(hotelName, hotelAddress);
     }
 
     // test: hotelAdd/doAddNewHotel.html?hotelName=1112&hotelAddress=122&postCode=123455&tel=123423
-    @RequestMapping(value = {"hotelAdd/doAddNewHotel.html"}, method = {RequestMethod.POST,RequestMethod.GET})
-    @ResponseBody
+    /*
+    * 新增酒店
+    * */
+    @RequestMapping(value = "doAddNewHotel", method = {RequestMethod.POST,RequestMethod.GET})
     public int addNewHotel(@RequestParam(value = "hotelName") String hotelName,
                            @RequestParam(value = "hotelAddress") String hotelAddress,
                            @RequestParam(value = "postCode") String postCode,
@@ -62,8 +66,10 @@ public class HotelListController {
 
     // test: http://localhost:8080/HotelManagement_war_exploded/hotelList/deleteHotel.html?id=5
     // todo: 删除失败
-    @RequestMapping(value = {"hotelList/deleteHotel.html", "hotelstatics/hotelList/deleteHotel.html"}, method = RequestMethod.GET)
-    @ResponseBody
+    /*
+    * 删除酒店
+    * */
+    @RequestMapping(value = "deleteHotel", method = {RequestMethod.POST,RequestMethod.GET})
     public int deleteHotel(@RequestParam(value = "id") String id){
         return this.hotelService.deleteHotelById(Integer.parseInt(id));
     }
