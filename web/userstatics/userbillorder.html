@@ -225,17 +225,17 @@ function delAll(argument) {
 }
 
 function addorder(){
-
+console.log((event.target.id));
     $.removeCookie("hotelName");
-    $.cookie("hotelName",document.getElementById((event.target.id)-50).innerText);
+    $.cookie("hotelName",document.getElementById((event.target.id*10+1)).innerText);
     $.removeCookie("hotelAddress");
-    $.cookie("hotelAddress",document.getElementById((event.target.id)-40).innerText);
+    $.cookie("hotelAddress",document.getElementById((event.target.id*10)+2).innerText);
     $.removeCookie("hotelRoomType");
-    $.cookie("hotelRoomType",document.getElementById((event.target.id)-30).innerText);
+    $.cookie("hotelRoomType",document.getElementById((event.target.id*10)+3).innerText);
     $.removeCookie("hotelPeople");
-    $.cookie("hotelPeople",document.getElementById((event.target.id)-20).innerText);
+    $.cookie("hotelPeople",document.getElementById((event.target.id*10)+4).innerText);
     $.removeCookie("hotelPrice");
-    $.cookie("hotelPrice",document.getElementById((event.target.id)-10).innerText);
+    $.cookie("hotelPrice",document.getElementById((event.target.id*10)+5).innerText);
     xadmin.open("预定","userorderview.html",600 , 500);
 }
 
@@ -250,13 +250,13 @@ $("#select").click(function () {
             var str=""
             for (i in result) {
                 str += "<tr class='modifyID'>" +
-                    "<td id="+1+i+">" + result[i].hotelName +"</td>" +
-                    "<td id="+2+i+">" + result[i].hotelAddress + "</td>" +
-                    "<td id="+3+i+">" + result[i].hotelRoomType+ "</td>" +
-                    "<td id="+4+i+">" + result[i].hotelPeople + "</td>" +
-                    "<td id="+5+i+">" + result[i].hotelPrice + "</td>" +
+                    "<td id="+i+1+">" + result[i].hotelName +"</td>" +
+                    "<td id="+i+2+">" + result[i].hotelAddress + "</td>" +
+                    "<td id="+i+3+">" + result[i].hotelRoomType+ "</td>" +
+                    "<td id="+i+4+">" + result[i].hotelPeople + "</td>" +
+                    "<td id="+i+5+">" + result[i].hotelPrice + "</td>" +
                     "<td class='td-manage'>" +
-                    "<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+6+i+">" +
+                    "<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+i+">" +
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "预定" +
                     "</td>" +
                     "</tr>"
