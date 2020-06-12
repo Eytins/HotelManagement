@@ -63,29 +63,27 @@ public class RegisterController {
                              @RequestParam(value = "userPassword") String password,
                              @RequestParam(value = "userName") String userName,
                              @RequestParam(value = "gender") String gender,
-                             @RequestParam(value = "birthday") String birthday,
                              @RequestParam(value = "phone") String phone,
                              @RequestParam(value = "userRole") String userRole) {
 
         User user = new User();
 
-        Date birthDate = new Date();
+        Integer genderOfInt = null;
+        if (genderOfInt != null) {
+            genderOfInt = Integer.valueOf(gender);
+            user.setGender(genderOfInt);
+        }
+
+        Integer userRoleOfInt = null;
+        if (userRole != null) {
+            userRoleOfInt = Integer.valueOf(userRole);
+            user.setUserRole(userRoleOfInt);
+        }
 
         user.setUserCode(userCode);
         user.setUserPassword(password);
         user.setUserName(userName);
-        Integer genderOfInt = null;
-        if (genderOfInt != null) {
-            genderOfInt = Integer.valueOf(gender);
-        }
-        user.setGender(genderOfInt);
-        user.setBirthday(birthDate);
         user.setPhone(phone);
-        Integer userRoleOfInt = null;
-        if (userRole != null) {
-            userRoleOfInt = Integer.valueOf(userRole);
-        }
-        user.setUserRole(userRoleOfInt);
         user.setCreationDate(new Date());
 
         return this.userService.addUser(user);
