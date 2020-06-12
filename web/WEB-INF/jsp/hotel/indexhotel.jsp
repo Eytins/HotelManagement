@@ -66,9 +66,7 @@
                         <i class="iconfont">&#xe6a7;</i>
                         <cite>酒店列表</cite></a>
                 </li>
-
                     <li>
-
                         <a onclick="xadmin.add_tab('订单列表','userstatics/billlist.html')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite></a>
@@ -107,14 +105,6 @@
 <style id="theme_style"></style>
 <!-- 右侧主体结束 -->
 <!-- 中部结束 -->
-<script>//百度统计可去掉
-var _hmt = _hmt || [];
-(function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();</script>
 </body>
 
 </html>
