@@ -14,20 +14,19 @@
     <!--搜索所有酒店名-->
     <select id="searchHotel" resultType="com.HotelManagement.pojo.Hotel">
         select * from hotel
-        <where>
-            <if test="hotelName!=null and hotelName!=''">
-                hotelName like CONCAT('%',#{hotelName},'%')
-            </if>
-            <if test="hotelAddress!=null and hotelAddress!=''">
-                and hotelAddress like CONCAT('%',#{hotelAddress},'%')
-            </if>
-        </where>
+        where userId=#{userId}
+        <if test="hotelName!=null and hotelName!=''">
+            and hotelName like CONCAT('%',#{hotelName},'%')
+        </if>
+        <if test="hotelAddress!=null and hotelAddress!=''">
+            and hotelAddress like CONCAT('%',#{hotelAddress},'%')
+        </if>
     </select>
 
     <delete id="deleteHotelById" parameterType="int">
         delete
-        from HotelManagement.hotel
-        where id = #{hotelId}
+        from hotel
+        where id = #{id}
     </delete>
 
     <select id="searchBillByHotel" resultType="com.HotelManagement.pojo.Bill">

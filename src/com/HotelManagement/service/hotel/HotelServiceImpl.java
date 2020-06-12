@@ -16,8 +16,8 @@ public class HotelServiceImpl implements HotelService {
 
     //通过酒店名酒店地址搜索酒店
     @Override
-    public List<Hotel> searchHotel(String hotelName, String hotelAddress) {
-        return this.hotelMapper.searchHotel(hotelName, hotelAddress);
+    public List<Hotel> searchHotel(Integer userId, String hotelName, String hotelAddress) {
+        return this.hotelMapper.searchHotel(userId, hotelName, hotelAddress);
     }
 
     //添加新的酒店

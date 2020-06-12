@@ -122,17 +122,33 @@ function goToRoomEdit() {
 }
 
 
-function deleteRoom() {
+function dodelete() {
     console.log((event.target.id));
-    $.removeCookie("roomId");
+
+    $.removeCookie("hotelTypeId");
     if (event.target.id == 0) {
-        $.cookie("roomId", document.getElementById("01").innerText);
+        formData1 = document.getElementById("01").innerText;
     } else {
-        $.cookie("roomId", document.getElementById((event.target.id * 10 + 1)).innerText);
+        formData1 = document.getElementById((event.target.id * 10 + 1)).innerText;
     }
-    //todo:删除roomId的这一条
-    xadmin.open("预定", "userorderview.html", 600, 500);
+
+    console.log(formData1);
+    $.ajax({
+        url: "http://localhost:8080/HotelManagement_war_exploded/hotelroom/deleteHotelRoom?roomId=" + formData1,
+        type: "post",
+        contentType: "application/json",
+        data: formData1,
+        success: function (result) {
+            alert("删除成功");
+            result;
+        },
+        error: function (result) {
+            alert("请求出错");
+            result;
+        }
+    });
 }
+
 
 
 $("#select").click(function () {
@@ -154,7 +170,7 @@ $("#select").click(function () {
                     "<td class='td-manage'>" +
                     "<button class='layui-btn layui-btn layui-btn-xs'  onclick='goToRoomEdit()' id=" + i + ">" +
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "编辑" +
-                    "<button class='layui-btn-danger layui-btn layui-btn-xs'  onclick='deleteRoom()' id=" + i + ">" +
+                    "<button class='layui-btn-danger layui-btn layui-btn-xs'  onclick='dodelete()' id=" + i + ">" +
                     "<i class='layui-icon'>" + "&#xe640;" + "</i>" + "删除" +
                     "</td>" +
                     "</tr>"

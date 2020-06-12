@@ -131,14 +131,29 @@ function dosearch() {
 
 function dodelete() {
     console.log((event.target.id));
+
     $.removeCookie("hotelId");
     if (event.target.id == 0) {
-        $.cookie("hotelId", document.getElementById("01").innerText);
+        formData1 = document.getElementById("01").innerText;
     } else {
-        $.cookie("hotelId", document.getElementById((event.target.id * 10 + 1)).innerText);
+        formData1 = document.getElementById((event.target.id * 10 + 1)).innerText;
     }
-    //todo:执行delete
-    xadmi.open("删除", "userorderview.html", 600, 500);
+
+    console.log(formData1);
+    $.ajax({
+        url: "http://localhost:8080/HotelManagement_war_exploded/hotelList/deleteHotel?hotelId=" + formData1,
+        type: "post",
+        contentType: "application/json",
+        data: formData1,
+        success: function (result) {
+            alert("删除成功");
+            result;
+        },
+        error: function (result) {
+            alert("请求出错");
+            result;
+        }
+    });
 }
 
 $("#select").click(function () {
