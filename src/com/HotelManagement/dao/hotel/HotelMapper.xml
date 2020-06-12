@@ -26,8 +26,8 @@
 
     <delete id="deleteHotelById" parameterType="Integer">
         delete
-        from HotelManagement.bill
-        where id = #{HotelId}
+        from hotel
+        where id = #{id}
     </delete>
 
     <select id="searchBillByHotel" resultType="com.HotelManagement.pojo.Bill">

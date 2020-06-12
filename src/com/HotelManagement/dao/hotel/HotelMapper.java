@@ -15,7 +15,7 @@ public interface HotelMapper {
     int addNewHotel(Hotel hotel);
 
     //删除酒店
-    int deleteHotelById(Integer id);
+    int deleteHotelById(@Param("id") Integer id);
 
     // 酒店端：查询订单
     List<Bill> searchBillByHotel(@Param("isPayment") int isPayment,

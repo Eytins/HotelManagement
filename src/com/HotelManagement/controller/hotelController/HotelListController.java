@@ -47,6 +47,7 @@ public class HotelListController {
      * 新增酒店
      * */
     @RequestMapping(value = "doAddNewHotel", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
     public int addNewHotel(@RequestParam(value = "hotelName") String hotelName,
                            @RequestParam(value = "hotelAddress") String hotelAddress,
                            @RequestParam(value = "postCode") String postCode,
@@ -67,13 +68,14 @@ public class HotelListController {
         return this.hotelService.addNewHotel(hotel);
     }
 
-    // test: http://localhost:8080/HotelManagement_war_exploded/hotelList/deleteHotel.html?id=5
+    // test: http://localhost:8080/HotelManagement_war_exploded/hotelList/deleteHotel.html?hotelId=18
     // todo: 删除失败
     /*
      * 删除酒店
      * */
     @RequestMapping(value = "deleteHotel", method = {RequestMethod.POST, RequestMethod.GET})
-    public int deleteHotel(@RequestParam(value = "id") String id) {
+    @ResponseBody
+    public int deleteHotel(@RequestParam(value = "hotelId") String id) {
         return this.hotelService.deleteHotelById(Integer.parseInt(id));
     }
 }
