@@ -35,7 +35,7 @@
         <input value="登录" lay-submit lay-filter="login" style="width:100%;" type="submit">
         <hr class="hr20">
 
-        <a href="${pageContext.request.contextPath}/register.html">
+        <a href="${pageContext.request.contextPath}/register/register.html">
             <%--            <input type="button" value="注册">--%>
             <input value="注册" lay-submit style="width:100%;" type="button">
         </a>
