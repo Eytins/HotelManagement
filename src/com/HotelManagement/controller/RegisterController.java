@@ -59,7 +59,7 @@ public class RegisterController {
 
     @RequestMapping(value = "/doRegister2", method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
-    public String doRegister2(@RequestParam(value = "userCode") String userCode,
+    public int doRegister2(@RequestParam(value = "userCode") String userCode,
                              @RequestParam(value = "userPassword") String password,
                              @RequestParam(value = "userName") String userName,
                              @RequestParam(value = "gender") String gender,

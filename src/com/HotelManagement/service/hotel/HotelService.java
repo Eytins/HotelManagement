@@ -10,6 +10,8 @@ public interface HotelService {
     //通过酒店名酒店地址搜索酒店
     List<Hotel> searchHotel(Integer userId,String hotelName, String hotelAddress);
 
+    List<Hotel> searchHotel2(String hotelName, String hotelAddress);
+
     //添加新的酒店
     int addNewHotel(Hotel hotel);
 

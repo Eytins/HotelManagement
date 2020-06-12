@@ -46,6 +46,18 @@ public class HotelListController {
         return this.hotelService.searchHotel(userId, hotelName, hotelAddress);
     }
 
+    @RequestMapping(value = "doHotelSearch2", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public List<Hotel> doHotelSearch2(@RequestParam(value = "hotelName", required = false) String hotelName,
+                                     @RequestParam(value = "hotelAddress", required = false) String hotelAddress,
+                                     HttpSession session) {
+        logger.debug("HotelListController---------------->doHotelSearch");
+
+
+        Integer userId=5;
+        return this.hotelService.searchHotel( userId,hotelName, hotelAddress);
+    }
+
     // test: hotelAdd/doAddNewHotel.html?hotelName=1112&hotelAddress=122&postCode=123455&tel=123423
     /*
      * 新增酒店
