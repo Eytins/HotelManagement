@@ -62,7 +62,7 @@
         update hotelType
         <trim prefix="set" suffix="where id=#{roomTypeId}" suffixOverrides=",">
             <if test="numberOfPerson!=null">hotelPeople=#{numberOfPerson},</if>
-            <if test="roomTypeId!=null">roomTypeId=#{roomTypeId},</if>
+            <if test="roomTypeId!=null">hotelPrice=#{price},</if>
         </trim>
     </update>
 </mapper>
