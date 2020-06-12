@@ -59,7 +59,7 @@
 
             <div class="layui-form-item">
                 <label class="layui-form-label"></label>
-                <input type="button" value="插入" id="add"  onclick="adduser()"/>
+                <input type="button" value="插入" id="add" "/>
             </div>
         </form>
     </div>
@@ -100,35 +100,24 @@
     s.parentNode.insertBefore(hm, s);
 })();
 
-function adduser() {
+$("#add").click(function () {
     var formData = $("#form").serialize();
-
-    let userCode = $.trim($("userCode").val());
-    let userName = $.trim($("userName").val());
-    let gender = $.trim($("gender").val());
-    let birthday = $.trim($("birthday").val());
-    let phone = $.trim($("phone").val());
-    let userRole = $.trim($("userRole").val());
-
     $.ajax({
-        type : "post",
-        url : "http://localhost:8080/HotelManagement_war_exploded/register/doRegister2?userCode="+userCode
-        +"userName="+userName+"gender="+gender+"birthday="+birthday+"phone="+phone+"userRole="+userRole,
-        data : formData,
-        contentType: "application/json",
+        dataType: "",
+        url: "http://localhost:8080/HotelManagement_war_exploded/register/doRegister2",
+        type: "post",
+        data: formData,
         success: function (result) {
-
-            alert("插入成功了");
+            alert("添加成功");
+            alert(result);
         },
-
-        error:function (result) {
-            alert("插入失败");
+        error: function (result) {
+            alert("运行成功");
+            result;
         }
     });
-
-
-    }
-
+    return false;
+});
 
 
 
