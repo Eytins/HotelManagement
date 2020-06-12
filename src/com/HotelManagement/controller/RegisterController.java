@@ -69,12 +69,7 @@ public class RegisterController {
 
         User user = new User();
 
-        Date birthDate = null;
-        try {
-            birthDate = new SimpleDateFormat("yyyy-MM-dd").parse(birthday);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        Date birthDate = new Date();
 
         user.setUserCode(userCode);
         user.setUserPassword(password);
@@ -92,7 +87,7 @@ public class RegisterController {
         }
         user.setUserRole(userRoleOfInt);
         user.setCreationDate(new Date());
-        userService.addUser(user);
-        return userService.addUser(user);
+
+        return this.userService.addUser(user);
     }
 }

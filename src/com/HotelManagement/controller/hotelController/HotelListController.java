@@ -84,7 +84,6 @@ public class HotelListController {
         Integer Id=null;
         if(loginUser.getId()==1){
              Id=5;
-
         }
         hotel.setUserId(Id);
 
