@@ -5,7 +5,9 @@ import com.HotelManagement.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -55,7 +57,8 @@ public class RegisterController {
         return "login";
     }
 
-    @RequestMapping(value = "/doRegister2")
+    @RequestMapping(value = "/doRegister2", method = {RequestMethod.POST,RequestMethod.GET})
+    @ResponseBody
     public String doRegister2(@RequestParam(value = "userCode") String userCode,
                              @RequestParam(value = "userPassword") String password,
                              @RequestParam(value = "userName") String userName,
@@ -84,8 +87,6 @@ public class RegisterController {
             userRoleOfInt = Integer.valueOf(userRole);
         }
         user.setUserRole(userRoleOfInt);
-
-
         user.setCreationDate(new Date());
 
         this.userService.addUser(user);
