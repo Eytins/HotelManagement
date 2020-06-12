@@ -19,6 +19,10 @@ public class HotelServiceImpl implements HotelService {
     public List<Hotel> searchHotel(Integer userId, String hotelName, String hotelAddress) {
         return this.hotelMapper.searchHotel(userId, hotelName, hotelAddress);
     }
+    @Override
+    public List<Hotel> searchHotel2( String hotelName, String hotelAddress) {
+        return this.hotelMapper.searchHotel2( hotelName, hotelAddress);
+    }
 
     //添加新的酒店
     @Override
@@ -41,4 +45,5 @@ public class HotelServiceImpl implements HotelService {
     public int checkIn(int billId) {
         return this.hotelMapper.checkIn(billId);
     }
+
 }
