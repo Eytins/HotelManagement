@@ -60,7 +60,6 @@
                             <th  width="10%">入住天数</th>
                             <th width="10%">订单总价</th>
                             <th width="10%">操作</th>
-
                         </tr>
                         </thead>
                         <thead id="data">
@@ -74,28 +73,27 @@
 </div>
 </body>
 <script>
-function addorder(){
-    console.log((event.target.id));
-    $.removeCookie("hotelName");
-    $.removeCookie("hotelAddress");
-    $.removeCookie("hotelRoomType");
-    $.removeCookie("hotelPeople");
-    $.removeCookie("hotelPrice");
-    if(event.target.id==0){
-        $.cookie("hotelName",document.getElementById("01").innerText);
-        $.cookie("hotelAddress",document.getElementById("02").innerText);
-        $.cookie("hotelRoomType",document.getElementById("03").innerText);
-        $.cookie("hotelPeople",document.getElementById("04").innerText);
-        $.cookie("hotelPrice",document.getElementById("05").innerText);
-    }else{
-        $.cookie("hotelName",document.getElementById((event.target.id*10+1)).innerText);
-        $.cookie("hotelAddress",document.getElementById((event.target.id*10)+2).innerText);
-        $.cookie("hotelRoomType",document.getElementById((event.target.id*10)+3).innerText);
-        $.cookie("hotelPeople",document.getElementById((event.target.id*10)+4).innerText);
-        $.cookie("hotelPrice",document.getElementById((event.target.id*10)+5).innerText);
+    function deletebill() {
+        if (event.target.id == 0) {
+            formData1 = document.getElementById("01").innerText;
+        } else {
+            formData1 = document.getElementById((event.target.id * 10 + 1)).innerText;
+        }
+        console.log(formData1);
+        $.ajax({
+            url: "http://localhost:8080/HotelManagement_war_exploded/billlist/deleteBill?billCode="+formData1,
+            type: "post",
+            contentType: "application/json",
+            data: formData1,
+            success: function (result) {
+                alert("删除成功");
+            },
+            error: function (result) {
+                alert("请求出错");
+                alert(result);
+            }
+        });
     }
-    xadmin.open("预定","userorderview.html",600 , 500);
-}
 
 $("#select").click(function () {
     var formData1 = $("#search").serializeArray();
@@ -119,7 +117,7 @@ $("#select").click(function () {
                     "<td id="+i+7+">" + result[i].countDays + "</td>" +
                     "<td id="+i+8+">" + result[i].totalPrice + "</td>" +
                     "<td class='td-manage'>" +
-                    /*"<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+i+">" +*/
+                    "<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='deletebill()' id="+i+">" +
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "删除" +
                     "</button>" +
                     "</td>" +
