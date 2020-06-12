@@ -18,8 +18,8 @@ public interface HotelMapper {
     int deleteHotelById(@Param("id") Integer id);
 
     // 酒店端：查询订单
-    List<Bill> searchBillByHotel(@Param("isPayment") int isPayment,
-                                 @Param("isCheckIn") int isCheckIn);
+    List<Bill> searchBillByHotel(@Param("isPayment") Integer isPayment,
+                                 @Param("isCheckIn") Integer isCheckIn);
 
     // 通过billId办理入住
     int checkIn(@Param("billId") int billId);
