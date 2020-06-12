@@ -24,7 +24,7 @@
         </where>
     </select>
 
-    <delete id="deleteHotelById" parameterType="Integer">
+    <delete id="deleteHotelById" parameterType="int">
         delete
         from hotel
         where id = #{id}

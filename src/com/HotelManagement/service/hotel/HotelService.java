@@ -14,7 +14,7 @@ public interface HotelService {
     int addNewHotel(Hotel hotel);
 
     //删除酒店
-    int deleteHotelById(Integer id);
+    int deleteHotelById(int id);
 
     // 酒店端：查询订单
     List<Bill> searchBillByHotel(int isPayment, int isCheckIn);

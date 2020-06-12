@@ -47,4 +47,6 @@ public class HotelTypeServiceImpl implements HotelTypeService {
     public int modifyRoomType(Integer roomTypeId, long price, Integer numberOfPerson) {
         return this.hotelTypeMapper.modifyRoomType(roomTypeId,price,numberOfPerson);
     }
+
+
 }

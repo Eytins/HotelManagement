@@ -19,12 +19,13 @@
     <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
     <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script type="text/javascript"> var hotelName = $.cookie("hotelName")</script>
 </head>
 <body>
 <div class="layui-fluid">
     <div class="layui-row">
         <!--todo:action要改-->
-        <form id="newOrder" class="layui-form" id="formf">
+        <form  class="layui-form" id="formf">
 
             <div class="layui-form-item">
                 <label class="layui-form-label">酒店名称</label>
@@ -56,13 +57,13 @@
                     <label class="layui-form-label">日期区间</label>
                     <div class="layui-input-inline" style="width: 100px;">
                         <!--开始日-->
-                        <input autocomplete="off" class="layui-input" name="startDay"
+                        <input autocomplete="off" class="layui-input" name="checkInDate"
                                type="date">
                     </div>
                     <div class="layui-form-mid">-</div>
                     <div class="layui-input-inline" style="width: 100px;">
                         <!--结束日-->
-                        <input autocomplete="off" class="layui-input" name="endDay"
+                        <input autocomplete="off" class="layui-input" name="checkOutDate"
                                type="date">
                     </div>
                 </div>
@@ -100,26 +101,20 @@
             });
 
     });</script>
-<script>var _hmt = _hmt || [];
-(function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-})();
+<script>
 
 $("#select").click(function () {
     var formData = $("#formf").serialize();
+    console.log(formData);
     $.ajax({
         dataType:"json",
-        url: "http://localhost:8080/HotelManagement_war_exploded/userbillorder/addNewBill",
+        url: "http://localhost:8080/HotelManagement_war_exploded/billlist/addNewBill?hotelName="+decodeURIComponent(hotelName)+
+            "&roomType="+$.cookie("hotelRoomType")+
+                "&totalPrice="+$.cookie("hotelPeople")+"&"+formData,
         type: "post",
-        data: formData,
         success:function(result){
-            var str=""
-            for (i in result) {
-            }
-
+            alert("成功");
+            alert(result);
         },
         error:function (result) {
             alert("请求出错");

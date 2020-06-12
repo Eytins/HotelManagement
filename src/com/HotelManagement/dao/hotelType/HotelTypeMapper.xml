@@ -52,6 +52,7 @@
         </where>
     </select>
 
+
     <resultMap id="midd" type="HotelType">
         <result property="hotelName" column="hotelName"/>
         <result property="hotelAddress" column="hotelAddress"/>

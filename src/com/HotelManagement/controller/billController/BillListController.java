@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -41,29 +44,34 @@ public class BillListController {
 
     @RequestMapping(value ="addNewBill" , method = {RequestMethod.POST,RequestMethod.GET})
     @ResponseBody
-    public int addNewBill(@RequestParam(value = "hotelId") Integer hotelId,
-                          @RequestParam(value = "roomType") Integer roomType,
+    public int addNewBill(@RequestParam(value = "hotelName") String hotelName,
+                          @RequestParam(value = "roomType") String roomType,
                           @RequestParam(value = "checkInDate") String checkInDate,
                           @RequestParam(value = "checkOutDate") String checkOutDate,
                           @RequestParam(value = "totalPrice") Integer totalPrice,
                           HttpSession session) {
+        String result = java.net.URLDecoder.decode(hotelName, StandardCharsets.UTF_8);
+        String roomtype = java.net.URLDecoder.decode(roomType, StandardCharsets.UTF_8);
 
         Bill bill= new Bill();
         User loginUser = (User) session.getAttribute(Constants.USER_SESSION);
-
         Date inDate = null;
         Date outDate = null;
         try {
             inDate = new SimpleDateFormat("yyyy-MM-dd").parse(checkInDate);
             outDate = new SimpleDateFormat("yyyy-MM-dd").parse(checkOutDate);
+            long between = (outDate.getTime()-inDate.getTime())/(3600*24*1000);
+            totalPrice = Math.toIntExact(totalPrice * between);
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        User user = (User) session.getAttribute(Constants.USER_SESSION);
+        int hotelId = this.billService.getHotelId(result);
+        int roomTypee = this.billService.getRoomType(roomtype);
         bill.setBillCode(getRandomString(12));
-        bill.setOrderId((int) loginUser.getId());
+        bill.setOrderId(user.getId());
         bill.setHotelId(hotelId);
-        bill.setRoomType(roomType);
+        bill.setRoomType(roomTypee);
         bill.setCheckInDate(inDate);
         bill.setCheckOutDate(outDate);
         bill.setIsCheckIn(0);
