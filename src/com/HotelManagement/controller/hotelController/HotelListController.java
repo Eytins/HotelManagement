@@ -49,14 +49,11 @@ public class HotelListController {
     @RequestMapping(value = "doHotelSearch2", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public List<Hotel> doHotelSearch2(@RequestParam(value = "hotelName", required = false) String hotelName,
-                                     @RequestParam(value = "hotelAddress", required = false) String hotelAddress,
-                                     HttpSession session) {
+                                      @RequestParam(value = "hotelAddress", required = false) String hotelAddress,
+                                      HttpSession session) {
         logger.debug("HotelListController---------------->doHotelSearch");
 
-
-
-
-        Integer userId=5;
+        Integer userId = 5;
         return this.hotelService.searchHotel(userId, hotelName, hotelAddress);
     }
 
@@ -81,11 +78,7 @@ public class HotelListController {
         hotel.setPostCode(postCode);
         hotel.setTel(tel);
         hotel.setCreationDate(new Date());
-        Integer Id=null;
-        if(loginUser.getId()==1){
-             Id=5;
-        }
-        hotel.setUserId(Id);
+        hotel.setUserId(loginUser.getId());
 
 
         return this.hotelService.addNewHotel(hotel);
