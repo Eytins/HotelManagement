@@ -24,27 +24,9 @@
         </where>
     </select>
 
-    <delete id="deleteHotelById" parameterType="int">
+    <delete id="deleteHotelById" parameterType="Integer">
         delete
-        from HotelManagement.hotel
-        where id = #{hotelId}
+        from HotelManagement.bill
+        where id = #{HotelId}
     </delete>
-
-    <select id="searchBillByHotel" resultType="com.HotelManagement.pojo.Bill">
-        select * from HotelManagement.bill
-        <where>
-            <if test="isPayment!=null and isPayment!=''">
-                isPayment = #{isPayment}
-            </if>
-            <if test="isCheckIn!=null and isCheckIn!=''">
-                and isCheckIn = #{isCheckIn}
-            </if>
-        </where>
-    </select>
-
-    <update id="checkIn" parameterType="int">
-        update HotelManagement.bill
-        set isCheckIn = 1
-        where id = #{billId}
-    </update>
 </mapper>

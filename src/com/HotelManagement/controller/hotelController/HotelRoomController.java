@@ -26,10 +26,9 @@ public class HotelRoomController {
 
     @Autowired
     private HotelTypeService hotelTypeService;
-
-    /*
-     * 所有房间的查询
-     * */
+/*
+* 所有房间的查询
+* */
     @RequestMapping(value = "searchHotelRoom", method = {RequestMethod.GET, RequestMethod.POST})
     @ResponseBody
     public List<HotelType> doRoomSearch(@RequestParam(value = "hotelId") String hotelId) {
@@ -39,21 +38,19 @@ public class HotelRoomController {
             hotelIdOfInt = Integer.valueOf(hotelId);
         }
 
-        List<HotelType> hotelTypes = hotelTypeService.selectHotelTypeByIdType(null, hotelIdOfInt);
+        List<HotelType> hotelTypes= hotelTypeService.selectHotelTypeByIdType(null, hotelIdOfInt);
 
         //todo:添加一个剩余房间数的属性
-        for (int j = 0; j < hotelTypes.size(); j++) {
+        for (int j = 0; j <hotelTypes.size(); j++) {
             hotelTypes.get(j).setRemainNumber(
-                    hotelTypeService.selectRemainNumber(hotelTypes.get(j).getId(), hotelIdOfInt));
+                    hotelTypeService.selectRemainNumber(hotelTypes.get(j).getId(),hotelIdOfInt));
         }
         return hotelTypes;
     }
-
-    /*
-     * 新增酒店房间类型
-     * */
+/*
+* 新增酒店房间类型
+* */
     @RequestMapping(value = "addHotelRoom", method = {RequestMethod.GET, RequestMethod.POST})
-    @ResponseBody
     public int addNewRoom(@RequestParam(value = "hotelId") String hotelId,
                           @RequestParam(value = "roomType") String roomType,
                           @RequestParam(value = "roomNumber") String roomNumber,
@@ -87,37 +84,37 @@ public class HotelRoomController {
 
         return hotelTypeService.addNewHotelType(hotelType);
     }
-
-    /*
-     * 编辑酒店房间
-     * */
+/*
+* 编辑酒店房间
+* */
     @RequestMapping(value = "editHotelRoom", method = {RequestMethod.GET, RequestMethod.POST})
-    @ResponseBody
-    public int editRoom(@RequestParam(value = "roomId") String roomTypeId,
-                        @RequestParam(value = "roomPrice") String price,
+    public int editRoom(@RequestParam(value = "roomTypeId") String roomTypeId,
+                        @RequestParam(value = "price") String price,
                         @RequestParam(value = "numberOfPerson") String numberOfPerson) {
 
 
         Integer roomTypeIdOfInt = null;
-        if (roomTypeId != null) {
+        if (price != null) {
             roomTypeIdOfInt = Integer.valueOf(roomTypeId);
         }
 
-        long priceOfLong = Long.parseLong(price);
+        Integer priceOfInt = null;
+        if (price != null) {
+            priceOfInt = Integer.valueOf(price);
+        }
 
         Integer numberOfPersonOfInt = null;
         if (numberOfPerson != null) {
             numberOfPersonOfInt = Integer.valueOf(numberOfPerson);
         }
 
-        return hotelTypeService.modifyRoomType(roomTypeIdOfInt, priceOfLong, numberOfPersonOfInt);
-    }
 
-    /*
-     * 删除酒店房间
-     * */
+        return hotelTypeService.modifyRoomType(roomTypeIdOfInt, priceOfInt, numberOfPersonOfInt);
+    }
+/*
+* 删除酒店房间
+* */
     @RequestMapping(value = "deleteHotelRoom", method = {RequestMethod.GET, RequestMethod.POST})
-    @ResponseBody
     public int deleteHotelRoom(@RequestParam(value = "roomId") String roomId) {
 
         Integer roomIdOfInt = null;

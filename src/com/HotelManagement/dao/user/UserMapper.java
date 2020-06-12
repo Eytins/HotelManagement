@@ -22,6 +22,4 @@ public interface UserMapper {
 
     //获得角色列表
     public List<Role> getRoleList();
-
-    public int deleteUserByUserCode(@Param("userCode") String userCode);
 }

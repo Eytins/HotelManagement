@@ -67,11 +67,12 @@ public class HotelListController {
         return this.hotelService.addNewHotel(hotel);
     }
 
+    // test: http://localhost:8080/HotelManagement_war_exploded/hotelList/deleteHotel.html?id=5
+    // todo: 删除失败
     /*
      * 删除酒店
      * */
     @RequestMapping(value = "deleteHotel", method = {RequestMethod.POST, RequestMethod.GET})
-    @ResponseBody
     public int deleteHotel(@RequestParam(value = "id") String id) {
         return this.hotelService.deleteHotelById(Integer.parseInt(id));
     }

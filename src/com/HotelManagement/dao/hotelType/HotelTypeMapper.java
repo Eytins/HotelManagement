@@ -33,7 +33,7 @@ public interface HotelTypeMapper {
 
     //更改房型
     int modifyRoomType(@Param("roomTypeId") Integer roomTypeId,
-                       @Param("price") long price,
+                       @Param("price") Integer price,
                        @Param("numberOfPerson") Integer numberOfPerson);
 
 
