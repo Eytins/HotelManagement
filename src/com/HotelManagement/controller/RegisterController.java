@@ -92,9 +92,7 @@ public class RegisterController {
         }
         user.setUserRole(userRoleOfInt);
         user.setCreationDate(new Date());
-
-
-
-        return userService.addUser(user);
+        userService.addUser(user);
+        return "index";
     }
 }
