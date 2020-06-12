@@ -36,12 +36,12 @@ public class HotelBillController {
                                         @RequestParam(value = "isCheckIn", required = false) String isCheckIn) {
 
         Integer isPaymentOfInt = null;
-        if (isPayment != null && isPayment != "") {
+        if (isPayment != null && !isPayment.equals("")) {
             isPaymentOfInt = Integer.valueOf(isPayment);
         }
 
         Integer isCheckInOfInt = null;
-        if (isCheckIn != null && isCheckIn != "") {
+        if (isCheckIn != null && !isCheckIn.equals("")) {
             isCheckInOfInt = Integer.valueOf(isCheckIn);
         }
 
@@ -57,6 +57,12 @@ public class HotelBillController {
     @RequestMapping(value = "deleteBill", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public int deleteBill(@RequestParam(value = "billId") String billId) {
-        return this.billService.deleteBillbyId(billId);
+
+        Integer billIdOfInt = null;
+        if (billId != null && !billId.equals("")) {
+            billIdOfInt = Integer.valueOf(billId);
+        }
+
+        return this.billService.deleteBillbyId(billIdOfInt);
     }
 }

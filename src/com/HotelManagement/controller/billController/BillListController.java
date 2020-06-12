@@ -31,18 +31,18 @@ public class BillListController {
     @Autowired
     private BillService billService;
 
-    @RequestMapping(value = "doBillSearch", method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "doBillSearch", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     /*
-    * 订单的查询
-    * */
+     * 订单的查询
+     * */
     public List<Bill> doBillSearch(@RequestParam(value = "billCode", required = false) String billCode,
-                                     @RequestParam(value = "roomType", required = false,defaultValue = "1") String roomType){
+                                   @RequestParam(value = "roomType", required = false, defaultValue = "1") String roomType) {
         int roomType1 = Integer.parseInt(roomType);
-        return this.billService.getBillByBillCode(billCode,roomType1);
+        return this.billService.getBillByBillCode(billCode, roomType1);
     }
 
-    @RequestMapping(value ="addNewBill" , method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "addNewBill", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public int addNewBill(@RequestParam(value = "hotelName") String hotelName,
                           @RequestParam(value = "roomType") String roomType,
@@ -50,24 +50,24 @@ public class BillListController {
                           @RequestParam(value = "checkOutDate") String checkOutDate,
                           @RequestParam(value = "totalPrice") Integer totalPrice,
                           HttpSession session) {
-        String result = java.net.URLDecoder.decode(hotelName, StandardCharsets.UTF_8);
+        String result   = java.net.URLDecoder.decode(hotelName, StandardCharsets.UTF_8);
         String roomtype = java.net.URLDecoder.decode(roomType, StandardCharsets.UTF_8);
 
-        Bill bill= new Bill();
+        Bill bill      = new Bill();
         User loginUser = (User) session.getAttribute(Constants.USER_SESSION);
-        Date inDate = null;
-        Date outDate = null;
+        Date inDate    = null;
+        Date outDate   = null;
         try {
-            inDate = new SimpleDateFormat("yyyy-MM-dd").parse(checkInDate);
+            inDate  = new SimpleDateFormat("yyyy-MM-dd").parse(checkInDate);
             outDate = new SimpleDateFormat("yyyy-MM-dd").parse(checkOutDate);
-            long between = (outDate.getTime()-inDate.getTime())/(3600*24*1000);
+            long between = (outDate.getTime() - inDate.getTime()) / (3600 * 24 * 1000);
             totalPrice = Math.toIntExact(totalPrice * between);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        User user = (User) session.getAttribute(Constants.USER_SESSION);
-        int hotelId = this.billService.getHotelId(result);
-        int roomTypee = this.billService.getRoomType(roomtype);
+        User user      = (User) session.getAttribute(Constants.USER_SESSION);
+        int  hotelId   = this.billService.getHotelId(result);
+        int  roomTypee = this.billService.getRoomType(roomtype);
         bill.setBillCode(getRandomString(12));
         bill.setOrderId(user.getId());
         bill.setHotelId(hotelId);
@@ -77,7 +77,7 @@ public class BillListController {
         bill.setIsCheckIn(0);
         bill.setIsPayment(2);
         bill.setCreationDate(new Date());
-        bill.setCountDays(getDifferenceDays(checkInDate,checkOutDate));
+        bill.setCountDays(getDifferenceDays(checkInDate, checkOutDate));
         bill.setTotalPrice(totalPrice);
         bill.setTotalPrice(totalPrice);
         bill.setProviderId(1);
@@ -86,21 +86,21 @@ public class BillListController {
     }
 
 
-    @RequestMapping(value = "deleteBill", method = {RequestMethod.POST,RequestMethod.GET})
+    @RequestMapping(value = "deleteBill", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
-    public int deleteBill(@RequestParam(value = "billCode") String billCode){
-        return this.billService.deleteBillbyId(billCode);
+    public int deleteBill(@RequestParam(value = "billCode") String billCode) {
+        return this.billService.deleteBillByCode(billCode);
     }
 
     // 生成随机orderId字符串
-    public static String getRandomString(int length){
+    public static String getRandomString(int length) {
 
-        String str = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-        Random random = new Random();
+        String        str    = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        Random        random = new Random();
         StringBuilder buffer = new StringBuilder();
 
-        for(int i = 0; i < length; i++){
-            int number=random.nextInt(62);
+        for (int i = 0; i < length; i++) {
+            int number = random.nextInt(62);
             buffer.append(str.charAt(number));
         }
 
@@ -109,8 +109,8 @@ public class BillListController {
 
     //计算两天之差
     public static int getDifferenceDays(String in, String out) {
-        int a = Integer.parseInt(in.substring(in.length()-1, in.length()));
-        int b = Integer.parseInt(out.substring(out.length()-1, out.length()));
-        return b-a;
+        int a = Integer.parseInt(in.substring(in.length() - 1, in.length()));
+        int b = Integer.parseInt(out.substring(out.length() - 1, out.length()));
+        return b - a;
     }
 }
