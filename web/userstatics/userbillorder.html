@@ -75,36 +75,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!--todo:这个实在太难了BY仟-->
-                                    <!--todo:逃避虽然可耻但有用BY仟-->
-                                    <!--<div class="layui-form-item">
-                                        <div class="layui-inline">
-                                            <label class="layui-form-label">选择房型</label>
-                                            <div class="layui-input-inline">
-                                                <select name="roomType">
-                                                    <option value="">请选择房型</option>
-                                                    &lt;!&ndash;todo:这里显示所有房型&ndash;&gt;
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>-->
-                                    <!--todo:再逃一个就一个 这个我会写太晚了8想写BY仟-->
-                                    <!--<div class="layui-form-item">
-                                        <div class="layui-inline">
-                                            <label class="layui-form-label">日期区间</label>
-                                            <div class="layui-input-inline" style="width: 100px;">
-                                                &lt;!&ndash;开始日&ndash;&gt;
-                                                <input type="date" name="startDay" autocomplete="off"
-                                                       class="layui-input">
-                                            </div>
-                                            <div class="layui-form-mid">-</div>
-                                            <div class="layui-input-inline" style="width: 100px;">
-                                                &lt;!&ndash;结束日&ndash;&gt;
-                                                <input type="date" name="endDay" autocomplete="off"
-                                                       class="layui-input">
-                                            </div>
-                                        </div>
-                                    </div>-->
 
                                     <div class="layui-form-item">
                                         <div class="layui-input-block">
@@ -151,79 +121,7 @@
     </div>
 </div>
 </body>
-<script>layui.use(['laydate', 'form'],
-    function () {
-        var laydate = layui.laydate;
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#start' //指定元素
-        });
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#end' //指定元素
-        });
-    });
-
-/*用户-停用*/
-function member_stop(obj, id) {
-    layer.confirm('确认要停用吗？',
-        function (index) {
-
-            if ($(obj).attr('title') == '启用') {
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title', '停用');
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!', {
-                    icon: 5,
-                    time: 1000
-                });
-
-            } else {
-                $(obj).attr('title', '启用');
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!', {
-                    icon: 5,
-                    time: 1000
-                });
-            }
-
-        });
-}
-
-/*用户-删除*/
-function member_del(obj, id) {
-    layer.confirm('确认要删除吗？',
-        function (index) {
-            //发异步删除数据
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!', {
-                icon: 1,
-                time: 1000
-            });
-        });
-}
-
-function delAll(argument) {
-
-    var data = tableCheck.getData();
-
-    layer.confirm('确认要删除吗？' + data,
-        function (index) {
-            //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {
-                icon: 1
-            });
-            $(".layui-form-checked").not('.header').parents('tr').remove();
-        });
-}
-
+<script>
 function addorder(){
 console.log((event.target.id));
     $.removeCookie("hotelName");

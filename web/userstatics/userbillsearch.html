@@ -60,7 +60,6 @@
                             <th  width="10%">入住天数</th>
                             <th width="10%">订单总价</th>
                             <th width="10%">操作</th>
-
                         </tr>
                         </thead>
                         <thead id="data">
@@ -68,117 +67,33 @@
                         </thead>
                     </table>
                 </div>
-                <div class="layui-card-body ">
-                    <div class="page">
-                        <div>
-                            <a class="prev" href="">&lt;&lt;</a>
-                            <a class="num" href="">1</a>
-                            <span class="current">2</span>
-                            <a class="num" href="">3</a>
-                            <a class="num" href="">489</a>
-                            <a class="next" href="">&gt;&gt;</a></div>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
 </div>
 </body>
-<script>layui.use(['laydate', 'form'],
-    function () {
-        var laydate = layui.laydate;
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#start' //指定元素
-        });
-
-        //执行一个laydate实例
-        laydate.render({
-            elem: '#end' //指定元素
-        });
-    });
-
-/*用户-停用*/
-function member_stop(obj, id) {
-    layer.confirm('确认要停用吗？',
-        function (index) {
-
-            if ($(obj).attr('title') == '启用') {
-
-                //发异步把用户状态进行更改
-                $(obj).attr('title', '停用');
-                $(obj).find('i').html('&#xe62f;');
-
-                $(obj).parents("tr").find(".td-status").find('span').addClass('layui-btn-disabled').html('已停用');
-                layer.msg('已停用!', {
-                    icon: 5,
-                    time: 1000
-                });
-
-            } else {
-                $(obj).attr('title', '启用');
-                $(obj).find('i').html('&#xe601;');
-
-                $(obj).parents("tr").find(".td-status").find('span').removeClass('layui-btn-disabled').html('已启用');
-                layer.msg('已启用!', {
-                    icon: 5,
-                    time: 1000
-                });
+<script>
+    function deletebill() {
+        if (event.target.id == 0) {
+            formData1 = document.getElementById("01").innerText;
+        } else {
+            formData1 = document.getElementById((event.target.id * 10 + 1)).innerText;
+        }
+        console.log(formData1);
+        $.ajax({
+            url: "http://localhost:8080/HotelManagement_war_exploded/billlist/deleteBill?billCode="+formData1,
+            type: "post",
+            contentType: "application/json",
+            data: formData1,
+            success: function (result) {
+                alert("删除成功");
+            },
+            error: function (result) {
+                alert("请求出错");
+                alert(result);
             }
-
         });
-}
-
-/*用户-删除*/
-function member_del(obj, id) {
-    layer.confirm('确认要删除吗？',
-        function (index) {
-            //发异步删除数据
-            $(obj).parents("tr").remove();
-            layer.msg('已删除!', {
-                icon: 1,
-                time: 1000
-            });
-        });
-}
-
-function delAll(argument) {
-
-    var data = tableCheck.getData();
-
-    layer.confirm('确认要删除吗？' + data,
-        function (index) {
-            //捉到所有被选中的，发异步进行删除
-            layer.msg('删除成功', {
-                icon: 1
-            });
-            $(".layui-form-checked").not('.header').parents('tr').remove();
-        });
-}
-
-function addorder(){
-    console.log((event.target.id));
-    $.removeCookie("hotelName");
-    $.removeCookie("hotelAddress");
-    $.removeCookie("hotelRoomType");
-    $.removeCookie("hotelPeople");
-    $.removeCookie("hotelPrice");
-    if(event.target.id==0){
-        $.cookie("hotelName",document.getElementById("01").innerText);
-        $.cookie("hotelAddress",document.getElementById("02").innerText);
-        $.cookie("hotelRoomType",document.getElementById("03").innerText);
-        $.cookie("hotelPeople",document.getElementById("04").innerText);
-        $.cookie("hotelPrice",document.getElementById("05").innerText);
-    }else{
-        $.cookie("hotelName",document.getElementById((event.target.id*10+1)).innerText);
-        $.cookie("hotelAddress",document.getElementById((event.target.id*10)+2).innerText);
-        $.cookie("hotelRoomType",document.getElementById((event.target.id*10)+3).innerText);
-        $.cookie("hotelPeople",document.getElementById((event.target.id*10)+4).innerText);
-        $.cookie("hotelPrice",document.getElementById((event.target.id*10)+5).innerText);
     }
-    xadmin.open("预定","userorderview.html",600 , 500);
-}
 
 $("#select").click(function () {
     var formData1 = $("#search").serializeArray();
@@ -202,7 +117,7 @@ $("#select").click(function () {
                     "<td id="+i+7+">" + result[i].countDays + "</td>" +
                     "<td id="+i+8+">" + result[i].totalPrice + "</td>" +
                     "<td class='td-manage'>" +
-                    /*"<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='addorder()' id="+i+">" +*/
+                    "<button class='layui-btn layui-btn-warm layui-btn-xs'  onclick='deletebill()' id="+i+">" +
                     "<i class='layui-icon'>" + "&#xe642;" + "</i>" + "删除" +
                     "</button>" +
                     "</td>" +

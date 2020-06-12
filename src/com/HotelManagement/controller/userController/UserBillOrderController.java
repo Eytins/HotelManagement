@@ -43,7 +43,6 @@ public class UserBillOrderController {
         int priceMax1 = Integer.parseInt(priceMax);
         HotelType hotelType ;
         List<HotelType> list = this.hotelTypeService.selectByUser(priceMin1, priceMax1, hotelName, hotelAddress);
-
         return list;
     }
 }

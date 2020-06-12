@@ -56,13 +56,13 @@ public class RegisterController {
     }
 
     @RequestMapping(value = "/doRegister2")
-    public String doRegister2(@RequestParam(value = "userCode",defaultValue = "xiaoxiao") String userCode,
-                             @RequestParam(value = "userPassword",defaultValue = "1") String password,
-                             @RequestParam(value = "userName",defaultValue = "1") String userName,
-                             @RequestParam(value = "gender",defaultValue = "1") String gender,
-                             @RequestParam(value = "birthday", defaultValue = "1999-09-09") String birthday,
-                             @RequestParam(value = "phone",defaultValue = "1") String phone,
-                             @RequestParam(value = "role",defaultValue = "1") String role) {
+    public int doRegister2(@RequestParam(value = "userCode") String userCode,
+                             @RequestParam(value = "userPassword") String password,
+                             @RequestParam(value = "userName") String userName,
+                             @RequestParam(value = "gender") String gender,
+                             @RequestParam(value = "birthday") String birthday,
+                             @RequestParam(value = "phone") String phone,
+                             @RequestParam(value = "userRole") String userRole) {
 
         User user = new User();
 
@@ -76,15 +76,24 @@ public class RegisterController {
         user.setUserCode(userCode);
         user.setUserPassword(password);
         user.setUserName(userName);
-        user.setGender(Integer.parseInt(gender));
+        Integer genderOfInt = null;
+        if (genderOfInt != null) {
+            genderOfInt = Integer.valueOf(gender);
+        }
+        user.setGender(genderOfInt);
         user.setBirthday(birthDate);
         user.setPhone(phone);
-        user.setUserCode(role);
+        Integer userRoleOfInt = null;
+        if (userRole != null) {
+            userRoleOfInt = Integer.valueOf(userRole);
+        }
+        user.setUserRole(userRoleOfInt);
+
 
         user.setCreationDate(new Date());
 
-        this.userService.addUser(user);
 
-        return "index";
+
+        return userService.addUser(user);
     }
 }
