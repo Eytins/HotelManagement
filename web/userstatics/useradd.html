@@ -100,6 +100,7 @@
     s.parentNode.insertBefore(hm, s);
 })();
 
+
 $("#add").click(function () {
     var formData = $("#form").serialize();
     $.ajax({
@@ -112,7 +113,7 @@ $("#add").click(function () {
             alert(result);
         },
         error: function (result) {
-            alert("运行成功");
+            alert("添加失败" );
             result;
         }
     });
