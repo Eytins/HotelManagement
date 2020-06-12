@@ -16,7 +16,7 @@
 
 
     <insert id="addUser" parameterType="com.HotelManagement.pojo.User">
-        insert into HotelManagement.user (userCode, userName, userPassword, gender, birthday, phone, userRole)
+        insert into user (userCode, userName, userPassword, gender, birthday, phone, userRole)
         values (#{userCode}, #{userName}, #{userPassword}, #{gender}, #{birthday}, #{phone}, #{userRole})
     </insert>
 

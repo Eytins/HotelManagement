@@ -46,6 +46,20 @@ public class HotelListController {
         return this.hotelService.searchHotel(userId, hotelName, hotelAddress);
     }
 
+    @RequestMapping(value = "doHotelSearch2", method = {RequestMethod.POST, RequestMethod.GET})
+    @ResponseBody
+    public List<Hotel> doHotelSearch2(@RequestParam(value = "hotelName", required = false) String hotelName,
+                                     @RequestParam(value = "hotelAddress", required = false) String hotelAddress,
+                                     HttpSession session) {
+        logger.debug("HotelListController---------------->doHotelSearch");
+
+
+
+
+        Integer userId=5;
+        return this.hotelService.searchHotel(userId, hotelName, hotelAddress);
+    }
+
     // test: hotelAdd/doAddNewHotel.html?hotelName=1112&hotelAddress=122&postCode=123455&tel=123423
     /*
      * 新增酒店
@@ -67,7 +81,12 @@ public class HotelListController {
         hotel.setPostCode(postCode);
         hotel.setTel(tel);
         hotel.setCreationDate(new Date());
-        hotel.setUserId(loginUser.getId());
+        Integer Id=null;
+        if(loginUser.getId()==1){
+             Id=5;
+        }
+        hotel.setUserId(Id);
+
 
         return this.hotelService.addNewHotel(hotel);
     }
