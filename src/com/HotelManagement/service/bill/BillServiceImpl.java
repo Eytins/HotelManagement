@@ -39,7 +39,7 @@ public class BillServiceImpl implements BillService {
 
     //根据订单id删除订单
     public int deleteBillbyId(Integer billId) {
-        return this.billMapper.deleteBillbyId(billId);
+        return this.billMapper.deleteBillById(billId);
     }
 
     @Override

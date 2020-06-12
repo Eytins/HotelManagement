@@ -27,7 +27,7 @@
     </insert>
 
     <!--根据id删除订单信息-->
-    <delete id="deleteBillbyId" parameterType="integer">
+    <delete id="deleteBillById" parameterType="integer">
         delete
         from bill
         where id = #{billId}
