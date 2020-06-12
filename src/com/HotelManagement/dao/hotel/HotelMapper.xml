@@ -30,7 +30,7 @@
     </delete>
 
     <select id="searchBillByHotel" resultType="com.HotelManagement.pojo.Bill">
-        select * from HotelManagement.bill
+        select * from bill
         <where>
             <if test="isPayment!=null and isPayment!=''">
                 isPayment = #{isPayment}

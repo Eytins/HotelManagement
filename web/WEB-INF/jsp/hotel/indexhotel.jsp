@@ -67,7 +67,8 @@
                         <cite>酒店列表</cite></a>
                 </li>
                     <li>
-                        <a onclick="xadmin.add_tab('订单列表','userstatics/billlist.html')">
+
+                        <a onclick="xadmin.add_tab('订单列表','hotelstatics/hotelbilllist.html')">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>订单列表</cite></a>
                     </li>

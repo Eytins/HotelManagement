@@ -33,7 +33,7 @@ public class HotelServiceImpl implements HotelService {
     }
 
     @Override
-    public List<Bill> searchBillByHotel(int isPayment, int isCheckIn) {
+    public List<Bill> searchBillByHotel(Integer isPayment, Integer isCheckIn) {
         return this.hotelMapper.searchBillByHotel(isPayment, isCheckIn);
     }
 

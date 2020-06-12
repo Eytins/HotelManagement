@@ -17,7 +17,7 @@ public interface HotelService {
     int deleteHotelById(int id);
 
     // 酒店端：查询订单
-    List<Bill> searchBillByHotel(int isPayment, int isCheckIn);
+    List<Bill> searchBillByHotel(Integer isPayment, Integer isCheckIn);
 
     //办理入住
     int checkIn(int billId);

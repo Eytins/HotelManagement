@@ -79,7 +79,11 @@ public class RegisterController {
         user.setUserCode(userCode);
         user.setUserPassword(password);
         user.setUserName(userName);
-        user.setGender(Integer.parseInt(gender));
+        Integer genderOfInt = null;
+        if (genderOfInt != null) {
+            genderOfInt = Integer.valueOf(gender);
+        }
+        user.setGender(genderOfInt);
         user.setBirthday(birthDate);
         user.setPhone(phone);
         Integer userRoleOfInt = null;
@@ -89,8 +93,8 @@ public class RegisterController {
         user.setUserRole(userRoleOfInt);
         user.setCreationDate(new Date());
 
-        this.userService.addUser(user);
 
-        return "index";
+
+        return userService.addUser(user);
     }
 }
