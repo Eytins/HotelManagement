@@ -102,13 +102,7 @@
 
             </li>
 
-            <li>
-                <a onclick="xadmin.add_tab('房间管理','hotelstatics/roomlist.html')">
-                    <i class="iconfont left-nav-li" lay-tips="房间管理">&#xe723;</i>
-                    <cite>房间管理</cite>
-                    <i class="iconfont nav_right">&#xe697;</i></a>
 
-            </li>
 
 
         </ul>
