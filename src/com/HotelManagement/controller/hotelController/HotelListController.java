@@ -36,10 +36,14 @@ public class HotelListController {
     @RequestMapping(value = "doHotelSearch", method = {RequestMethod.POST, RequestMethod.GET})
     @ResponseBody
     public List<Hotel> doHotelSearch(@RequestParam(value = "hotelName", required = false) String hotelName,
-                                     @RequestParam(value = "hotelAddress", required = false) String hotelAddress) {
+                                     @RequestParam(value = "hotelAddress", required = false) String hotelAddress,
+                                     HttpSession session) {
         logger.debug("HotelListController---------------->doHotelSearch");
 
-        return this.hotelService.searchHotel(hotelName, hotelAddress);
+        User    loginUser = (User) session.getAttribute(Constants.USER_SESSION);
+        Integer userId    = loginUser.getId();
+
+        return this.hotelService.searchHotel(userId, hotelName, hotelAddress);
     }
 
     // test: hotelAdd/doAddNewHotel.html?hotelName=1112&hotelAddress=122&postCode=123455&tel=123423
