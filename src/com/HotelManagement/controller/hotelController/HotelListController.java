@@ -84,34 +84,6 @@ public class HotelListController {
         return this.hotelService.addNewHotel(hotel);
     }
 
-    @RequestMapping(value = "doAddNewHotel2", method = {RequestMethod.POST, RequestMethod.GET})
-    @ResponseBody
-    public int addNewHotel2(@RequestParam(value = "hotelName") String hotelName,
-                           @RequestParam(value = "hotelAddress") String hotelAddress,
-                           @RequestParam(value = "postCode") String postCode,
-                           @RequestParam(value = "tel") String tel,
-                           HttpSession session) {
-
-        Hotel hotel = new Hotel();
-
-        User loginUser = (User) session.getAttribute(Constants.USER_SESSION);
-
-        hotel.setHotelName(hotelName);
-        hotel.setHotelAddress(hotelAddress);
-        hotel.setPostCode(postCode);
-        hotel.setTel(tel);
-        hotel.setCreationDate(new Date());
-        Integer Id=null;
-        if(loginUser.getId()==1){
-            Id=5;
-        }
-        hotel.setUserId(Id);
-
-
-
-        return this.hotelService.addNewHotel(hotel);
-    }
-
     /*
      * 删除酒店
      * */
