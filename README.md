@@ -1,4 +1,7 @@
 # HotelManagement
+
+**南京工业大学中兴实训项目**
+
 DROP TABLE IF EXISTS `bill`;
 CREATE DATABASE `HotelManagement`;
 
